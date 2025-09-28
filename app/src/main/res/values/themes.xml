@@ -6,4 +6,88 @@
     </style>
 
     <style name="Theme.QurioGame" parent="Base.Theme.QurioGame" />
+
+
+    <style name="fredoka_one_reqular" >
+        <item name="fontFamily">@font/fredoka_one</item>
+    </style>
+
+    <style name="fredoka_reqular" >
+        <item name="fontFamily">@font/fredoka_regular</item>
+    </style>
+
+    <style name="fredoka_medium">
+        <item name="fontFamily">@font/fredoka_medium</item>
+    </style>
+
+
+    <style name="headLine.large" parent="fredoka_one_reqular">
+        <item name="android:textSize">28sp</item>
+        <item name="lineHeight">42dp</item>
+    </style>
+
+    <style name="headLine.medium" parent="fredoka_one_reqular">
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">36dp</item>
+    </style>
+
+    <style name="headLine.small" parent="fredoka_one_reqular">
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">30dp</item>
+    </style>
+
+
+    <style name="title.large" parent="fredoka_one_reqular">
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">30dp</item>
+    </style>
+
+    <style name="title.medium" parent="fredoka_one_reqular">
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">28dp</item>
+    </style>
+
+    <style name="title.small" parent="fredoka_one_reqular">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+
+    <style name="body.large" parent="fredoka_reqular">
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">28dp</item>
+    </style>
+
+    <style name="body.medium" parent="fredoka_reqular">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+    <style name="body.small" parent="fredoka_reqular">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">22dp</item>
+    </style>
+
+
+    <style name="label.large" parent="fredoka_one_reqular">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+    <style name="label.medium" parent="fredoka_one_reqular">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">22dp</item>
+    </style>
+
+    <style name="label.small" parent="fredoka_one_reqular">
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">16dp</item>
+    </style>
+
+    <style name="label.x_small" parent="fredoka_one_reqular">
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">14dp</item>
+    </style>
+
+
 </resources>
