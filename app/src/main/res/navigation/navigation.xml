@@ -9,5 +9,64 @@
         android:id="@+id/mainFragment"
         android:name="com.quriogamethechance.quriogame.ui.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_firstOnboardingFragment"
+            app:destination="@id/firstOnboardingFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstOnboardingFragment"
+        android:name="com.quriogamethechance.quriogame.ui.onboarding.FirstOnboardingFragment"
+        android:label="fragment_first_onboarding"
+        tools:layout="@layout/fragment_first_onboarding" >
+        <action
+            android:id="@+id/action_firstOnboardingFragment_to_secondOnboardingFragment"
+            app:destination="@id/secondOnboardingFragment" />
+        <action
+            android:id="@+id/action_firstOnboardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondOnboardingFragment"
+        android:name="com.quriogamethechance.quriogame.ui.onboarding.SecondOnboardingFragment"
+        android:label="fragment_second_onboarding"
+        tools:layout="@layout/fragment_second_onboarding" >
+        <action
+            android:id="@+id/action_secondOnboardingFragment_to_thirdOnboardingFragment"
+            app:destination="@id/thirdOnboardingFragment" />
+        <action
+            android:id="@+id/action_secondOnboardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdOnboardingFragment"
+        android:name="com.quriogamethechance.quriogame.ui.onboarding.ThirdOnboardingFragment"
+        android:label="fragment_third_onboarding"
+        tools:layout="@layout/fragment_third_onboarding" >
+        <action
+            android:id="@+id/action_thirdOnboardingFragment_to_fourthOnboardingFragment"
+            app:destination="@id/fourthOnboardingFragment" />
+        <action
+            android:id="@+id/action_thirdOnboardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fourthOnboardingFragment"
+        android:name="com.quriogamethechance.quriogame.ui.onboarding.FourthOnboardingFragment"
+        android:label="fragment_fourth_onboarding"
+        tools:layout="@layout/fragment_fourth_onboarding" >
+        <action
+            android:id="@+id/action_fourthOnboardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.quriogamethechance.quriogame.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>
