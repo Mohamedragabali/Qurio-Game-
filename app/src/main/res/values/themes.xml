@@ -84,7 +84,7 @@
         <item name="lineHeight">16dp</item>
     </style>
 
-    <style name="label.x_small" parent="fredoka_one_reqular">
+    <style name="label.x_small" parent="fredoka_reqular">
         <item name="android:textSize">10sp</item>
         <item name="lineHeight">14dp</item>
     </style>
