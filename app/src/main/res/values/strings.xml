@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Qurio Game</string>
+    <string name="welcome_to_qurio">Welcome to Qurio</string>
+    <string name="welcome_to_qurio_description">Welcome to the world of Qurio, where questions spark curiosity and prizes await the smartest. Ready to begin the challenge?</string>
 </resources>
