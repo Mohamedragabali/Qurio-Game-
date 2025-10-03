@@ -114,11 +114,44 @@
         android:id="@+id/swipe_to_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Swipe up to PLAY!"
+        android:text="@string/swipe_up_to_play"
         style="@style/label.medium"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/top_arrow"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/arrow_up"
+        android:layout_marginTop="12dp"
+        app:tint="@color/shade_primary"
+        app:layout_constraintTop_toTopOf="@+id/swipeContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/middle_arrow"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/arrow_up"
+        app:tint="@color/shade_secondary"
+        app:layout_constraintTop_toBottomOf="@id/top_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"/>
+
+    <ImageView
+        android:id="@+id/bottom_arrow"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/arrow_up"
+        app:tint="@color/shade_tertiary"
+        app:layout_constraintTop_toBottomOf="@id/middle_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

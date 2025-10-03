@@ -1,11 +1,18 @@
 package com.quriogamethechance.quriogame.ui.onboarding
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
@@ -15,11 +22,17 @@ import com.quriogamethechance.quriogame.ui.BaseFragment
 class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFirstOnboardingBinding
         get() = FragmentFirstOnboardingBinding::inflate
+    private val animatedArrowDuration = 1000L
+    private val startBottomArrowDelay = 400L
+    private val startMiddleArrowDelay = 750L
+    private val startTopArrowDelay = 950L
+
 
     override fun setup() {
         initialButton()
         initialSwipeButton()
         initialTextColor()
+        initialArrowsAnimation()
     }
 
     private fun initialTextColor() {
@@ -44,7 +57,7 @@ class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>() {
     @SuppressLint("ClickableViewAccessibility")
     private fun initialSwipeButton() {
         binding.swipeContainer.post {
-            val maxDrag =   binding.swipeContainer.height - binding.swipeHandle.height
+            val maxDrag = binding.swipeContainer.height - binding.swipeHandle.height
             var dY = 0f
 
             binding.swipeHandle.setOnTouchListener { v, event ->
@@ -53,20 +66,24 @@ class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>() {
                         dY = v.y - event.rawY
                         true
                     }
+
                     MotionEvent.ACTION_MOVE -> {
                         var newY = event.rawY + dY
                         newY = newY.coerceIn(0f, maxDrag.toFloat())
                         v.y = newY
                         true
                     }
+
                     MotionEvent.ACTION_UP -> {
                         if (v.y <= 50f) {
-                           val action = FirstOnboardingFragmentDirections.actionFirstOnboardingFragmentToHomeFragment()
+                            val action =
+                                FirstOnboardingFragmentDirections.actionFirstOnboardingFragmentToHomeFragment()
                             v.findNavController().navigate(action)
                         }
                         v.animate().y(maxDrag.toFloat()).setDuration(200).start()
                         true
                     }
+
                     else -> false
                 }
             }
@@ -78,9 +95,29 @@ class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>() {
             requireActivity().finish()
         }
         binding.nextButton.setOnClickListener {
-            val action = FirstOnboardingFragmentDirections.actionFirstOnboardingFragmentToSecondOnboardingFragment()
+            val action =
+                FirstOnboardingFragmentDirections.actionFirstOnboardingFragmentToSecondOnboardingFragment()
             it.findNavController().navigate(action)
         }
+    }
+
+    private fun initialArrowsAnimation() {
+        initialInfiniteArrowAnimation(binding.bottomArrow, startBottomArrowDelay)
+        initialInfiniteArrowAnimation(binding.middleArrow, startMiddleArrowDelay)
+        initialInfiniteArrowAnimation(binding.topArrow, startTopArrowDelay)
+    }
+
+    private fun initialInfiniteArrowAnimation(
+        view: View,
+        startDelayValue: Long
+    ) {
+        val fadeInOut = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f, 0f).apply {
+            duration = animatedArrowDuration
+            startDelay = (startDelayValue).toLong()
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.RESTART
+        }
+        fadeInOut.start()
     }
 
 }
