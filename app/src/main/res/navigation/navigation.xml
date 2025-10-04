@@ -89,4 +89,11 @@
         android:name="com.quriogamethechance.quriogame.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
+    <dialog
+        android:id="@+id/characterFragment"
+        android:name="com.quriogamethechance.quriogame.ui.character.CharacterFragment"
+        android:label="fragment_character"
+        tools:layout="@layout/fragment_character" />
+
 </navigation>
