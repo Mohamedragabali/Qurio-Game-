@@ -7,6 +7,10 @@
 
     <style name="Theme.QurioGame" parent="Base.Theme.QurioGame" />
 
+    <style name="CenteredDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 
     <style name="fredoka_one_reqular" >
         <item name="fontFamily">@font/fredoka_one</item>
