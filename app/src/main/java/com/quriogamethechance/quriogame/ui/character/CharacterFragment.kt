@@ -11,6 +11,12 @@ class CharacterFragment : BaseDialogFragment<FragmentCharacterBinding>() {
         get() = FragmentCharacterBinding::inflate
 
     override fun setup() {
+        initButton()
+    }
 
+    private fun initButton() {
+        binding.exitButton.setOnClickListener {
+            dismiss()
+        }
     }
 }
