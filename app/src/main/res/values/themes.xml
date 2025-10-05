@@ -9,8 +9,18 @@
 
     <style name="CenteredDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsFloating">true</item>
     </style>
+
+
+    <style name="CutCornerCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/CutCornerShape</item>
+    </style>
+
+    <style name="CutCornerShape">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">13dp</item>
+    </style>
+
 
     <style name="fredoka_one_reqular" >
         <item name="fontFamily">@font/fredoka_one</item>
