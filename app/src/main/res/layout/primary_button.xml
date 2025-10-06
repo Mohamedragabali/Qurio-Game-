@@ -54,6 +54,7 @@
         android:paddingHorizontal="47.5dp"
         android:paddingVertical="11.dp"
         android:text="@string/fake_name"
+        android:gravity="center"
         android:textColor="@color/on_primary"
         style="@style/label.medium"
         app:layout_constraintBottom_toBottomOf="parent"
