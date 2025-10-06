@@ -70,14 +70,22 @@ class CharacterDetailsFragment : BaseDialogFragment<FragmentCharacterDetialsBind
             ),
         )
     override fun setup() {
+        binding.root.visibility = View.VISIBLE
         initButtonText()
         receiveData()
         initButton()
     }
 
+
     private fun initButton() {
         binding.okButton.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().popBackStack(R.id.homeFragment , inclusive = false)
+        }
+        binding.buy.root.setOnClickListener {
+            val action = CharacterDetailsFragmentDirections.actionCharacterDetailsFragmentToBuyCharacterFragment2(
+                binding.characterName.text.toString()
+            )
+            findNavController().navigate(action)
         }
     }
 

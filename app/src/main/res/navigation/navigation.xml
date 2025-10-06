@@ -103,7 +103,7 @@
             android:id="@+id/action_characterFragment_to_characterDetailsFragment"
             app:destination="@id/characterDetailsFragment"
             app:popUpTo="@id/characterFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </dialog>
     <dialog
         android:id="@+id/characterDetailsFragment"
@@ -115,7 +115,21 @@
             app:argType="string" />
         <argument
             android:name="is_open_character"
-            app:argType="boolean" />
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_characterDetailsFragment_to_buyCharacterFragment2"
+            app:destination="@id/buyCharacterFragment2" />
+
     </dialog>
+    <dialog
+        android:id="@+id/buyCharacterFragment2"
+        android:name="com.quriogamethechance.quriogame.ui.buyCharacter.BuyCharacterFragment"
+        android:label="BuyCharacterFragment" >
+        <argument
+            android:name="character_name"
+            app:argType="string" />
+    </dialog>
+
 
 </navigation>
