@@ -10,4 +10,6 @@
     <string name="collect_them_all">Collect them all!</string>
     <string name="collect_them_all_description">Unlock characters, earn badges, and climb the leaderboards. Qurio is merciless, but you can handle it.</string>
     <string name="fake_name">fake name</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 </resources>
