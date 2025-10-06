@@ -3,6 +3,7 @@ package com.quriogamethechance.quriogame.ui.character
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.CharcterBinding
 import com.quriogamethechance.quriogame.databinding.FragmentCharacterBinding
@@ -41,7 +42,11 @@ class CharacterFragment : BaseDialogFragment<FragmentCharacterBinding>() {
             dismiss()
         }
 
-
+        binding.confirmButton.root.setOnClickListener {
+            val action = CharacterFragmentDirections
+                .actionCharacterFragmentToCharacterDetailsFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun initButtonText() {

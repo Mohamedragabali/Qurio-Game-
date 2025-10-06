@@ -88,12 +88,26 @@
         android:id="@+id/homeFragment"
         android:name="com.quriogamethechance.quriogame.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_characterFragment"
+            app:destination="@id/characterFragment" />
+    </fragment>
 
     <dialog
         android:id="@+id/characterFragment"
         android:name="com.quriogamethechance.quriogame.ui.character.CharacterFragment"
         android:label="fragment_character"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character" >
+        <action
+            android:id="@+id/action_characterFragment_to_characterDetailsFragment"
+            app:destination="@id/characterDetailsFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.quriogamethechance.quriogame.ui.characterDetails.CharacterDetailsFragment"
+        android:label="fragment_character_detials"
+        tools:layout="@layout/fragment_character_detials" >
+    </dialog>
 
 </navigation>
