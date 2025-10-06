@@ -14,7 +14,7 @@ class CharacterFragment : BaseDialogFragment<FragmentCharacterBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCharacterBinding
         get() = FragmentCharacterBinding::inflate
 
-    private val characterNames = listOf("Rika","Kaiyo","mimi","Yoru","Kuro","Miko","Aori","Nara","Renji")
+    private val characterNames = listOf("Rika","Kaiyo","Mimi","Yoru","Kuro","Miko","Aori","Nara","Renji")
     private var characterSelected : CharcterBinding? = null
     private val characters = listOf(
         R.drawable.rika to R.drawable.rika,
