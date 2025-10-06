@@ -108,6 +108,12 @@
         android:name="com.quriogamethechance.quriogame.ui.characterDetails.CharacterDetailsFragment"
         android:label="fragment_character_detials"
         tools:layout="@layout/fragment_character_detials" >
+        <argument
+            android:name="character_name"
+            app:argType="string" />
+        <argument
+            android:name="is_open_character"
+            app:argType="boolean" />
     </dialog>
 
 </navigation>

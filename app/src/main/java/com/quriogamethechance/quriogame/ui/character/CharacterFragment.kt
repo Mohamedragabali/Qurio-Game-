@@ -44,7 +44,10 @@ class CharacterFragment : BaseDialogFragment<FragmentCharacterBinding>() {
 
         binding.confirmButton.root.setOnClickListener {
             val action = CharacterFragmentDirections
-                .actionCharacterFragmentToCharacterDetailsFragment()
+                .actionCharacterFragmentToCharacterDetailsFragment(
+                    characterSelected?.characterName?.text.toString(),
+                    false
+                )
             findNavController().navigate(action)
         }
     }
@@ -56,7 +59,7 @@ class CharacterFragment : BaseDialogFragment<FragmentCharacterBinding>() {
     }
 
     private fun initCharacter() {
-        characters.forEachIndexed {index,(openImage, closeImage)->
+        characters.forEachIndexed {index,(_, closeImage)->
             val character = CharcterBinding.inflate(layoutInflater,binding.characters,false)
             character.characterImage.setImageResource(closeImage)
             character.characterName.text = characterNames[index]
