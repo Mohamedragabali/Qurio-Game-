@@ -101,7 +101,9 @@
         tools:layout="@layout/fragment_character" >
         <action
             android:id="@+id/action_characterFragment_to_characterDetailsFragment"
-            app:destination="@id/characterDetailsFragment" />
+            app:destination="@id/characterDetailsFragment"
+            app:popUpTo="@id/characterFragment"
+            app:popUpToInclusive="true" />
     </dialog>
     <dialog
         android:id="@+id/characterDetailsFragment"

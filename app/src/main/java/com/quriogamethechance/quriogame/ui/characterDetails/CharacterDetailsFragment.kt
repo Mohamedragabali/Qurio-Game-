@@ -3,6 +3,7 @@ package com.quriogamethechance.quriogame.ui.characterDetails
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentCharacterDetialsBinding
 import com.quriogamethechance.quriogame.ui.BaseDialogFragment
@@ -71,8 +72,14 @@ class CharacterDetailsFragment : BaseDialogFragment<FragmentCharacterDetialsBind
     override fun setup() {
         initButtonText()
         receiveData()
+        initButton()
     }
 
+    private fun initButton() {
+        binding.okButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
 
 
     private fun initButtonText() {
