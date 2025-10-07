@@ -20,4 +20,7 @@
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
     <string name="difficulty_level">Difficulty level</string>
+    <string name="_1">1</string>
+    <string name="equal">=</string>
+    <string name="life_price">200 X</string>
 </resources>
