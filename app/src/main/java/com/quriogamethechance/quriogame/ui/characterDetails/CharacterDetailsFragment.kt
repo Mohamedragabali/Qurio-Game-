@@ -81,6 +81,9 @@ class CharacterDetailsFragment : BaseDialogFragment<FragmentCharacterDetialsBind
         binding.okButton.setOnClickListener {
             findNavController().popBackStack(R.id.homeFragment , inclusive = false)
         }
+        binding.exitButton.setOnClickListener {
+            dismiss()
+        }
         binding.buy.root.setOnClickListener {
             val action = CharacterDetailsFragmentDirections.actionCharacterDetailsFragmentToBuyCharacterFragment2(
                 binding.characterName.text.toString()

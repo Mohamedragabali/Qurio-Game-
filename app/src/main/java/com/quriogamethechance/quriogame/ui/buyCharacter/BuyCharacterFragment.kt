@@ -45,6 +45,9 @@ class BuyCharacterFragment : BaseDialogFragment<FragmentBuyCharacterBinding>() {
         binding.cancelButton.setOnClickListener {
             findNavController().popBackStack(R.id.homeFragment,false)
         }
+        binding.exitButton.setOnClickListener {
+            dismiss()
+        }
     }
 
     private fun initButtonText() {
