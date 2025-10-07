@@ -125,7 +125,8 @@
     <dialog
         android:id="@+id/buyCharacterFragment2"
         android:name="com.quriogamethechance.quriogame.ui.buyCharacter.BuyCharacterFragment"
-        android:label="BuyCharacterFragment" >
+        android:label="BuyCharacterFragment"
+        tools:layout="@layout/fragment_buy_character">
         <argument
             android:name="character_name"
             app:argType="string" />
