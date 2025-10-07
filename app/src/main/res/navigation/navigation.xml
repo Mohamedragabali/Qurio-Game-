@@ -95,6 +95,9 @@
         <action
             android:id="@+id/action_homeFragment_to_difficultyLevelFragment"
             app:destination="@id/difficultyLevelFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_buyLifeFragment"
+            app:destination="@id/buyLifeFragment" />
     </fragment>
 
     <dialog
