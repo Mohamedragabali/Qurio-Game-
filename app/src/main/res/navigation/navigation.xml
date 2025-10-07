@@ -92,6 +92,9 @@
         <action
             android:id="@+id/action_homeFragment_to_characterFragment"
             app:destination="@id/characterFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_difficultyLevelFragment"
+            app:destination="@id/difficultyLevelFragment" />
     </fragment>
 
     <dialog
@@ -130,6 +133,13 @@
         <argument
             android:name="character_name"
             app:argType="string" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/difficultyLevelFragment"
+        android:name="com.quriogamethechance.quriogame.ui.difficultyLevel.DifficultyLevelFragment"
+        android:label="difficultyLevelFragment"
+        tools:layout="@layout/fragment_difficulty_level">
     </dialog>
 
 
