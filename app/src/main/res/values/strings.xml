@@ -15,4 +15,9 @@
     <string name="buy">Buy</string>
     <string name="ok">OK</string>
     <string name="age">Age:</string>
+    <string name="level_text">Level Text</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="difficulty_level">Difficulty level</string>
 </resources>

@@ -22,6 +22,17 @@
     </style>
 
 
+    <style name="CutCornerLevelCard" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/CutCornerShapeTopBottom</item>
+    </style>
+
+    <style name="CutCornerShapeTopBottom">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+
+
     <style name="fredoka_one_reqular" >
         <item name="fontFamily">@font/fredoka_one</item>
     </style>
