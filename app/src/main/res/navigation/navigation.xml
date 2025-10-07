@@ -142,5 +142,12 @@
         tools:layout="@layout/fragment_difficulty_level">
     </dialog>
 
+    <dialog
+        android:id="@+id/buyLifeFragment"
+        android:name="com.quriogamethechance.quriogame.ui.buyLife.BuyLifeFragment"
+        android:label="buyLifeFragment"
+        tools:layout="@layout/fragment_buy_life">
+    </dialog>
+
 
 </navigation>
