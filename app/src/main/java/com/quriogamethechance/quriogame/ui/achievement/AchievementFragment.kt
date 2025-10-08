@@ -1,16 +1,12 @@
 package com.quriogamethechance.quriogame.ui.achievement
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.AchievementBinding
-import com.quriogamethechance.quriogame.databinding.CharcterBinding
 import com.quriogamethechance.quriogame.databinding.FragmentAchievementBinding
-import com.quriogamethechance.quriogame.databinding.FragmentCharacterBinding
 import com.quriogamethechance.quriogame.ui.BaseDialogFragment
-import com.quriogamethechance.quriogame.ui.character.CharacterFragmentDirections
 
 
 class AchievementFragment : BaseDialogFragment<FragmentAchievementBinding>() {
