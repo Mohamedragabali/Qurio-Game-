@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_homeFragment_to_buyLifeFragment"
             app:destination="@id/buyLifeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
     </fragment>
 
     <dialog
@@ -151,6 +154,29 @@
         android:label="buyLifeFragment"
         tools:layout="@layout/fragment_buy_life">
     </dialog>
+
+    <dialog
+        android:id="@+id/achievementFragment"
+        android:name="com.quriogamethechance.quriogame.ui.achievement.AchievementFragment"
+        android:label="AchievementFragment"
+        tools:layout="@layout/fragment_achievement">
+        <action
+            android:id="@+id/action_achievementFragment_to_achievementDetialFragment"
+            app:destination="@id/achievementDetialFragment" />
+    </dialog>
+    <dialogh
+        android:id="@+id/achievementDetialFragment"
+        android:name="com.quriogamethechance.quriogame.ui.achievementDetials.AchievementDetailFragment"
+        android:label="fragment_achievement_detial"
+        tools:layout="@layout/fragment_achievement_detial" >
+        <argument
+            android:name="achievement_name"
+            app:argType="string" />
+        <argument
+            android:name="is_open_achievement"
+            app:argType="boolean" />
+    </dialogh>
+
 
 
 </navigation>
