@@ -164,7 +164,7 @@
             android:id="@+id/action_achievementFragment_to_achievementDetialFragment"
             app:destination="@id/achievementDetialFragment" />
     </dialog>
-    <dialogh
+    <dialog
         android:id="@+id/achievementDetialFragment"
         android:name="com.quriogamethechance.quriogame.ui.achievementDetials.AchievementDetailFragment"
         android:label="fragment_achievement_detial"
@@ -175,7 +175,7 @@
         <argument
             android:name="is_open_achievement"
             app:argType="boolean" />
-    </dialogh>
+    </dialog>
 
 
 
