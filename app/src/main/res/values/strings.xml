@@ -26,4 +26,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="achievement_name">achievement_name</string>
     <string name="click_on_achievement_to_view_details">*Click on achievement to view details</string>
+    <string name="share_with_friends">Share with friends</string>
+    <string name="achievement_description">You rarely make mistakes! You\'re at a very high level and dominate the game. How to get it: Correctly answer 10 consecutive questions in a single game without making a single mistake.</string>
+    <string name="untouchable">Untouchable</string>
+    <string name="achievement_description_open">You love experimenting anhd discovering! You\'ve tried several categories and aren\'t limited to just one.\n How to get:\n Play in at least 4 different categories.</string>
 </resources>

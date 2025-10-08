@@ -14,7 +14,7 @@ class AchievementFragment : BaseDialogFragment<FragmentAchievementBinding>() {
         get() = FragmentAchievementBinding::inflate
 
     private val characterNames = listOf("Quiz Rookie","Streak Starter","Lucky Guess","Explorer",
-        "Trivia Champ","Collector","Legend","Untouchable","Quick Thinker","Collector","Lucky Guess")
+        "Trivia Champ","Collector","Legend","Untouchable","Quick Thinker","Collector2","Lucky Guess2")
     private val characters = listOf(
         R.drawable.quiz_rookie to R.drawable.quiz_rookie_closed,
         R.drawable.streak_starter to R.drawable.streak_starter_closed,
