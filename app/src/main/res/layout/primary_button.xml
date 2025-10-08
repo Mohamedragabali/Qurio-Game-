@@ -50,18 +50,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/button_text"
+    <LinearLayout
+        android:id="@+id/share_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="47.5dp"
-        android:paddingVertical="11.dp"
-        android:text="@string/fake_name"
-        android:gravity="center"
-        android:textColor="@color/on_primary"
-        style="@style/label.medium"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/share_icon" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/button_text"
+        style="@style/label.medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="11.dp"
+        android:paddingStart="35dp"
+        android:paddingEnd="8dp"
+        android:text="@string/fake_name"
+        android:textColor="@color/on_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/share_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
