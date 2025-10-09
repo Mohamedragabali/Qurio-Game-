@@ -146,6 +146,9 @@
         android:name="com.quriogamethechance.quriogame.ui.difficultyLevel.DifficultyLevelFragment"
         android:label="difficultyLevelFragment"
         tools:layout="@layout/fragment_difficulty_level">
+        <action
+            android:id="@+id/action_difficultyLevelFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </dialog>
 
     <dialog
@@ -176,7 +179,11 @@
             android:name="is_open_achievement"
             app:argType="boolean" />
     </dialog>
-
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.quriogamethechance.quriogame.ui.game_fragment.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" />
 
 
 </navigation>

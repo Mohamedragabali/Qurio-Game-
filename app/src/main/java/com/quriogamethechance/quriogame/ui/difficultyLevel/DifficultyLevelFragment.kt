@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentDifficultyLevelBinding
 import com.quriogamethechance.quriogame.databinding.LevelButtonBinding
@@ -16,9 +18,10 @@ class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBindin
         get() = FragmentDifficultyLevelBinding::inflate
 
     override fun setup() {
-        initDisableConfirmButton()
         initButtonText()
         initButton()
+        initDisableConfirmButton()
+
     }
 
 
@@ -50,6 +53,10 @@ class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBindin
         binding.hardButton.root.setOnClickListener {
             choiceDifficultLevel(binding.hardButton)
 
+        }
+        binding.confirmButton.root.setOnClickListener {
+            val action = DifficultyLevelFragmentDirections.actionDifficultyLevelFragmentToGameFragment()
+            findNavController().navigate(action)
         }
     }
 
