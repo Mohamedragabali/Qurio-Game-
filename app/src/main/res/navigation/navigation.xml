@@ -101,6 +101,9 @@
         <action
             android:id="@+id/action_homeFragment_to_achievementFragment"
             app:destination="@id/achievementFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_lastGamesFragment"
+            app:destination="@id/lastGamesFragment" />
     </fragment>
 
     <dialog
@@ -184,6 +187,11 @@
         android:name="com.quriogamethechance.quriogame.ui.game_fragment.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" />
+    <fragment
+        android:id="@+id/lastGamesFragment"
+        android:name="com.quriogamethechance.quriogame.ui.lastGames.LastGamesFragment"
+        android:label="fragment_last_games"
+        tools:layout="@layout/fragment_last_games" />
 
 
 </navigation>
