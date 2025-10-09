@@ -6,7 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.AchievementBinding
 import com.quriogamethechance.quriogame.databinding.FragmentAchievementBinding
-import com.quriogamethechance.quriogame.ui.BaseDialogFragment
+import com.quriogamethechance.quriogame.ui.base.BaseDialogFragment
 
 
 class AchievementFragment : BaseDialogFragment<FragmentAchievementBinding>() {

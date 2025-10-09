@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentBuyCharacterBinding
-import com.quriogamethechance.quriogame.ui.BaseDialogFragment
+import com.quriogamethechance.quriogame.ui.base.BaseDialogFragment
 import com.quriogamethechance.quriogame.ui.characterDetails.CharacterDetailsFragmentArgs
 
 class BuyCharacterFragment : BaseDialogFragment<FragmentBuyCharacterBinding>() {

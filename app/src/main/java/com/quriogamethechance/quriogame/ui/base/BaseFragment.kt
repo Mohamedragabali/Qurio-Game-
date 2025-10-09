@@ -1,25 +1,20 @@
-package com.quriogamethechance.quriogame.ui
+package com.quriogamethechance.quriogame.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.quriogamethechance.quriogame.R
 
 
-abstract class BaseDialogFragment<VB: ViewBinding>() : DialogFragment() {
-
-    override fun getTheme(): Int = R.style.CenteredDialogTheme
+abstract class BaseFragment<VB: ViewBinding>() : Fragment() {
     abstract val bindingInflater :(LayoutInflater, ViewGroup?, Boolean) -> VB
     private var _binding : ViewBinding? = null
-    protected val binding : VB
+    val binding : VB
         get() = _binding as VB
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = bindingInflater(inflater,container,false)
@@ -32,5 +27,4 @@ abstract class BaseDialogFragment<VB: ViewBinding>() : DialogFragment() {
     }
 
     abstract fun setup()
-
 }

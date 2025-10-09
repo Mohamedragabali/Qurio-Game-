@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.CharcterBinding
 import com.quriogamethechance.quriogame.databinding.FragmentCharacterBinding
-import com.quriogamethechance.quriogame.ui.BaseDialogFragment
+import com.quriogamethechance.quriogame.ui.base.BaseDialogFragment
 
 
 class CharacterFragment : BaseDialogFragment<FragmentCharacterBinding>() {

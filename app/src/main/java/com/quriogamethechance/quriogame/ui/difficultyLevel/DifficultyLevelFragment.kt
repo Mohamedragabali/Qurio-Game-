@@ -6,12 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentDifficultyLevelBinding
 import com.quriogamethechance.quriogame.databinding.LevelButtonBinding
-import com.quriogamethechance.quriogame.ui.BaseDialogFragment
+import com.quriogamethechance.quriogame.ui.base.BaseDialogFragment
 
 class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentDifficultyLevelBinding

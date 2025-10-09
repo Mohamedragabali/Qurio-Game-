@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentSettingsBinding
-import com.quriogamethechance.quriogame.ui.BaseDialogFragment
+import com.quriogamethechance.quriogame.ui.base.BaseDialogFragment
 
 class SettingsFragment : BaseDialogFragment<FragmentSettingsBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSettingsBinding

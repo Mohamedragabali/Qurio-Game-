@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentAchievementDetialBinding
-import com.quriogamethechance.quriogame.ui.BaseDialogFragment
-import com.quriogamethechance.quriogame.ui.characterDetails.CharacterDetailsFragmentArgs
+import com.quriogamethechance.quriogame.ui.base.BaseDialogFragment
 
 class AchievementDetailFragment : BaseDialogFragment<FragmentAchievementDetialBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentAchievementDetialBinding

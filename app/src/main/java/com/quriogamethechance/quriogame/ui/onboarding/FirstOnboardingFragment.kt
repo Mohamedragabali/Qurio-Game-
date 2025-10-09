@@ -1,8 +1,5 @@
 package com.quriogamethechance.quriogame.ui.onboarding
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
@@ -12,12 +9,11 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentFirstOnboardingBinding
-import com.quriogamethechance.quriogame.ui.BaseFragment
+import com.quriogamethechance.quriogame.ui.base.BaseFragment
 
 class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFirstOnboardingBinding
@@ -113,7 +109,7 @@ class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>() {
     ) {
         val fadeInOut = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f, 0f).apply {
             duration = animatedArrowDuration
-            startDelay = (startDelayValue).toLong()
+            startDelay = startDelayValue
             repeatCount = ValueAnimator.INFINITE
             repeatMode = ValueAnimator.RESTART
         }

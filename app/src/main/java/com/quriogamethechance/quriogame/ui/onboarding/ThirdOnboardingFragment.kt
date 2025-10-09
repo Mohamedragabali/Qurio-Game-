@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentThirdOnboardingBinding
-import com.quriogamethechance.quriogame.ui.BaseFragment
+import com.quriogamethechance.quriogame.ui.base.BaseFragment
 
 class ThirdOnboardingFragment : BaseFragment<FragmentThirdOnboardingBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentThirdOnboardingBinding
