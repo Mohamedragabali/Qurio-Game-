@@ -28,6 +28,7 @@
     <color name="red">#E12F32</color>
     <color name="start_gradient_line_color">#8049BAF2</color>
     <color name="end_gradient_line_color">#0A49BAF2</color>
+    <color name="color_of_gradient_line">#1F49BAF2</color>
 
 
 </resources>
