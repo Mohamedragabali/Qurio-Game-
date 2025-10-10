@@ -12,6 +12,8 @@ import com.quriogamethechance.quriogame.databinding.ItemHeaderHomeBinding
 import com.quriogamethechance.quriogame.databinding.ItemLastGameBinding
 import com.quriogamethechance.quriogame.databinding.ItemTrackingLoginBinding
 import com.quriogamethechance.quriogame.databinding.ItemUserInformationBinding
+import com.quriogamethechance.quriogame.ui.home.gamesItem.GameItem
+import com.quriogamethechance.quriogame.ui.home.gamesItem.GamesAdapter
 
 class HomeAdapter(private var list: List<HomeData>, private val interaction: HomeInteraction) :
     RecyclerView.Adapter<HomeAdapter.BaseViewHolder>() {
@@ -97,6 +99,41 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
             }
 
             is GamesViewHolder -> {
+                val data : List<GameItem> = (data as HomeData.Games).games
+                holder.binding.apply {
+                    gamesRecyclerView.adapter = GamesAdapter(data, interaction)
+                }
+                val overlapOffset = 80
+
+                holder.binding.gamesRecyclerView.apply {
+                    clipToPadding = false
+                    clipChildren = false
+                    overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+                    setPadding(overlapOffset, 0, overlapOffset, 0)
+                }
+
+                holder.binding.gamesRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        val center = recyclerView.width / 2
+
+                        for (i in 0 until recyclerView.childCount) {
+                            val child = recyclerView.getChildAt(i) ?: continue
+                            val childCenter = (child.left + child.right) / 2
+                            val distanceFromCenter = (center - childCenter).toFloat()
+                            val ratio = kotlin.math.abs(distanceFromCenter) / center
+
+                            val scaleY = 1f + ratio * 0.1f
+                            child.scaleY = scaleY
+                            child.scaleX = 0.9f
+                            child.translationX = distanceFromCenter * 0.2f
+
+                            child.translationY = ratio * 60f
+
+                            child.translationZ = 1 - ratio
+
+                        }
+                    }
+                })
 
             }
 

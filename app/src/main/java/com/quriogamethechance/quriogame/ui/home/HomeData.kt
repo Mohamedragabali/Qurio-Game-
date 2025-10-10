@@ -1,5 +1,7 @@
 package com.quriogamethechance.quriogame.ui.home
 
+import com.quriogamethechance.quriogame.ui.home.gamesItem.GameItem
+
 
 sealed class HomeData(val type: HomeItemType) {
     data class UserInformation(val characterName: String, val characterImage: Int) :
@@ -10,7 +12,7 @@ sealed class HomeData(val type: HomeItemType) {
 
     data class TrackingLogin(val loginTracking: List<Boolean>) : HomeData(HomeItemType.DASHBOARD)
 
-    data class Games(val gameType: String, val gameImage: Int) : HomeData(HomeItemType.GAMES)
+    data class Games(val games:List<GameItem>) : HomeData(HomeItemType.GAMES)
 
     data class Header (val headerTitle: String,val headerType: HomeHeaderType) : HomeData(HomeItemType.HEADER)
 

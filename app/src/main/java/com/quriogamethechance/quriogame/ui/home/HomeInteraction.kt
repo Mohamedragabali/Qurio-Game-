@@ -5,4 +5,6 @@ interface HomeInteraction {
     fun onClickSitting()
 
     fun onClickHeader(homeHeaderType: HomeHeaderType)
+    fun onClickPlayNow(type:String)
+
 }
