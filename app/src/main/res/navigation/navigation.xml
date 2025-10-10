@@ -107,6 +107,9 @@
         <action
             android:id="@+id/action_homeFragment_to_gamesFragment"
             app:destination="@id/gamesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <dialog
@@ -213,6 +216,11 @@
             android:id="@+id/action_gamesFragment_to_difficultyLevelFragment2"
             app:destination="@id/difficultyLevelFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/settingsFragment"
+        android:name="com.quriogamethechance.quriogame.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 
 
 </navigation>
