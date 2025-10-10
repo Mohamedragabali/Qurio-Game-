@@ -64,14 +64,16 @@ class GamesFragment : BaseFragment<FragmentGamesBinding>(), GameInteraction {
     }
 
     private fun setHeader() {
-        binding.header.headerText.text = getString(R.string.last_games)
+        binding.header.headerText.text = getString(R.string.games)
         binding.header.backButton.setOnClickListener {
             it.findNavController().popBackStack()
         }
     }
 
-    override fun onClickPlayNow(type: String) {
-        val action = GamesFragmentDirections.actionGamesFragmentToDifficultyLevelFragment2()
+    override fun onClickPlayNow( type: String) {
+        val action = GamesFragmentDirections.actionGamesFragmentToDifficultyLevelFragment2(
+            gameType = type
+        )
         binding.root.findNavController().navigate(action)
     }
 }

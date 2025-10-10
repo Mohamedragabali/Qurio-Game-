@@ -40,4 +40,6 @@
     <string name="_56sec">56sec</string>
     <string name="_00_00_2025">00-00-2025</string>
     <string name="last_games">Last Games</string>
+    <string name="games">Games</string>
+    <string name="header_title">header title</string>
 </resources>

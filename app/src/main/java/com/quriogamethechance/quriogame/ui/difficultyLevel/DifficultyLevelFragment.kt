@@ -16,11 +16,19 @@ class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBindin
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentDifficultyLevelBinding
         get() = FragmentDifficultyLevelBinding::inflate
 
+    lateinit var  gameType : String
+    lateinit var gameDifficulty : String
+
     override fun setup() {
         initButtonText()
         initButton()
         initDisableConfirmButton()
+        receiveData()
 
+    }
+
+    private fun receiveData() {
+        gameType = DifficultyLevelFragmentArgs.fromBundle(requireArguments()).gameType
     }
 
 
@@ -54,7 +62,10 @@ class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBindin
 
         }
         binding.confirmButton.root.setOnClickListener {
-            val action = DifficultyLevelFragmentDirections.actionDifficultyLevelFragmentToGameFragment()
+            val action = DifficultyLevelFragmentDirections.actionDifficultyLevelFragmentToGameFragment(
+                gameType = gameType,
+                gameDifficultyLevel = gameDifficulty
+            )
             findNavController().navigate(action)
         }
     }
@@ -66,6 +77,7 @@ class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBindin
         val buttons = listOf(binding.easyButton,binding.mediumButton,binding.hardButton)
         buttons.forEach {button->
             if(button == levelButton){
+                gameDifficulty = button.levelText.text.toString()
                 button.shadowImage.visibility = View.VISIBLE
                 button.cardContainer.backgroundTintList = primaryColor
                 button.levelText.setTextColor(ContextCompat.getColor(requireContext(),R.color.on_primary))

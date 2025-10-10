@@ -155,6 +155,9 @@
         <action
             android:id="@+id/action_difficultyLevelFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <argument
+            android:name="game_type"
+            app:argType="string" />
     </dialog>
 
     <dialog
@@ -189,7 +192,13 @@
         android:id="@+id/gameFragment"
         android:name="com.quriogamethechance.quriogame.ui.game_fragment.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <argument
+            android:name="game_type"
+            app:argType="string" />
+        <argument android:name="game_difficulty_level"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/lastGamesFragment"
         android:name="com.quriogamethechance.quriogame.ui.lastGames.LastGamesFragment"
