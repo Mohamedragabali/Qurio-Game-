@@ -2,7 +2,7 @@ package com.quriogamethechance.quriogame.ui.lastGames
 
 import androidx.recyclerview.widget.DiffUtil
 
-class LastGamesDiffUtil(val oldList:List<Game>,val newList:List<Game>): DiffUtil.Callback() {
+class LastGamesDiffUtil(val oldList:List<LastGame>, val newList:List<LastGame>): DiffUtil.Callback() {
     override fun getOldListSize(): Int =oldList.size
     override fun getNewListSize(): Int =newList.size
 

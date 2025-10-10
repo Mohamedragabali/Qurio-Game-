@@ -1,6 +1,6 @@
 package com.quriogamethechance.quriogame.ui.lastGames
 
-data class Game(
+data class LastGame(
     val data:String,
     val type: String ,
     val coinsCount : Long ,

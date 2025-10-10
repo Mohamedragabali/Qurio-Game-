@@ -22,35 +22,35 @@ class LastGamesFragment : BaseFragment<FragmentLastGamesBinding>() {
         binding.lastGames.adapter = adapter
         adapter.setData(
             listOf(
-                Game(
+                LastGame(
                     data = "1-5-2020",
                     type = "Video Games",
                     coinsCount = 12,
                     starCount = 0,
                     gameTime = "56sec"
                 ),
-                Game(
+                LastGame(
                     data = "1-5-2020",
                     type = "Video Games",
                     coinsCount = 12,
                     starCount = 0,
                     gameTime = "56sec"
                 ),
-                Game(
+                LastGame(
                     data = "1-5-2020",
                     type = "Video Games",
                     coinsCount = 12,
                     starCount = 0,
                     gameTime = "56sec"
                 ),
-                Game(
+                LastGame(
                     data = "1-5-2020",
                     type = "Video Games",
                     coinsCount = 12,
                     starCount = 0,
                     gameTime = "56sec"
                 ),
-                Game(
+                LastGame(
                     data = "1-5-2020",
                     type = "Video Games",
                     coinsCount = 12,
