@@ -31,7 +31,7 @@ class GamesAdapter(private var games:List<Game> , private val interaction : Game
         holder.binding.apply {
             typeText.text = game.type
             image.setImageResource(game.image)
-            playNowButton.setOnClickListener {
+            buttonBackground.setOnClickListener {
                 interaction.onClickPlayNow(game.type)
             }
         }
