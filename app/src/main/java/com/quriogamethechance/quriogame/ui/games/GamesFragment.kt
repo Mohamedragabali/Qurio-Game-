@@ -1,11 +1,14 @@
 package com.quriogamethechance.quriogame.ui.games
 
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentGamesBinding
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
+import kotlin.math.max
 
 
 class GamesFragment : BaseFragment<FragmentGamesBinding>(), GameInteraction {
@@ -15,8 +18,19 @@ class GamesFragment : BaseFragment<FragmentGamesBinding>(), GameInteraction {
     val adapter: GamesAdapter = GamesAdapter(emptyList() , this)
     override fun setup() {
         setHeader()
+        setRecycler()
         setAdapter()
 
+    }
+
+    private fun setRecycler() {
+        val displayMetrics = requireContext().resources.displayMetrics
+        val screenWidthPx = displayMetrics.widthPixels
+        val desiredItemWidthPx = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, 170f, displayMetrics
+        )
+        val spanCount = max(1, (screenWidthPx / desiredItemWidthPx).toInt())
+        binding.gamesAdapter.layoutManager = GridLayoutManager(requireContext(),spanCount)
     }
 
     private fun setAdapter() {
