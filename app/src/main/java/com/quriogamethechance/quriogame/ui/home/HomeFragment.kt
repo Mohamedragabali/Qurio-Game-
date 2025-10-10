@@ -20,6 +20,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction {
                     characterName = "Hallo " ,
                     characterImage = R.drawable.rika
                 ),
+                HomeData.Header(
+                    headerTitle = "Games",
+                    headerType = HomeHeaderType.GAMES
+                ),
+
+
+
+                HomeData.Header(
+                    headerTitle = "Last Games",
+                    headerType = HomeHeaderType.LAST_GAMES
+                ),
                 HomeData.LastGames(
                     data = "0-9-2020",
                     lastGameType = "Gamming",
@@ -67,6 +78,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction {
     override fun onClickSitting() {
         val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
         binding.root.findNavController().navigate(action)
+    }
+
+    override fun onClickHeader(homeHeaderType: HomeHeaderType) {
+        val action = HomeFragmentDirections
+        when(homeHeaderType){
+            HomeHeaderType.GAMES -> binding.root.findNavController().navigate(action.actionHomeFragmentToGamesFragment())
+            HomeHeaderType.LAST_GAMES -> binding.root.findNavController().navigate(action.actionHomeFragmentToLastGamesFragment())
+        }
     }
 
 }

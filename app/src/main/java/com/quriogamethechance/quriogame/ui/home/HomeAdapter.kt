@@ -101,11 +101,24 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
             }
 
             is LastGamesViewHolder -> {
-
+                data as HomeData.LastGames
+                holder.binding.apply {
+                    dataText.text=data.data
+                    gameTypeText.text=data.lastGameType
+                    coinsCountText.text = data.coinsCount.toString()
+                    starCountText.text = data.starCount.toString()
+                    gameTimeText.text = data.gameTime
+                }
             }
 
             is HeaderViewHolder -> {
-
+                data as HomeData.Header
+                holder.binding.apply {
+                    headerText.text = data.headerTitle
+                    nextButton.setOnClickListener {
+                        interaction.onClickHeader(data.headerType)
+                    }
+                }
             }
         }
     }

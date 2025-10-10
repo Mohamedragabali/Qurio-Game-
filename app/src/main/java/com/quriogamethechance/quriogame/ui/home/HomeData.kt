@@ -12,7 +12,7 @@ sealed class HomeData(val type: HomeItemType) {
 
     data class Games(val gameType: String, val gameImage: Int) : HomeData(HomeItemType.GAMES)
 
-    data class Header (val headerTitle: String) : HomeData(HomeItemType.HEADER)
+    data class Header (val headerTitle: String,val headerType: HomeHeaderType) : HomeData(HomeItemType.HEADER)
 
     data class LastGames(
         val data: String,
