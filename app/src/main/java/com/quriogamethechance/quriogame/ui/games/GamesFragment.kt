@@ -71,6 +71,7 @@ class GamesFragment : BaseFragment<FragmentGamesBinding>(), GameInteraction {
     }
 
     override fun onClickPlayNow(type: String) {
-
+        val action = GamesFragmentDirections.actionGamesFragmentToDifficultyLevelFragment2()
+        binding.root.findNavController().navigate(action)
     }
 }
