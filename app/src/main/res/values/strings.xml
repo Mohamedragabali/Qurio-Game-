@@ -50,4 +50,8 @@
     <string name="s">S</string>
     <string name="_0_day_streak_start_make_a_series">0 day streak, start make a series</string>
     <string name="every_day_count">Every day count!</string>
+    <string name="fake_question">Which of the following best explains how a country’s physical geography can influence its level of economic development?</string>
+    <string name="q_1_12">Q 1/12</string>
+    <string name="paris">Paris</string>
+    <string name="skip">Skip</string>
 </resources>
