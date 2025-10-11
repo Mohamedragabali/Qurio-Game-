@@ -114,12 +114,9 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
                     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                         val center = recyclerView.width / 2
 
-                        var leftChild: View? = null
-                        var currentChild: View? = null
                         var rightChild: View? = null
                         for (i in 0 until recyclerView.childCount) {
                             val child = recyclerView.getChildAt(i) ?: continue
-                            currentChild = child
                             if (i + 1 < recyclerView.childCount) {
                                 rightChild = recyclerView.getChildAt(i + 1)
                             }
@@ -137,7 +134,6 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
                             child.translationX = distanceFromCenter * 0.2f
                             child.translationY = ratio * 60f
                             child.translationZ = 1 - ratio
-                            leftChild = currentChild
                         }
                     }
                 })
