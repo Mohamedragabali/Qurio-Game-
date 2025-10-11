@@ -99,6 +99,7 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
                     showAwardButton.root.setOnClickListener {
                         interaction.onClickShowAward()
                     }
+                    crown.visibility = if (data.pointsCount >= 10000) View.VISIBLE else View.INVISIBLE
                     coinsCount.text = data.pointsCount.toString()
                     awardCount.text = data.awardsCount.toString()
                     livesCount.text = data.livesCount.toString()
