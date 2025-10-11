@@ -122,9 +122,9 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
                             val distanceFromCenter = (center - childCenter).toFloat()
                             val ratio = kotlin.math.abs(distanceFromCenter) / center
 
-                            val scaleY = 1f + ratio * 0.1f
-                            child.scaleY = scaleY
-                            child.scaleX = 0.9f
+//                            val scaleY = 1f + ratio * 0.1f
+//                            child.scaleY = scaleY
+//                            child.scaleX = 0.9f
                             child.translationX = distanceFromCenter * 0.2f
 
                             child.translationY = ratio * 60f

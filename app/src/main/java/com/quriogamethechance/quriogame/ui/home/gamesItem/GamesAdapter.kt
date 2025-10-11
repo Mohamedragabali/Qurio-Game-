@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.ItemGameBinding
+import com.quriogamethechance.quriogame.databinding.ItemGameHomeBinding
 import com.quriogamethechance.quriogame.ui.home.HomeData
 import com.quriogamethechance.quriogame.ui.home.HomeInteraction
 
@@ -15,7 +16,7 @@ class GamesAdapter(private var games:List<GameItem>, private val interaction : H
         parent: ViewGroup,
         viewType: Int
     ): GameViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_game,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_game_home,parent,false)
         return GameViewHolder(view)
 
     }
@@ -28,7 +29,7 @@ class GamesAdapter(private var games:List<GameItem>, private val interaction : H
         holder.binding.apply {
             typeText.text = game.type
             image.setImageResource(game.image)
-            buttonBackground.setOnClickListener {
+            buttonPlayNow.setOnClickListener {
                 interaction.onClickPlayNow(game.type)
             }
         }
@@ -38,6 +39,6 @@ class GamesAdapter(private var games:List<GameItem>, private val interaction : H
 
 
     class GameViewHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem){
-        val binding = ItemGameBinding.bind(viewItem)
+        val binding = ItemGameHomeBinding.bind(viewItem)
     }
 }
