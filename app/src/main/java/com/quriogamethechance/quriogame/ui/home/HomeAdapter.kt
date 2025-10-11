@@ -88,6 +88,9 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
                         interaction.onClickCharacter()
 
                     }
+                    sittingIcon.setOnClickListener {
+                        interaction.onClickSitting()
+                    }
                 }
             }
 

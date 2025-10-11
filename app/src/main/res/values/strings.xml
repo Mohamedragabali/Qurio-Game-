@@ -47,4 +47,7 @@
     <string name="lives">lives</string>
     <string name="points">Points</string>
     <string name="awards">Awards</string>
+    <string name="s">S</string>
+    <string name="_0_day_streak_start_make_a_series">0 day streak, start make a series</string>
+    <string name="every_day_count">Every day count!</string>
 </resources>
