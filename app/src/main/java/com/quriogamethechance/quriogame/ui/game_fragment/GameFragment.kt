@@ -12,10 +12,10 @@ class GameFragment : BaseFragment<FragmentGameBinding>() {
         get() =  FragmentGameBinding::inflate
 
     override fun setup() {
-        val args = GameFragmentArgs.fromBundle(requireArguments())
-        val difficulty = args.gameDifficultyLevel
-        val gameType = args.gameType
-        Toast.makeText(requireContext() , "$difficulty $gameType" , Toast.LENGTH_SHORT).show()
+//        val args = GameFragmentArgs.fromBundle(requireArguments())
+//        val difficulty = args.gameDifficultyLevel
+//        val gameType = args.gameType
+//        Toast.makeText(requireContext() , "$difficulty $gameType" , Toast.LENGTH_SHORT).show()
     }
 
 }
