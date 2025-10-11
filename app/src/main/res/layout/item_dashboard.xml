@@ -32,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_0"
+        android:paddingEnd="4dp"
         android:textColor="@color/shade_primary"
         style="@style/label.medium"
         android:layout_marginBottom="22dp"
@@ -71,6 +72,14 @@
         app:layout_constraintTop_toTopOf="@id/add_live_button"
         app:layout_constraintBottom_toBottomOf="@id/add_live_button"/>
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@drawable/bottom_card_line"
+        app:layout_constraintTop_toBottomOf="@id/lives_icon"
+        app:layout_constraintStart_toStartOf="@id/lives_icon"
+        app:layout_constraintEnd_toEndOf="@id/lives_count"
+        android:layout_marginTop="4.5dp"/>
     <!-- mid -->
 
     <androidx.constraintlayout.widget.Guideline
@@ -89,6 +98,7 @@
         android:src="@drawable/dashboard_mid_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/second_guide_line"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/first_guide_line" />
 
     <ImageView
@@ -118,6 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_0"
+        android:paddingEnd="3dp"
         android:textColor="@color/shade_primary"
         style="@style/label.medium"
         android:layout_marginBottom="16dp"
@@ -134,7 +145,14 @@
         app:layout_constraintBottom_toBottomOf="@id/coins_count"
         app:layout_constraintStart_toStartOf="@id/mid_card"
         app:layout_constraintEnd_toStartOf="@id/coins_count"/>
-
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@drawable/bottom_card_line"
+        app:layout_constraintBottom_toBottomOf="@id/mid_card"
+        app:layout_constraintStart_toStartOf="@id/coins_icon"
+        app:layout_constraintEnd_toEndOf="@id/coins_count"
+        android:layout_marginTop="4.5dp"/>
     <!-- end -->
 
     <androidx.constraintlayout.widget.Guideline
@@ -209,5 +227,21 @@
         app:layout_constraintBottom_toBottomOf="@id/show_award_button"
         app:layout_constraintStart_toStartOf="@id/show_award_button"
         app:layout_constraintEnd_toEndOf="@id/show_award_button"/>
+
+    <View
+        android:id="@+id/mid_show_award_button"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/show_award_button"
+        app:layout_constraintEnd_toEndOf="@id/show_award_button"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@drawable/bottom_card_line"
+        app:layout_constraintTop_toBottomOf="@id/award_icon"
+        app:layout_constraintStart_toStartOf="@id/award_icon"
+        app:layout_constraintEnd_toEndOf="@id/mid_show_award_button"
+        android:layout_marginTop="8dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
