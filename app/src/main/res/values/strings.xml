@@ -44,4 +44,7 @@
     <string name="header_title">header title</string>
     <string name="welcome_qurio_explorer">Welcome Qurio explorer</string>
     <string name="character_name">character name</string>
+    <string name="lives">lives</string>
+    <string name="points">Points</string>
+    <string name="awards">Awards</string>
 </resources>
