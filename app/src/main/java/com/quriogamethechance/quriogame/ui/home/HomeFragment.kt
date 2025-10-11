@@ -8,29 +8,63 @@ import com.quriogamethechance.quriogame.databinding.FragmentHomeBinding
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
 import com.quriogamethechance.quriogame.ui.home.gamesItem.GameItem
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction  {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
-        get() =  FragmentHomeBinding::inflate
-    val adapter = HomeAdapter(emptyList() , this )
+        get() = FragmentHomeBinding::inflate
+    val adapter = HomeAdapter(emptyList(), this)
     override fun setup() {
         binding.homeRecyclerView.adapter = adapter
 
         adapter.setData(
             listOf(
                 HomeData.UserInformation(
-                    characterName = "Hallo " ,
+                    characterName = "Hallo ",
                     characterImage = R.drawable.rika
                 ),
+
                 HomeData.Dashboard(
                     livesCount = 5,
                     pointsCount = 5000,
                     awardsCount = 4
                 ),
+                HomeData.TrackingLogin(
+                    listOf(
+                        Day(
+                            "S",
+                            false
+                        ),
+                        Day(
+                            "M",
+                            true
+                        ),
+                        Day(
+                            "T",
+                            false
+                        ),
+                        Day(
+                            "W",
+                            false
+                        ),
+                        Day(
+                            "Th",
+                            false
+                        ),
+                        Day(
+                            "F",
+                            false
+                        ),
+                        Day(
+                            "S",
+                            false
+                        )
+                    )
+                ),
                 HomeData.Header(
                     headerTitle = "Games",
                     headerType = HomeHeaderType.GAMES
                 ),
-                HomeData.Games(listOf(
+                HomeData.Games(
+                    listOf(
                         GameItem(
                             type = "Geography",
                             image = R.drawable.geography,
@@ -67,7 +101,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction  {
                             type = "Arts & Literature",
                             image = R.drawable.arts_literature,
                         ),
-                    ) ) ,
+                    )
+                ),
                 HomeData.Header(
                     headerTitle = "Last Games",
                     headerType = HomeHeaderType.LAST_GAMES
@@ -75,35 +110,35 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction  {
                 HomeData.LastGames(
                     data = "0-9-2020",
                     lastGameType = "Gamming",
-                    coinsCount = 400 ,
+                    coinsCount = 400,
                     starCount = 7,
                     gameTime = "44Sec"
                 ),
                 HomeData.LastGames(
                     data = "0-9-2020",
                     lastGameType = "Gamming",
-                    coinsCount = 400 ,
+                    coinsCount = 400,
                     starCount = 7,
                     gameTime = "44Sec"
                 ),
                 HomeData.LastGames(
                     data = "0-9-2020",
                     lastGameType = "Gamming",
-                    coinsCount = 400 ,
+                    coinsCount = 400,
                     starCount = 7,
                     gameTime = "44Sec"
                 ),
                 HomeData.LastGames(
                     data = "0-9-2020",
                     lastGameType = "Gamming",
-                    coinsCount = 400 ,
+                    coinsCount = 400,
                     starCount = 7,
                     gameTime = "44Sec"
                 ),
                 HomeData.LastGames(
                     data = "0-9-2020",
                     lastGameType = "Gamming",
-                    coinsCount = 400 ,
+                    coinsCount = 400,
                     starCount = 7,
                     gameTime = "44Sec"
                 ),
@@ -123,9 +158,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction  {
 
     override fun onClickHeader(homeHeaderType: HomeHeaderType) {
         val action = HomeFragmentDirections
-        when(homeHeaderType){
-            HomeHeaderType.GAMES -> binding.root.findNavController().navigate(action.actionHomeFragmentToGamesFragment())
-            HomeHeaderType.LAST_GAMES -> binding.root.findNavController().navigate(action.actionHomeFragmentToLastGamesFragment())
+        when (homeHeaderType) {
+            HomeHeaderType.GAMES -> binding.root.findNavController()
+                .navigate(action.actionHomeFragmentToGamesFragment())
+
+            HomeHeaderType.LAST_GAMES -> binding.root.findNavController()
+                .navigate(action.actionHomeFragmentToLastGamesFragment())
         }
     }
 

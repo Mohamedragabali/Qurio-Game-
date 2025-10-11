@@ -10,7 +10,7 @@ sealed class HomeData(val type: HomeItemType) {
     data class Dashboard(val livesCount: Int, val pointsCount: Long, val awardsCount: Int) :
         HomeData(HomeItemType.DASHBOARD)
 
-    data class TrackingLogin(val loginTracking: List<Boolean>) : HomeData(HomeItemType.DASHBOARD)
+    data class TrackingLogin(val days: List<Day>) : HomeData(HomeItemType.TRACKING_LOGIN)
 
     data class Games(val games:List<GameItem>) : HomeData(HomeItemType.GAMES)
 

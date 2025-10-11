@@ -12,6 +12,7 @@ import com.quriogamethechance.quriogame.databinding.ItemHeaderHomeBinding
 import com.quriogamethechance.quriogame.databinding.ItemLastGameBinding
 import com.quriogamethechance.quriogame.databinding.ItemTrackingLoginBinding
 import com.quriogamethechance.quriogame.databinding.ItemUserInformationBinding
+import com.quriogamethechance.quriogame.databinding.TrackingDayItemBinding
 import com.quriogamethechance.quriogame.ui.home.gamesItem.GameItem
 import com.quriogamethechance.quriogame.ui.home.gamesItem.GamesAdapter
 
@@ -99,7 +100,8 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
                     showAwardButton.root.setOnClickListener {
                         interaction.onClickShowAward()
                     }
-                    crown.visibility = if (data.pointsCount >= 10000) View.VISIBLE else View.INVISIBLE
+                    crown.visibility =
+                        if (data.pointsCount >= 10000) View.VISIBLE else View.INVISIBLE
                     coinsCount.text = data.pointsCount.toString()
                     awardCount.text = data.awardsCount.toString()
                     livesCount.text = data.livesCount.toString()
@@ -107,7 +109,19 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
             }
 
             is TrackingLoginViewHolder -> {
-
+                data as HomeData.TrackingLogin
+                holder.binding.apply {
+                    val daysTracking =
+                        listOf(sunDay, monDay, tueDay, wedDay, thuDay, friDay, satDay)
+                    val doneDayCount = data.days.filter { it.isDone }.size
+                    trackingLoginText.text = if (doneDayCount == 0) "0 day streak, start make a series"
+                        else "$doneDayCount day streak, make a big series"
+                    supportTrackingText.text = if (doneDayCount == 0) "Every day count!"
+                        else "KEEP IT UP!"
+                    data.days.forEachIndexed { dayIndex, day ->
+                        manageCircleDay(daysTracking[dayIndex], day)
+                    }
+                }
             }
 
             is GamesViewHolder -> {
@@ -139,7 +153,7 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
 
                             child.rotation = ratio * -3f
                             if (rightChild != null) {
-                                rightChild.rotation = ratio *  3f
+                                rightChild.rotation = ratio * 3f
                             }
 
 
@@ -173,6 +187,16 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
                 }
             }
         }
+    }
+
+    private fun manageCircleDay(dayItem: TrackingDayItemBinding, day: Day) {
+        dayItem.fireDay.visibility = if (day.isDone) View.VISIBLE else View.INVISIBLE
+        dayItem.elevation.visibility = if (day.isDone) View.VISIBLE else View.INVISIBLE
+        dayItem.dayChar.text = day.prefName
+        dayItem.dayCircle.setImageResource(
+            if (day.isDone) R.drawable.circle_day_selected
+            else R.drawable.circle_day
+        )
     }
 
     override fun getItemCount(): Int = list.size
