@@ -91,7 +91,18 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
             }
 
             is DashboardViewHolder -> {
-
+                data as HomeData.Dashboard
+                holder.binding.apply {
+                    addLiveButton.root.setOnClickListener {
+                        interaction.onClickAddLive(data.pointsCount)
+                    }
+                    showAwardButton.root.setOnClickListener {
+                        interaction.onClickShowAward()
+                    }
+                    coinsCount.text = data.pointsCount.toString()
+                    awardCount.text = data.awardsCount.toString()
+                    livesCount.text = data.livesCount.toString()
+                }
             }
 
             is TrackingLoginViewHolder -> {

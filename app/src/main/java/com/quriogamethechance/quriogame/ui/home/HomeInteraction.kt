@@ -6,5 +6,6 @@ interface HomeInteraction {
 
     fun onClickHeader(homeHeaderType: HomeHeaderType)
     fun onClickPlayNow(type:String)
-
+    fun onClickAddLive(pointsCount:Long)
+    fun onClickShowAward()
 }

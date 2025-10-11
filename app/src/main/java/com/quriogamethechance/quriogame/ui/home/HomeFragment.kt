@@ -6,7 +6,6 @@ import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentHomeBinding
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
-import com.quriogamethechance.quriogame.ui.games.Game
 import com.quriogamethechance.quriogame.ui.home.gamesItem.GameItem
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction  {
@@ -21,6 +20,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction  {
                 HomeData.UserInformation(
                     characterName = "Hallo " ,
                     characterImage = R.drawable.rika
+                ),
+                HomeData.Dashboard(
+                    livesCount = 5,
+                    pointsCount = 5000,
+                    awardsCount = 4
                 ),
                 HomeData.Header(
                     headerTitle = "Games",
@@ -127,6 +131,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction  {
 
     override fun onClickPlayNow(type: String) {
         val action = HomeFragmentDirections.actionHomeFragmentToDifficultyLevelFragment(type)
+        binding.root.findNavController().navigate(action)
+    }
+
+    override fun onClickAddLive(pointsCount: Long) {
+        val action = HomeFragmentDirections.actionHomeFragmentToBuyLifeFragment()
+        binding.root.findNavController().navigate(action)
+    }
+
+    override fun onClickShowAward() {
+        val action = HomeFragmentDirections.actionHomeFragmentToAchievementFragment()
         binding.root.findNavController().navigate(action)
     }
 
