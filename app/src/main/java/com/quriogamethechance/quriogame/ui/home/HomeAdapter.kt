@@ -64,7 +64,7 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
     }
 
     fun setData(newList: List<HomeData>) {
-        val diffResult = DiffUtil.calculateDiff(HomeDiffUtil(list,newList))
+        val diffResult = DiffUtil.calculateDiff(HomeDiffUtil(list, newList))
         list = newList
         diffResult.dispatchUpdatesTo(this)
     }
@@ -99,38 +99,45 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
             }
 
             is GamesViewHolder -> {
-                val data : List<GameItem> = (data as HomeData.Games).games
+                val data: List<GameItem> = (data as HomeData.Games).games
                 holder.binding.apply {
                     gamesRecyclerView.adapter = GamesAdapter(data, interaction)
                 }
-                val overlapOffset = 80
+                val overlapOffset = 10
 
                 holder.binding.gamesRecyclerView.apply {
-                    clipToPadding = false
-                    clipChildren = false
-                    overScrollMode = RecyclerView.OVER_SCROLL_NEVER
                     setPadding(overlapOffset, 0, overlapOffset, 0)
                 }
 
-                holder.binding.gamesRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                holder.binding.gamesRecyclerView.addOnScrollListener(object :
+                    RecyclerView.OnScrollListener() {
                     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                         val center = recyclerView.width / 2
 
+                        var leftChild: View? = null
+                        var currentChild: View? = null
+                        var rightChild: View? = null
                         for (i in 0 until recyclerView.childCount) {
                             val child = recyclerView.getChildAt(i) ?: continue
+                            currentChild = child
+                            if (i + 1 < recyclerView.childCount) {
+                                rightChild = recyclerView.getChildAt(i + 1)
+                            }
                             val childCenter = (child.left + child.right) / 2
                             val distanceFromCenter = (center - childCenter).toFloat()
                             val ratio = kotlin.math.abs(distanceFromCenter) / center
 
-//                            val scaleY = 1f + ratio * 0.1f
-//                            child.scaleY = scaleY
-//                            child.scaleX = 0.9f
+
+                            child.rotation = ratio * -3f
+                            if (rightChild != null) {
+                                rightChild.rotation = ratio *  3f
+                            }
+
+
                             child.translationX = distanceFromCenter * 0.2f
-
                             child.translationY = ratio * 60f
-
                             child.translationZ = 1 - ratio
-
+                            leftChild = currentChild
                         }
                     }
                 })
@@ -140,8 +147,8 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
             is LastGamesViewHolder -> {
                 data as HomeData.LastGames
                 holder.binding.apply {
-                    dataText.text=data.data
-                    gameTypeText.text=data.lastGameType
+                    dataText.text = data.data
+                    gameTypeText.text = data.lastGameType
                     coinsCountText.text = data.coinsCount.toString()
                     starCountText.text = data.starCount.toString()
                     gameTimeText.text = data.gameTime
