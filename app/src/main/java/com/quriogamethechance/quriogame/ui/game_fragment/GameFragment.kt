@@ -1,5 +1,6 @@
 package com.quriogamethechance.quriogame.ui.game_fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +10,20 @@ import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentGameBinding
 import com.quriogamethechance.quriogame.presenter.game.GamePresenter
+import com.quriogamethechance.quriogame.ui.QurioApp
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
+import jakarta.inject.Inject
 
 
-class GameFragment (
-): BaseFragment<FragmentGameBinding>() , GameViewInterface{
+class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGameBinding
         get() = FragmentGameBinding::inflate
 
-    private val gamePresenter = GamePresenter()
+//    private val gamePresenter = GamePresenter()
+
+    @Inject
+    lateinit var gamePresenter: GamePresenter
     private var mainButtonType = MainButtonType.CHECK
     private var correctAnswerCount = 0
     private var wrongAnswerCount = 0
@@ -28,6 +33,10 @@ class GameFragment (
         get() = questionNumber + 1
     lateinit var questions: List<Question>
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as QurioApp).appComponent.inject(this)
+    }
     override fun setup() {
         gamePresenter.view = this
         gamePresenter.onGetQuestionGame()
