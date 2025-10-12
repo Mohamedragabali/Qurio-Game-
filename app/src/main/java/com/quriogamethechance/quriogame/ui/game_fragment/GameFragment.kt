@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentGameBinding
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
@@ -51,11 +52,18 @@ class GameFragment : BaseFragment<FragmentGameBinding>() {
         initialSkipButton()
         initialMainButton()
         initialNumberQuestion()
+        initialBackButton()
 
 //        val args = GameFragmentArgs.fromBundle(requireArguments())
 //        val difficulty = args.gameDifficultyLevel
 //        val gameType = args.gameType
 //        Toast.makeText(requireContext() , "$difficulty $gameType" , Toast.LENGTH_SHORT).show()
+    }
+
+    private fun initialBackButton() {
+        binding.header.backButton.setOnClickListener {
+            binding.root.findNavController().popBackStack()
+        }
     }
 
     private fun initialNumberQuestion() {
