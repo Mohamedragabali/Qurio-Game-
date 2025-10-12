@@ -54,4 +54,7 @@
     <string name="q_1_12">Q 1/12</string>
     <string name="paris">Paris</string>
     <string name="skip">Skip</string>
+    <string name="check">Check</string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
 </resources>
