@@ -8,13 +8,17 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentGameBinding
+import com.quriogamethechance.quriogame.presenter.game.GamePresenter
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
 
 
-class GameFragment : BaseFragment<FragmentGameBinding>() {
+class GameFragment (
+): BaseFragment<FragmentGameBinding>() , GameViewInterface{
+
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGameBinding
         get() = FragmentGameBinding::inflate
 
+    private val gamePresenter = GamePresenter()
     private var mainButtonType = MainButtonType.CHECK
     private var correctAnswerCount = 0
     private var wrongAnswerCount = 0
@@ -22,43 +26,26 @@ class GameFragment : BaseFragment<FragmentGameBinding>() {
     private var questionNumber = 0
     private val questionNumberCount
         get() = questionNumber + 1
-    val questions = listOf(
-        Question(
-            question = "How many US states start with the letter K?",
-            correctAnswer = "Two",
-            options = listOf("One", "Two", "Three", "None"),
-        ),
-        Question(
-            question = "What state is the largest state of the United States of America?",
-            correctAnswer = "Alaska",
-            options = listOf("California", "Alaska", "Texas", "Washington"),
-        ),
-        Question(
-            question = "How many US states start with the letter K?",
-            correctAnswer = "Two",
-            options = listOf("One", "Two", "Three", "None"),
-        ),
-        Question(
-            question = "What state is the largest state of the United States of America?",
-            correctAnswer = "Alaska",
-            options = listOf("California", "Alaska", "Texas", "Washington"),
-        ),
-    )
+    lateinit var questions: List<Question>
 
     override fun setup() {
-        initialMainButtonText()
-        initialQuestion()
-        initialClickOnOption()
-        initialSkipButton()
-        initialMainButton()
-        initialNumberQuestion()
-        initialBackButton()
+        gamePresenter.view = this
+        gamePresenter.onGetQuestionGame()
+
+    //        initialMainButtonText()
+//        initialQuestion()
+//        initialClickOnOption()
+//        initialSkipButton()
+//        initialMainButton()
+//        initialNumberQuestion()
+//        initialBackButton()
 
 //        val args = GameFragmentArgs.fromBundle(requireArguments())
 //        val difficulty = args.gameDifficultyLevel
 //        val gameType = args.gameType
 //        Toast.makeText(requireContext() , "$difficulty $gameType" , Toast.LENGTH_SHORT).show()
     }
+
 
     private fun initialBackButton() {
         binding.header.backButton.setOnClickListener {
@@ -215,15 +202,15 @@ class GameFragment : BaseFragment<FragmentGameBinding>() {
     private fun initialMainButtonText() {
         when (mainButtonType) {
             MainButtonType.CHECK -> {
-                binding.mainButton.buttonText.text = "Check"
+                binding.mainButton.buttonText.text = getString(R.string.check)
             }
 
             MainButtonType.NEXT -> {
-                binding.mainButton.buttonText.text = "Next"
+                binding.mainButton.buttonText.text = getString(R.string.next)
             }
 
             MainButtonType.FINISH -> {
-                binding.mainButton.buttonText.text = "Finish"
+                binding.mainButton.buttonText.text = getString(R.string.finish)
             }
         }
     }
@@ -271,4 +258,29 @@ class GameFragment : BaseFragment<FragmentGameBinding>() {
 
     private fun getOptionsButton() =
         listOf(binding.option1, binding.option2, binding.option3, binding.option4)
+
+    override fun onGetGameQuestion(questionsList: List<Question>) {
+        questions = questionsList
+        initialMainButtonText()
+        initialQuestion()
+        initialClickOnOption()
+        initialSkipButton()
+        initialMainButton()
+        initialNumberQuestion()
+        initialBackButton()
+    }
+
+    override fun onLoading() {
+
+    }
+
+    override fun onGetDataSuccess() {
+
+    }
+
+    override fun onGetDataError() {
+
+    }
+
+
 }
