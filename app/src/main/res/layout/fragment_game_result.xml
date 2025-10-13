@@ -136,7 +136,7 @@
 
     <ImageView
         android:id="@+id/result_image"
-        android:layout_width="344dp"
+        android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginBottom="180dp"
         android:scaleType="centerCrop"
@@ -169,6 +169,7 @@
            android:layout_width="54dp"
            android:layout_height="54dp"
            android:scaleType="centerCrop"
+           android:visibility="gone"
            android:layout_gravity="bottom"
            android:src="@drawable/gold_star"/>
        <ImageView
@@ -176,12 +177,14 @@
            android:layout_width="54dp"
            android:layout_height="54dp"
            android:layout_gravity="top"
+           android:visibility="gone"
            android:src="@drawable/gold_star"/>
        <ImageView
            android:id="@+id/end_star"
            android:layout_width="54dp"
            android:layout_height="54dp"
            android:layout_gravity="bottom"
+           android:visibility="gone"
            android:src="@drawable/gold_star"/>
    </LinearLayout>
 

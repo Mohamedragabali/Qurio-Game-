@@ -201,6 +201,10 @@
             app:argType="integer" />
         <argument android:name="game_difficulty_level"
             app:argType="string" />
+        <action
+            android:id="@+id/action_gameFragment_to_gameResultFragment"
+            app:destination="@id/gameResultFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/lastGamesFragment"
@@ -221,6 +225,30 @@
         android:name="com.quriogamethechance.quriogame.ui.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/gameResultFragment"
+        android:name="com.quriogamethechance.quriogame.ui.gameResult.GameResultFragment"
+        android:label="fragment_game_result"
+        tools:layout="@layout/fragment_game_result" >
+        <argument
+            android:name="correct_answer_count"
+            app:argType="integer" />
+        <argument
+            android:name="incorrect_answer_count"
+            app:argType="integer" />
+        <argument
+            android:name="skipped_answer_count"
+            app:argType="integer" />
+        <argument
+            android:name="game_difficulty"
+            app:argType="string" />
+        <argument
+            android:name="game_id"
+            app:argType="integer" />
+        <argument
+            android:name="questions_count"
+            app:argType="integer" />
+    </fragment>
 
 
 </navigation>

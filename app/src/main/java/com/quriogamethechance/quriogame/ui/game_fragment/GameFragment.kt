@@ -1,6 +1,7 @@
 package com.quriogamethechance.quriogame.ui.game_fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,12 +87,15 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
                 }
 
                 MainButtonType.FINISH -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Co: $correctAnswerCount" +
-                                "  Wr: $wrongAnswerCount" +
-                                "  Sk: $skipQuestionCount", Toast.LENGTH_SHORT
-                    ).show()
+                    val action = GameFragmentDirections.actionGameFragmentToGameResultFragment(
+                        correctAnswerCount = correctAnswerCount,
+                        incorrectAnswerCount = wrongAnswerCount,
+                        skippedAnswerCount = skipQuestionCount,
+                        gameDifficulty = difficulty,
+                        gameId = gamId,
+                        questionsCount = questions.size
+                    )
+                    binding.root.findNavController().navigate(action)
                 }
             }
         }
