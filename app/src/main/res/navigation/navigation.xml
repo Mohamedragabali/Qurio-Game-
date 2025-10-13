@@ -248,6 +248,10 @@
         <argument
             android:name="questions_count"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_gameResultFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
 
 

@@ -107,21 +107,27 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() {
         binding.resultText.setImageResource(R.drawable.lose_text)
         binding.resultImage.setImageResource(R.drawable.lose_image)
         binding.coinsCountText.text = (correctAnswerCount * bouns).toString()
-        binding.shareWithFriendButton.buttonText.text = "Share disappointment with friends"
+        binding.shareWithFriendButton.buttonText.text =
+            getString(R.string.share_disappointment_with_friends)
     }
 
     private fun initialWinViews(correctAnswerCount: Int,bouns : Int) {
         binding.resultText.setImageResource(R.drawable.win_text)
         binding.resultImage.setImageResource(R.drawable.win_image)
         binding.coinsCountText.text = (correctAnswerCount * 100  * bouns).toString()
-        binding.shareWithFriendButton.buttonText.text = "Share win with friends"
+        binding.shareWithFriendButton.buttonText.text = getString(R.string.share_win_with_friends)
     }
 
     private fun initialButton() {
         binding.shareWithFriendButton.shareIcon.visibility = View.VISIBLE
-        binding.playAgin.buttonText.text = "Play again"
+        binding.playAgin.buttonText.text = getString(R.string.play_again)
         binding.backToHome.setOnClickListener {
             binding.root.findNavController().popBackStack()
+        }
+        binding.playAgin.root.setOnClickListener {
+            val action = GameResultFragmentDirections.actionGameResultFragmentToGameFragment(
+                gameId = gameId , gameDifficultyLevel = gameDifficulty)
+            binding.root.findNavController().navigate(action)
         }
     }
 
