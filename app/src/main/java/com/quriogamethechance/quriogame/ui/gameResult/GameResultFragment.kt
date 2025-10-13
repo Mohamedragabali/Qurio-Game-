@@ -1,14 +1,21 @@
 package com.quriogamethechance.quriogame.ui.gameResult
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentGameResultBinding
+import com.quriogamethechance.quriogame.presenter.gameResult.GameResultPresenter
+import com.quriogamethechance.quriogame.ui.QurioApp
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
+import jakarta.inject.Inject
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-class GameResultFragment : BaseFragment<FragmentGameResultBinding>() {
+class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResultViewInterface {
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGameResultBinding
         get() = FragmentGameResultBinding::inflate
@@ -16,7 +23,16 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() {
     lateinit var gameDifficulty: String
     var gameId: Int = 0
 
+    @Inject
+    lateinit var gameResultPresenter: GameResultPresenter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as QurioApp).appComponent.inject(this)
+    }
+
     override fun setup() {
+        gameResultPresenter.view = this
         val args = GameResultFragmentArgs.fromBundle(requireArguments())
         val correctAnswerCount = args.correctAnswerCount
         val incorrectAnswerCount = args.incorrectAnswerCount
@@ -71,11 +87,22 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() {
             }
         }
         val starCount = initialStars(correctAnswerCount,skippedQuestion, questionsCount)
+        var coinsCount : Int
         if(starCount == 0){
-            initialLoseViews(correctAnswerCount,bouns)
+             coinsCount = initialLoseViews(correctAnswerCount,bouns)
+
         }else{
-            initialWinViews(correctAnswerCount,bouns)
+            coinsCount =  initialWinViews(correctAnswerCount,bouns)
         }
+        val simpleFormat = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+        val currentDate = simpleFormat.format(Date())
+        gameResultPresenter.insertLastGame(
+            typeId = gameId,
+            coinsCount = coinsCount,
+            starCount = starCount,
+            time = 0,
+            date = currentDate
+        )
     }
 
     private fun initialStars(
@@ -103,19 +130,23 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() {
         }
     }
 
-    private fun initialLoseViews(correctAnswerCount: Int,bouns : Int ) {
+    private fun initialLoseViews(correctAnswerCount: Int,bouns : Int ):Int {
+        val coinsCount = correctAnswerCount * bouns
         binding.resultText.setImageResource(R.drawable.lose_text)
         binding.resultImage.setImageResource(R.drawable.lose_image)
-        binding.coinsCountText.text = (correctAnswerCount * bouns).toString()
+        binding.coinsCountText.text = coinsCount.toString()
         binding.shareWithFriendButton.buttonText.text =
             getString(R.string.share_disappointment_with_friends)
+        return coinsCount
     }
 
-    private fun initialWinViews(correctAnswerCount: Int,bouns : Int) {
+    private fun initialWinViews(correctAnswerCount: Int,bouns : Int) : Int {
+        val coinsCount = correctAnswerCount * 100  * bouns
         binding.resultText.setImageResource(R.drawable.win_text)
         binding.resultImage.setImageResource(R.drawable.win_image)
         binding.coinsCountText.text = (correctAnswerCount * 100  * bouns).toString()
         binding.shareWithFriendButton.buttonText.text = getString(R.string.share_win_with_friends)
+        return coinsCount
     }
 
     private fun initialButton() {
@@ -129,6 +160,28 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() {
                 gameId = gameId , gameDifficultyLevel = gameDifficulty)
             binding.root.findNavController().navigate(action)
         }
+    }
+
+    override fun insertLastGame(
+        typeId: Int,
+        coinsCount: Int,
+        starCount: Int,
+        time: Int,
+        date: String
+    ) {
+
+    }
+
+    override fun onLoading() {
+
+    }
+
+    override fun onGetDataSuccess() {
+
+    }
+
+    override fun onGetDataError() {
+
     }
 
 }

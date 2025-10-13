@@ -5,6 +5,7 @@ import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.repository.Repository
 import com.quriogamethechance.quriogame.data.repository.RepositoryImp
 import com.quriogamethechance.quriogame.presenter.game.GamePresenter
+import com.quriogamethechance.quriogame.presenter.gameResult.GameResultPresenter
 import com.quriogamethechance.quriogame.presenter.lastGamePresenter.LastGamePresenter
 import dagger.Module
 import dagger.Provides
@@ -22,4 +23,8 @@ object RepositoryModule {
     @Provides
     fun provideLastGamePresenter(repository: Repository): LastGamePresenter =
         LastGamePresenter(repository)
+
+    @Provides
+    fun provideGameResultPresenter(repository: Repository): GameResultPresenter =
+        GameResultPresenter(repository)
 }

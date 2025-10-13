@@ -5,6 +5,7 @@ import com.quriogamethechance.quriogame.di.AppModule
 import com.quriogamethechance.quriogame.di.LocalModule
 import com.quriogamethechance.quriogame.di.NetworkModule
 import com.quriogamethechance.quriogame.di.RepositoryModule
+import com.quriogamethechance.quriogame.ui.gameResult.GameResultFragment
 import com.quriogamethechance.quriogame.ui.game_fragment.GameFragment
 import com.quriogamethechance.quriogame.ui.lastGames.LastGamesFragment
 import dagger.Component
@@ -18,5 +19,6 @@ interface AppComponent {
     fun inject(activity: MainActivity)
     fun inject(fragment: GameFragment)
     fun inject(fragment: LastGamesFragment)
+    fun inject(fragment: GameResultFragment)
 
 }

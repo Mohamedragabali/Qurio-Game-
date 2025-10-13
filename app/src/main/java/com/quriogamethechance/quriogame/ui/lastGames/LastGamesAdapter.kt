@@ -1,18 +1,16 @@
 package com.quriogamethechance.quriogame.ui.lastGames
 
-import android.content.Context
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.ItemLastGameBinding
 
-class LastGamesAdapter(private var lastGames:List<LastGame>,private val context: Context): RecyclerView.Adapter<LastGamesAdapter.LastGameViewHolder>() {
+class LastGamesAdapter(private var lastGames:List<LastGame>): RecyclerView.Adapter<LastGamesAdapter.LastGameViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -38,12 +36,6 @@ class LastGamesAdapter(private var lastGames:List<LastGame>,private val context:
             gameTimeText.text = game.gameTime
             starCountText.text = game.starCount.toString()
             coinsCountText.text = game.coinsCount.toString()
-            if(game.coinsCount < 0 ) {
-                coinsCountText.setTextColor(context.getColor(R.color.red))
-
-            }else{
-                coinsCountText.setTextColor(context.getColor(R.color.shade_primary))
-            }
             dataText.text = game.data
         }
     }
