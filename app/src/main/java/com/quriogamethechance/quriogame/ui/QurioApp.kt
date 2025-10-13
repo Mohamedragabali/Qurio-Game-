@@ -1,6 +1,8 @@
 package com.quriogamethechance.quriogame.ui
 
 import android.app.Application
+import com.quriogamethechance.quriogame.di.AppModule
+
 class QurioApp : Application() {
 
 
@@ -9,6 +11,8 @@ class QurioApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.create()
+        appComponent =DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
     }
 }
