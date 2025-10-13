@@ -61,5 +61,6 @@ dependencies {
     kapt (libs.dagger2.compiler)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.lottie)
 
 }

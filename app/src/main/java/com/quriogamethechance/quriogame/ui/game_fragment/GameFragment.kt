@@ -30,6 +30,8 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     private val questionNumberCount
         get() = questionNumber + 1
     lateinit var questions: List<Question>
+    lateinit var difficulty : String
+     var gamId : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +40,14 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     override fun setup() {
         gamePresenter.view = this
         val args = GameFragmentArgs.fromBundle(requireArguments())
-        val difficulty = args.gameDifficultyLevel
-        val gamId = args.gameId
+         difficulty = args.gameDifficultyLevel
+         gamId = args.gameId
+        getGameQuestions()
+    }
+
+    private fun getGameQuestions() {
         gamePresenter.onGetQuestionGame(gameId =  gamId , difficulty = difficulty)
+        onLoading()
     }
 
 
@@ -265,18 +272,80 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         initialMainButton()
         initialNumberQuestion()
         initialBackButton()
+        onGetDataSuccess()
     }
 
     override fun onLoading() {
-
+        disAppearAllMainItem()
+        appearLoadingItems()
+        disAppearErrorItems()
     }
 
     override fun onGetDataSuccess() {
-
+        disAppearLoadingItems()
+        disAppearErrorItems()
+        appearAllMainItem()
     }
 
     override fun onGetDataError() {
+        initialErrorButton()
+        disAppearLoadingItems()
+        appearErrorItems()
+    }
 
+    private fun initialErrorButton() {
+        binding.tryAgianButton.buttonText.text = getString(R.string.try_again)
+        binding.tryAgianButton.root.setOnClickListener {
+            getGameQuestions()
+        }
+    }
+
+    private fun disAppearErrorItems(){
+        binding.noInternetImage.visibility = View.INVISIBLE
+        binding.noInternetText.visibility = View.INVISIBLE
+        binding.noInternetDescriptionText.visibility = View.INVISIBLE
+        binding.tryAgianButton.root.visibility = View.INVISIBLE
+    }
+    private fun appearErrorItems(){
+        binding.noInternetImage.visibility = View.VISIBLE
+        binding.noInternetText.visibility = View.VISIBLE
+        binding.noInternetDescriptionText.visibility = View.VISIBLE
+        binding.tryAgianButton.root.visibility = View.VISIBLE
+    }
+
+    private fun disAppearLoadingItems(){
+        binding.loadingAnimationIcon.visibility = View.INVISIBLE
+        binding.loadingAnimationText.visibility = View.INVISIBLE
+    }
+    private fun appearLoadingItems(){
+        binding.loadingAnimationIcon.visibility = View.VISIBLE
+        binding.loadingAnimationText.visibility = View.VISIBLE
+    }
+
+    private fun disAppearAllMainItem(){
+        binding.mainButton.root.visibility = View.INVISIBLE
+        binding.header.root.visibility = View.INVISIBLE
+        binding.questionText.visibility = View.INVISIBLE
+        binding.questionNumber.visibility = View.INVISIBLE
+        binding.skipButton.visibility = View.INVISIBLE
+        getOptionsButton().forEach {
+            it.visibility = View.INVISIBLE
+        }
+        binding.headerContainer.visibility = View.INVISIBLE
+        binding.loading.root.visibility = View.INVISIBLE
+    }
+
+    private fun appearAllMainItem(){
+        binding.mainButton.root.visibility = View.VISIBLE
+        binding.header.root.visibility = View.VISIBLE
+        binding.questionText.visibility = View.VISIBLE
+        binding.questionNumber.visibility = View.VISIBLE
+        binding.skipButton.visibility = View.VISIBLE
+        getOptionsButton().forEach {
+            it.visibility = View.VISIBLE
+        }
+        binding.headerContainer.visibility = View.VISIBLE
+        binding.loading.root.visibility = View.VISIBLE
     }
 
 
