@@ -61,4 +61,9 @@
     <string name="loading_game">Loading Game</string>
     <string name="no_connection">No Connection</string>
     <string name="oops_it_looks_like_you_re_offline_please_check_your_internet_connection_to_continue_playing">Oops! It looks like you’re offline. Please check your internet connection to continue playing</string>
+    <string name="correct">Correct</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="skipped">Skipped</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="reward">reward</string>
 </resources>

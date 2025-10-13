@@ -29,7 +29,9 @@
     <style name="CutCornerShapeTopBottom">
         <item name="cornerFamily">cut</item>
         <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerSizeBottomRight">10dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
 
