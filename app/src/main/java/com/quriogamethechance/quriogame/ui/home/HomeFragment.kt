@@ -1,18 +1,35 @@
 package com.quriogamethechance.quriogame.ui.home
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentHomeBinding
+import com.quriogamethechance.quriogame.presenter.home.HomePresenter
+import com.quriogamethechance.quriogame.ui.QurioApp
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
 import com.quriogamethechance.quriogame.ui.home.gamesItem.GameItem
+import com.quriogamethechance.quriogame.ui.lastGames.LastGame
+import jakarta.inject.Inject
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , HomeViewInterface {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
         get() = FragmentHomeBinding::inflate
     val adapter = HomeAdapter(emptyList(), this)
+
+    @Inject
+    lateinit var homePresenter: HomePresenter
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as QurioApp).appComponent.inject(this)
+    }
+
     override fun setup() {
+        homePresenter.view = this
+        homePresenter.getLastGames()
         binding.homeRecyclerView.adapter = adapter
 
         adapter.setData(
@@ -112,45 +129,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction {
                         ),
                     )
                 ),
-                HomeData.Header(
-                    headerTitle = "Last Games",
-                    headerType = HomeHeaderType.LAST_GAMES
-                ),
-                HomeData.LastGames(
-                    data = "0-9-2020",
-                    lastGameType = "Gamming",
-                    coinsCount = 400,
-                    starCount = 7,
-                    gameTime = "44Sec"
-                ),
-                HomeData.LastGames(
-                    data = "0-9-2020",
-                    lastGameType = "Gamming",
-                    coinsCount = 400,
-                    starCount = 7,
-                    gameTime = "44Sec"
-                ),
-                HomeData.LastGames(
-                    data = "0-9-2020",
-                    lastGameType = "Gamming",
-                    coinsCount = 400,
-                    starCount = 7,
-                    gameTime = "44Sec"
-                ),
-                HomeData.LastGames(
-                    data = "0-9-2020",
-                    lastGameType = "Gamming",
-                    coinsCount = 400,
-                    starCount = 7,
-                    gameTime = "44Sec"
-                ),
-                HomeData.LastGames(
-                    data = "0-9-2020",
-                    lastGameType = "Gamming",
-                    coinsCount = 400,
-                    starCount = 7,
-                    gameTime = "44Sec"
-                ),
             )
         )
     }
@@ -189,6 +167,40 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction {
     override fun onClickShowAward() {
         val action = HomeFragmentDirections.actionHomeFragmentToAchievementFragment()
         binding.root.findNavController().navigate(action)
+    }
+
+    override fun onGetLastGameSuccess(questionsList: List<LastGame>) {
+
+       if(questionsList.isNotEmpty()){
+           adapter.addItem(
+               HomeData.Header(
+                   headerTitle = "Last Games",
+                   headerType = HomeHeaderType.LAST_GAMES
+               )
+           )
+       }
+
+        questionsList.forEach {
+            adapter.addItem(HomeData.LastGames(
+                data = it.data,
+                lastGameType = it.type,
+                coinsCount = it.coinsCount,
+                starCount = it.starCount,
+                gameTime = it.gameTime
+            ))
+        }
+    }
+
+    override fun onLoading() {
+
+    }
+
+    override fun onGetDataSuccess() {
+
+    }
+
+    override fun onGetDataError() {
+
     }
 
 }

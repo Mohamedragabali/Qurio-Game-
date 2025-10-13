@@ -70,6 +70,14 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
         diffResult.dispatchUpdatesTo(this)
     }
 
+    fun addItem(item: HomeData) {
+        val newList = list.toMutableList()
+        newList.add(item)
+        val diffResult = DiffUtil.calculateDiff(HomeDiffUtil(list, newList))
+        list = newList
+        diffResult.dispatchUpdatesTo(this)
+    }
+
     override fun getItemViewType(position: Int): Int = list[position].type.ordinal
 
     override fun onBindViewHolder(
