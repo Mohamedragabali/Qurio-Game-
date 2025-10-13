@@ -59,4 +59,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation (libs.dagger2)
     kapt (libs.dagger2.compiler)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
 }

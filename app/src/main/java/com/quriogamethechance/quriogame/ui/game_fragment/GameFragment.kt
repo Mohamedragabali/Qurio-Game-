@@ -20,8 +20,6 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGameBinding
         get() = FragmentGameBinding::inflate
 
-//    private val gamePresenter = GamePresenter()
-
     @Inject
     lateinit var gamePresenter: GamePresenter
     private var mainButtonType = MainButtonType.CHECK
@@ -39,20 +37,10 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     }
     override fun setup() {
         gamePresenter.view = this
-        gamePresenter.onGetQuestionGame()
-
-    //        initialMainButtonText()
-//        initialQuestion()
-//        initialClickOnOption()
-//        initialSkipButton()
-//        initialMainButton()
-//        initialNumberQuestion()
-//        initialBackButton()
-
         val args = GameFragmentArgs.fromBundle(requireArguments())
         val difficulty = args.gameDifficultyLevel
         val gamId = args.gameId
-        Toast.makeText(requireContext() , "$difficulty $gamId" , Toast.LENGTH_SHORT).show()
+        gamePresenter.onGetQuestionGame(gameId =  gamId , difficulty = difficulty)
     }
 
 
