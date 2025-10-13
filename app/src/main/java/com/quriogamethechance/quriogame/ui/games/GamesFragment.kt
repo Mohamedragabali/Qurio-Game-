@@ -40,38 +40,47 @@ class GamesFragment : BaseFragment<FragmentGamesBinding>(), GameInteraction {
                 Game(
                     type = "Geography",
                     image = R.drawable.geography,
+                    id = 22
                 ),
                 Game(
                     type = "Science",
                     image = R.drawable.science,
+                    id = 30
                 ),
                 Game(
                     type = "General Knowledge",
                     image = R.drawable.general_knowledge,
+                    id = 9
                 ),
                 Game(
                     type = "Music",
                     image = R.drawable.music,
+                    id = 12
                 ),
                 Game(
                     type = "Film & TV",
                     image = R.drawable.film_tv,
+                    id = 11
                 ),
                 Game(
                     type = "Food & Drink",
                     image = R.drawable.food_drink,
+                    id = 17
                 ),
                 Game(
                     type = "Society & Culture",
                     image = R.drawable.society_culture,
+                    id = 24
                 ),
                 Game(
                     type = "History",
                     image = R.drawable.history,
+                    id = 23
                 ),
                 Game(
                     type = "Arts & Literature",
                     image = R.drawable.arts_literature,
+                    id = 25
                 ),
             )
         )
@@ -84,9 +93,9 @@ class GamesFragment : BaseFragment<FragmentGamesBinding>(), GameInteraction {
         }
     }
 
-    override fun onClickPlayNow( type: String) {
+    override fun onClickPlayNow( id: Int) {
         val action = GamesFragmentDirections.actionGamesFragmentToDifficultyLevelFragment2(
-            gameType = type
+            gameTypeId = id
         )
         binding.root.findNavController().navigate(action)
     }

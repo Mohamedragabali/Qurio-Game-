@@ -68,38 +68,47 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction {
                         GameItem(
                             type = "Geography",
                             image = R.drawable.geography,
+                            id = 22
                         ),
                         GameItem(
                             type = "Science",
                             image = R.drawable.science,
+                            id = 30
                         ),
                         GameItem(
                             type = "General Knowledge",
                             image = R.drawable.general_knowledge,
+                            id = 9
                         ),
                         GameItem(
                             type = "Music",
                             image = R.drawable.music,
+                            id = 12
                         ),
                         GameItem(
                             type = "Film & TV",
                             image = R.drawable.film_tv,
+                            id = 11
                         ),
                         GameItem(
                             type = "Food & Drink",
                             image = R.drawable.food_drink,
+                            id = 17
                         ),
                         GameItem(
                             type = "Society & Culture",
                             image = R.drawable.society_culture,
+                            id = 24
                         ),
                         GameItem(
                             type = "History",
                             image = R.drawable.history,
+                            id = 23
                         ),
                         GameItem(
                             type = "Arts & Literature",
                             image = R.drawable.arts_literature,
+                            id = 25
                         ),
                     )
                 ),
@@ -167,8 +176,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction {
         }
     }
 
-    override fun onClickPlayNow(type: String) {
-        val action = HomeFragmentDirections.actionHomeFragmentToDifficultyLevelFragment(type)
+    override fun onClickPlayNow(id: Int) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDifficultyLevelFragment(id)
         binding.root.findNavController().navigate(action)
     }
 

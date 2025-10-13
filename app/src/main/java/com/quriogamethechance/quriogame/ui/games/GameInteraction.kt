@@ -1,5 +1,5 @@
 package com.quriogamethechance.quriogame.ui.games
 
 interface GameInteraction {
-    fun onClickPlayNow(type:String)
+    fun onClickPlayNow(id:Int)
 }

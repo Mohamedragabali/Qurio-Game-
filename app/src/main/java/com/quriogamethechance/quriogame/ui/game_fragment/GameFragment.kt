@@ -49,10 +49,10 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
 //        initialNumberQuestion()
 //        initialBackButton()
 
-//        val args = GameFragmentArgs.fromBundle(requireArguments())
-//        val difficulty = args.gameDifficultyLevel
-//        val gameType = args.gameType
-//        Toast.makeText(requireContext() , "$difficulty $gameType" , Toast.LENGTH_SHORT).show()
+        val args = GameFragmentArgs.fromBundle(requireArguments())
+        val difficulty = args.gameDifficultyLevel
+        val gamId = args.gameId
+        Toast.makeText(requireContext() , "$difficulty $gamId" , Toast.LENGTH_SHORT).show()
     }
 
 

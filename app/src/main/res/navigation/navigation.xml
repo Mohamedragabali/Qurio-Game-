@@ -159,8 +159,8 @@
             android:id="@+id/action_difficultyLevelFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
         <argument
-            android:name="game_type"
-            app:argType="string" />
+            android:name="game_type_id"
+            app:argType="integer" />
     </dialog>
 
     <dialog
@@ -197,8 +197,8 @@
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <argument
-            android:name="game_type"
-            app:argType="string" />
+            android:name="game_id"
+            app:argType="integer" />
         <argument android:name="game_difficulty_level"
             app:argType="string" />
     </fragment>

@@ -3,12 +3,9 @@ package com.quriogamethechance.quriogame.ui.home.gamesItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.quriogamethechance.quriogame.R
-import com.quriogamethechance.quriogame.databinding.ItemGameBinding
 import com.quriogamethechance.quriogame.databinding.ItemGameHomeBinding
-import com.quriogamethechance.quriogame.ui.home.HomeData
 import com.quriogamethechance.quriogame.ui.home.HomeInteraction
 
 class GamesAdapter(private var games:List<GameItem>, private val interaction : HomeInteraction): RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
@@ -30,7 +27,7 @@ class GamesAdapter(private var games:List<GameItem>, private val interaction : H
             typeText.text = game.type
             image.setImageResource(game.image)
             buttonPlayNow.setOnClickListener {
-                interaction.onClickPlayNow(game.type)
+                interaction.onClickPlayNow(game.id)
             }
         }
     }

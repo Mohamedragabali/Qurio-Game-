@@ -16,7 +16,7 @@ class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBindin
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentDifficultyLevelBinding
         get() = FragmentDifficultyLevelBinding::inflate
 
-    lateinit var  gameType : String
+     var  gameTypeId : Int = 0
     lateinit var gameDifficulty : String
 
     override fun setup() {
@@ -28,7 +28,7 @@ class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBindin
     }
 
     private fun receiveData() {
-        gameType = DifficultyLevelFragmentArgs.fromBundle(requireArguments()).gameType
+        gameTypeId = DifficultyLevelFragmentArgs.fromBundle(requireArguments()).gameTypeId
     }
 
 
@@ -63,8 +63,8 @@ class DifficultyLevelFragment : BaseDialogFragment<FragmentDifficultyLevelBindin
         }
         binding.confirmButton.root.setOnClickListener {
             val action = DifficultyLevelFragmentDirections.actionDifficultyLevelFragmentToGameFragment(
-                gameType = gameType,
-                gameDifficultyLevel = gameDifficulty
+                gameId = gameTypeId,
+                gameDifficultyLevel = gameDifficulty.lowercase()
             )
             findNavController().navigate(action)
         }

@@ -32,7 +32,7 @@ class GamesAdapter(private var games:List<Game> , private val interaction : Game
             typeText.text = game.type
             image.setImageResource(game.image)
             buttonBackground.setOnClickListener {
-                interaction.onClickPlayNow(game.type)
+                interaction.onClickPlayNow(game.id)
             }
         }
     }
