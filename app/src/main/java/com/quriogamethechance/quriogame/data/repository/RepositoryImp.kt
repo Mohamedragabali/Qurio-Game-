@@ -224,6 +224,15 @@ class RepositoryImp @Inject constructor(
     override suspend fun getAllCharacters(): List<CharacterEntity> {
         return qurioiGameDatabase.CharacterDao().getAllCharacter()
     }
+
+    override fun getSelectedCharacter(): List<CharacterEntity> {
+        return qurioiGameDatabase.CharacterDao().getSelectedCharacter()
+    }
+
+    override fun getCharacterByName(characterName: String): List<CharacterEntity> {
+        return qurioiGameDatabase.CharacterDao().getCharacterByName(characterName)
+    }
+
     private fun findTypeIdText(typeId: Int): String {
         val gamesData = listOf(
             Game(

@@ -30,4 +30,9 @@ interface Repository {
     suspend fun cacheCharacter()
 
     suspend fun getAllCharacters(): List<CharacterEntity>
+
+    fun getSelectedCharacter(): List<CharacterEntity>
+
+    fun getCharacterByName(characterName: String): List<CharacterEntity>
+
 }
