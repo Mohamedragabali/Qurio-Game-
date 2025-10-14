@@ -35,4 +35,25 @@ class HomePresenter @Inject constructor(
             }
         }
     }
+
+    fun getDashboardData(){
+        launch {
+            try {
+                val lives =
+                    withContext(Dispatchers.IO) {
+                        repository.getLives()
+                    }
+                val coins = withContext(Dispatchers.IO) {
+                    repository.getCoins()
+                }
+                (view as HomeViewInterface).onGetDashboardSuccess(
+                    livesCount = lives,
+                    coinsCount = coins,
+                    awardsCount = 0
+                )
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
 }

@@ -18,6 +18,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
         get() = FragmentHomeBinding::inflate
     val adapter = HomeAdapter(emptyList(), this)
 
+    private val itemsIndex = mapOf(
+        HomeItemType.USER_INFORMATION to 0,
+        HomeItemType.DASHBOARD to 1,
+        HomeItemType.TRACKING_LOGIN to 2,
+        HomeItemType.GAMES to 4,
+        HomeItemType.LAST_GAMES to 5,
+    )
+
     @Inject
     lateinit var homePresenter: HomePresenter
 
@@ -30,6 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
     override fun setup() {
         homePresenter.view = this
         homePresenter.getLastGames()
+        homePresenter.getDashboardData()
         binding.homeRecyclerView.adapter = adapter
 
         adapter.setData(
@@ -37,12 +46,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                 HomeData.UserInformation(
                     characterName = "Hallo ",
                     characterImage = R.drawable.rika
-                ),
-
-                HomeData.Dashboard(
-                    livesCount = 5,
-                    pointsCount = 5000,
-                    awardsCount = 4
                 ),
                 HomeData.TrackingLogin(
                     listOf(
@@ -189,6 +192,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                 gameTime = it.gameTime
             ))
         }
+    }
+
+    override fun onGetDashboardSuccess(livesCount: Int , coinsCount: Int , awardsCount: Int) {
+        adapter.addItemInIndex(
+            HomeData.Dashboard(
+                livesCount = livesCount,
+                pointsCount = coinsCount.toLong(),
+                awardsCount = awardsCount
+            ),
+            itemsIndex[HomeItemType.DASHBOARD]!!
+        )
     }
 
     override fun onLoading() {
