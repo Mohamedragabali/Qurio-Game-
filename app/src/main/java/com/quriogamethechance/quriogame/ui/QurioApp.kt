@@ -12,7 +12,7 @@ class QurioApp : Application() {
         private set
 
     private val preferencesName = "APP_PREFERENCES"
-    val Context.preferencesDataStore by preferencesDataStore("APP_PREFERENCES")
+    val Context.preferencesDataStore by preferencesDataStore(preferencesName)
 
     override fun onCreate() {
         super.onCreate()
