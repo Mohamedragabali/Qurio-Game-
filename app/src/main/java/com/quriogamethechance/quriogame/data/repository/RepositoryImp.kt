@@ -6,8 +6,8 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import com.quriogamethechance.quriogame.R
-import com.quriogamethechance.quriogame.data.local.LastGameDao
-import com.quriogamethechance.quriogame.data.local.LastGameEntity
+import com.quriogamethechance.quriogame.data.local.lastGame.LastGameDao
+import com.quriogamethechance.quriogame.data.local.lastGame.LastGameEntity
 import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.remote.dto.GamesDto
 import com.quriogamethechance.quriogame.ui.games.Game

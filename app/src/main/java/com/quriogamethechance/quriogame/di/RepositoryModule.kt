@@ -2,7 +2,7 @@ package com.quriogamethechance.quriogame.di
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.quriogamethechance.quriogame.data.local.LastGameDao
+import com.quriogamethechance.quriogame.data.local.lastGame.LastGameDao
 import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.repository.Repository
 import com.quriogamethechance.quriogame.data.repository.RepositoryImp

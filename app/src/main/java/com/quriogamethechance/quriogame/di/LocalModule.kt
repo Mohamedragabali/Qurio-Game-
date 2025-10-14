@@ -2,7 +2,7 @@ package com.quriogamethechance.quriogame.di
 
 import android.content.Context
 import androidx.room.Room
-import com.quriogamethechance.quriogame.data.local.LastGameDao
+import com.quriogamethechance.quriogame.data.local.lastGame.LastGameDao
 import com.quriogamethechance.quriogame.data.local.QurioGameDatabase
 import dagger.Module
 import dagger.Provides
