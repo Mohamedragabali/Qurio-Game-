@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import com.quriogamethechance.quriogame.R
-import com.quriogamethechance.quriogame.data.local.lastGame.LastGameDao
+import com.quriogamethechance.quriogame.data.local.QurioGameDatabase
 import com.quriogamethechance.quriogame.data.local.lastGame.LastGameEntity
 import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.remote.dto.GamesDto
@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.first
 
 class RepositoryImp @Inject constructor(
     private val apiService: GameApiService,
-    private val lastGameDao: LastGameDao,
+    private val qurioiGameDatabase: QurioGameDatabase,
     private val preferencesDataStore: DataStore<Preferences>
 ) : Repository {
     private val gameQuestionAmount = 12
@@ -44,7 +44,7 @@ class RepositoryImp @Inject constructor(
         time: Int,
         date: String
     ) {
-        lastGameDao.insertLastGame(
+        qurioiGameDatabase.LastGameDao().insertLastGame(
             LastGameEntity(
                 typeId = typeId,
                 coinsCount = coinsCount,
@@ -57,7 +57,7 @@ class RepositoryImp @Inject constructor(
     }
 
     override suspend fun getLastGames(): List<LastGame> {
-        return lastGameDao.getAllLastGames().reversed().map {
+        return qurioiGameDatabase.LastGameDao().getAllLastGames().reversed().map {
             LastGame(
                 type = findTypeIdText(it.typeId),
                 coinsCount = it.coinsCount.toLong(),
