@@ -9,6 +9,7 @@ import com.quriogamethechance.quriogame.ui.gameResult.GameResultFragment
 import com.quriogamethechance.quriogame.ui.game_fragment.GameFragment
 import com.quriogamethechance.quriogame.ui.home.HomeFragment
 import com.quriogamethechance.quriogame.ui.lastGames.LastGamesFragment
+import com.quriogamethechance.quriogame.ui.main.MainFragment
 import dagger.Component
 import jakarta.inject.Singleton
 
@@ -22,6 +23,6 @@ interface AppComponent {
     fun inject(fragment: LastGamesFragment)
     fun inject(fragment: GameResultFragment)
     fun inject(fragment: HomeFragment)
-
+    fun inject(fragment: MainFragment)
 
 }
