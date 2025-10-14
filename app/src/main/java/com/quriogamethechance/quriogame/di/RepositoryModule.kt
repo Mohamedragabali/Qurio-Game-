@@ -6,6 +6,7 @@ import com.quriogamethechance.quriogame.data.local.LastGameDao
 import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.repository.Repository
 import com.quriogamethechance.quriogame.data.repository.RepositoryImp
+import com.quriogamethechance.quriogame.presenter.buyAlive.BuyAlivePresenter
 import com.quriogamethechance.quriogame.presenter.game.GamePresenter
 import com.quriogamethechance.quriogame.presenter.gameResult.GameResultPresenter
 import com.quriogamethechance.quriogame.presenter.home.HomePresenter
@@ -50,4 +51,8 @@ object RepositoryModule {
     @Provides
     fun provideOnboardingPresenter(repository: Repository): OnboardingPresenter =
         OnboardingPresenter(repository)
+
+    @Provides
+    fun provideBuyAlivePresenter(repository: Repository): BuyAlivePresenter =
+        BuyAlivePresenter(repository)
 }
