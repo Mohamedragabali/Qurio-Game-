@@ -1,5 +1,6 @@
 package com.quriogamethechance.quriogame.data.repository
 
+import com.quriogamethechance.quriogame.data.local.charcter.CharacterEntity
 import com.quriogamethechance.quriogame.data.remote.dto.GamesDto
 import com.quriogamethechance.quriogame.ui.lastGames.LastGame
 
@@ -25,4 +26,8 @@ interface Repository {
 
     suspend fun setCoins(coins:Int)
     suspend fun getCoins():Int
+
+    suspend fun cacheCharacter()
+
+    suspend fun getAllCharacters(): List<CharacterEntity>
 }

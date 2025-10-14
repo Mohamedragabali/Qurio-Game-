@@ -40,6 +40,7 @@ class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>(), 
         onboardingPresenter.view = this
         onboardingPresenter.setCoins()
         onboardingPresenter.setLives()
+        onboardingPresenter.setCharacter()
         initialButton()
         initialSwipeButton()
         initialTextColor()

@@ -58,4 +58,17 @@ class OnboardingPresenter @Inject constructor(
         }
     }
 
+    fun setCharacter(){
+        launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    repository.cacheCharacter()
+                }
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+
+    }
+
 }

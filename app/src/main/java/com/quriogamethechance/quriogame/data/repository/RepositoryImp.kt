@@ -7,9 +7,11 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.data.local.QurioGameDatabase
+import com.quriogamethechance.quriogame.data.local.charcter.CharacterEntity
 import com.quriogamethechance.quriogame.data.local.lastGame.LastGameEntity
 import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.remote.dto.GamesDto
+import com.quriogamethechance.quriogame.presenter.charcter.Character
 import com.quriogamethechance.quriogame.ui.games.Game
 import com.quriogamethechance.quriogame.ui.lastGames.LastGame
 import jakarta.inject.Inject
@@ -95,6 +97,119 @@ class RepositoryImp @Inject constructor(
     override suspend fun getCoins(): Int =
         preferencesDataStore.data.first()[keyCoins] ?: 0
 
+    override suspend fun cacheCharacter() {
+        val characters = listOf(
+            Character(
+                name = "Rika",
+                description = "Nature’s little explorer! Rika talks to mushrooms and swears squirrels give her battle advice. Always ready for an adventure.",
+                age = "Age: 12 Sunblooms",
+                price = 0,
+                isOpen = false,
+                openImage = R.drawable.rika,
+                closeImage = R.drawable.rika_image,
+                characterImage = R.drawable.rika_image
+            ),
+            Character(
+                name = "Kaiyo",
+                description = "A calm storm in human form. Kaiyo trains with ancient scrolls by day and drinks spicy tea by night. Sword sharp, heart sharper.",
+                age = "Age: 14 Storms",
+                price = 300,
+                isOpen = false,
+                openImage = R.drawable.kaiyo_open,
+                closeImage = R.drawable.kaiyo_close,
+                characterImage = R.drawable.kaiyo_image
+            ),
+            Character(
+                name = "Mimi",
+                description = "Tiny but terrifying! Mimi is always grumpy, but don’t let that scare you—unless you like pranks involving firecrackers.",
+                age = "Age: 10 Volcano Puffs",
+                price = 700,
+                isOpen = false,
+                openImage = R.drawable.mimi_open,
+                closeImage = R.drawable.mimi_close,
+                characterImage = R.drawable.mimi_image
+            ),
+            Character(
+                name = "Yoru",
+                description = "Quiet, mysterious, and probably watching you right now. Yoru shows up when you least expect it.",
+                age = "Age: 13 Shadows",
+                price = 1000,
+                isOpen = false,
+                openImage = R.drawable.yoru_open,
+                closeImage = R.drawable.yoru_close,
+                characterImage = R.drawable.yoru_image
+            ),
+            Character(
+                name = "Kuro",
+                description = "Cool jacket, cooler moves. Kuro never backs down from a challenge .",
+                age = "Age: 15 Thunder Beats",
+                price = 3000,
+                isOpen = false,
+                openImage = R.drawable.kuro_open,
+                closeImage = R.drawable.kuro_close,
+                characterImage = R.drawable.kuro_image
+            ),
+            Character(
+                name = "Miko",
+                description = "Energetic, cheerful, and faster than a leaf in the wind. Miko can turn any trivia into a giggle-fest.",
+                age = "Age: 11 Leaf Turns",
+                price = 7000,
+                isOpen = false,
+                openImage = R.drawable.miko_open,
+                closeImage = R.drawable.miko_close,
+                characterImage = R.drawable.miko_image
+            ),
+            Character(
+                name = "Aori",
+                description = "The sword chooses the wielder—and it chose Aori. Calm, focused.",
+                age = "Age: 13 Blade Echoes",
+                price = 12000,
+                isOpen = false,
+                openImage = R.drawable.aori_open,
+                closeImage = R.drawable.aori_close,
+                characterImage = R.drawable.aori_image
+            ),
+            Character(
+                name = "Nara",
+                description = "Part magic, part sass. Nara sparkles even when she’s mad.",
+                age = "Age: 12 Crystal Songs",
+                price = 30000,
+                isOpen = false,
+                openImage = R.drawable.nara_open,
+                closeImage = R.drawable.nara_close,
+                characterImage = R.drawable.nara_image
+            ),
+            Character(
+                name = "Renji",
+                description = "Small but mighty! Renji dreams of glory, carries a shield too big for him.",
+                age = "Age: 11 Hero Coins",
+                price = 50000,
+                isOpen = false,
+                openImage = R.drawable.renji_open,
+                closeImage = R.drawable.renji_close,
+                characterImage = R.drawable.renji_image
+            ),
+        )
+        characters.forEach {character ->
+            qurioiGameDatabase.CharacterDao().insertCharacter(
+                CharacterEntity(
+                    name = character.name,
+                    description = character.description,
+                    age = character.age,
+                    price = character.price,
+                    isOpen = character.isOpen,
+                    openImage = character.openImage,
+                    closeImage = character.closeImage,
+                    characterImage = character.characterImage
+                )
+            )
+        }
+
+    }
+
+    override suspend fun getAllCharacters(): List<CharacterEntity> {
+        return qurioiGameDatabase.CharacterDao().getAllCharacter()
+    }
     private fun findTypeIdText(typeId: Int): String {
         val gamesData = listOf(
             Game(
