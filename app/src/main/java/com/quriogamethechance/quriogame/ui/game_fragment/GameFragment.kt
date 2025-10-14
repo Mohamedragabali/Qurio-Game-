@@ -1,12 +1,12 @@
 package com.quriogamethechance.quriogame.ui.game_fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentGameBinding
@@ -23,7 +23,9 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
 
     @Inject
     lateinit var gamePresenter: GamePresenter
-    private var mainButtonType = MainButtonType.CHECK
+    private var mainButtonType = MainButtonType.NONE
+    private var secondaryButtonType = SecondaryButtonType.SKIP
+
     private var correctAnswerCount = 0
     private var wrongAnswerCount = 0
     private var skipQuestionCount = 0
@@ -40,11 +42,64 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     }
     override fun setup() {
         gamePresenter.view = this
+        gamePresenter.getLive()
         val args = GameFragmentArgs.fromBundle(requireArguments())
          difficulty = args.gameDifficultyLevel
          gamId = args.gameId
         getGameQuestions()
+        handleSecondaryButton()
+        disableMainButton()
+        binding.mainButton.root.isClickable = false
     }
+
+    override fun onGetLiveSuccess(liveCount: Int) {
+        binding.header.livesCount.text = liveCount.toString()
+        if (liveCount == 0){
+            disableMainButton()
+            handleSecondaryButton()
+        }else{
+            enableMainButton()
+            handleSkipButton()
+        }
+    }
+
+
+    private fun enableMainButton() {
+        binding.mainButton.apply {
+            root.isClickable = true
+            buttonText.setTextColor(ContextCompat.getColor(requireContext(), R.color.on_primary))
+            endShadow.visibility = View.VISIBLE
+            bottomShadow.visibility = View.VISIBLE
+            secondColor.background = ContextCompat.getDrawable(requireContext(), R.drawable.second_rectangle_with_radias)
+            topColor.background = ContextCompat.getDrawable(requireContext(), R.drawable.rectangle_with_radias)
+        }
+    }
+
+    private fun disableMainButton() {
+        binding.mainButton.apply {
+            root.isClickable = false
+            buttonText.setTextColor(ContextCompat.getColor(requireContext(), R.color.shade_tertiary))
+            endShadow.visibility = View.GONE
+            bottomShadow.visibility = View.GONE
+            secondColor.background = ContextCompat.getDrawable(requireContext(), R.drawable.disable_rectangle_with_radias)
+            topColor.background = ContextCompat.getDrawable(requireContext(), R.drawable.disable_rectangle_with_radias)
+        }
+    }
+
+
+    private fun handleSkipButton() {
+        binding.skipButton.text = requireContext().getString(R.string.skip)
+        secondaryButtonType = SecondaryButtonType.SKIP
+    }
+
+    private fun handleSecondaryButton() {
+        binding.skipButton.text = getString(R.string.buy_life)
+        secondaryButtonType = SecondaryButtonType.BUY_LIFE
+
+    }
+
+
+
 
     private fun getGameQuestions() {
         gamePresenter.onGetQuestionGame(gameId =  gamId , difficulty = difficulty)
@@ -65,11 +120,15 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
 
     private fun initialSkipButton() {
         binding.skipButton.setOnClickListener {
-            getOptionsButton().forEach {
-                it.isSelected = false
+            if(secondaryButtonType == SecondaryButtonType.SKIP){
+                getOptionsButton().forEach {
+                    it.isSelected = false
+                }
+                skipQuestionCount += 1
+                checkAnswer(true)
+            }else{
+                Toast.makeText(requireContext(), "Buy life", Toast.LENGTH_SHORT).show()
             }
-            skipQuestionCount += 1
-            checkAnswer(true)
         }
     }
 
@@ -96,6 +155,10 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
                         questionsCount = questions.size
                     )
                     binding.root.findNavController().navigate(action)
+                }
+
+                MainButtonType.NONE -> {
+
                 }
             }
         }
@@ -220,6 +283,10 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
             MainButtonType.FINISH -> {
                 binding.mainButton.buttonText.text = getString(R.string.finish)
             }
+
+            MainButtonType.NONE -> {
+                binding.mainButton.buttonText.text = getString(R.string.check)
+            }
         }
     }
 
@@ -278,6 +345,8 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         initialBackButton()
         onGetDataSuccess()
     }
+
+
 
     override fun onLoading() {
         disAppearAllMainItem()

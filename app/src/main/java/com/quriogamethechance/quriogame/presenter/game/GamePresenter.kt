@@ -39,4 +39,21 @@ class GamePresenter @Inject constructor(
             }
         }
     }
+
+    fun getLive(){
+        launch {
+            try {
+                val lives =
+                    withContext(Dispatchers.IO) {
+                        repository.getLives()
+                    }
+                (view as GameViewInterface).onGetLiveSuccess(
+                    liveCount = lives
+                )
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
+
 }

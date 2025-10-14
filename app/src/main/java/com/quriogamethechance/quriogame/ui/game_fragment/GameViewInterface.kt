@@ -4,4 +4,6 @@ import com.quriogamethechance.quriogame.ui.base.BaseViewInterface
 
 interface GameViewInterface : BaseViewInterface {
     fun onGetGameQuestion(questionsList:List<Question>)
+
+    fun onGetLiveSuccess(liveCount:Int)
 }
