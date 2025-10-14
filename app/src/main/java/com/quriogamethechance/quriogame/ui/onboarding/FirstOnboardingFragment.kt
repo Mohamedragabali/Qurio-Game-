@@ -38,6 +38,8 @@ class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>(), 
 
     override fun setup() {
         onboardingPresenter.view = this
+        onboardingPresenter.setCoins()
+        onboardingPresenter.setLives()
         initialButton()
         initialSwipeButton()
         initialTextColor()

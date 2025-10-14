@@ -17,6 +17,9 @@ class OnboardingPresenter @Inject constructor(
 
     private var job: Job = Job()
     override val coroutineContext: CoroutineContext get() = uiContext + job
+    private val startLivesCount = 5
+    private val startCoinsCount = 500
+
 
     fun setAppOpen() {
         view.onLoading()
@@ -30,4 +33,29 @@ class OnboardingPresenter @Inject constructor(
             }
         }
     }
+
+    fun setLives(){
+        launch {
+            try {
+                    withContext(Dispatchers.IO) {
+                        repository.setLives(startLivesCount)
+                    }
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
+
+    fun setCoins(){
+        launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    repository.setCoins(startCoinsCount)
+                }
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
+
 }
