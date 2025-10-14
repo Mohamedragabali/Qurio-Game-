@@ -39,12 +39,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
         homePresenter.view = this
         homePresenter.getLastGames()
         homePresenter.getDashboardData()
+        homePresenter.getCharacterInformation()
         binding.homeRecyclerView.adapter = adapter
 
         adapter.setData(
             listOf(
                 HomeData.UserInformation(
-                    characterName = "Hallo ",
+                    characterName = "",
                     characterImage = R.drawable.rika
                 ),
                 HomeData.Dashboard(
@@ -215,6 +216,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                 awardsCount = awardsCount
             ),
             itemsIndex[HomeItemType.DASHBOARD]!!
+        )
+    }
+
+    override fun onGetCharacterInformationSuccess(
+        characterName: String,
+        characterImage: Int
+    ) {
+        adapter.addItemInIndex(
+            HomeData.UserInformation(
+                characterName = characterName,
+                characterImage = characterImage
+            ),
+            itemsIndex[HomeItemType.USER_INFORMATION]!!
         )
     }
 

@@ -8,4 +8,6 @@ interface HomeViewInterface : BaseViewInterface {
 
     fun onGetDashboardSuccess(livesCount: Int , coinsCount: Int , awardsCount: Int)
 
+    fun onGetCharacterInformationSuccess(characterName: String, characterImage: Int)
+
 }

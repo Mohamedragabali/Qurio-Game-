@@ -56,4 +56,22 @@ class HomePresenter @Inject constructor(
             }
         }
     }
+
+    fun getCharacterInformation() {
+        launch {
+            try {
+                val data =
+                    withContext(Dispatchers.IO) {
+                        repository.getSelectedCharacter()
+                    }
+                val character = data.first()
+                (view as HomeViewInterface).onGetCharacterInformationSuccess(
+                    characterName = character.name,
+                    characterImage = character.openImage
+                )
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
 }
