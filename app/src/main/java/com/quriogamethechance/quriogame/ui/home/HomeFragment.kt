@@ -139,6 +139,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                 ),
             )
         )
+        initUpdateDataFromActionDialog()
+
+    }
+    fun initUpdateDataFromActionDialog(){
+        parentFragmentManager.setFragmentResultListener(Constant.UPDATE_DASHBOARD_DATA_KEY, this) { _, bundle ->
+            homePresenter.getDashboardData()
+        }
+
     }
 
     override fun onClickCharacter() {
@@ -222,4 +230,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
 
     }
 
+
+    object Constant{
+        const val UPDATE_DASHBOARD_DATA_KEY = "UPDATE_DASHBOARD_DATA_KEY"
+    }
 }
