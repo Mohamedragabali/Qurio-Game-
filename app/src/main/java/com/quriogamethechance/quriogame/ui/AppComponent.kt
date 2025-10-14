@@ -10,6 +10,10 @@ import com.quriogamethechance.quriogame.ui.game_fragment.GameFragment
 import com.quriogamethechance.quriogame.ui.home.HomeFragment
 import com.quriogamethechance.quriogame.ui.lastGames.LastGamesFragment
 import com.quriogamethechance.quriogame.ui.main.MainFragment
+import com.quriogamethechance.quriogame.ui.onboarding.FirstOnboardingFragment
+import com.quriogamethechance.quriogame.ui.onboarding.FourthOnboardingFragment
+import com.quriogamethechance.quriogame.ui.onboarding.SecondOnboardingFragment
+import com.quriogamethechance.quriogame.ui.onboarding.ThirdOnboardingFragment
 import dagger.Component
 import jakarta.inject.Singleton
 
@@ -24,5 +28,11 @@ interface AppComponent {
     fun inject(fragment: GameResultFragment)
     fun inject(fragment: HomeFragment)
     fun inject(fragment: MainFragment)
+
+    fun inject(fragment: FirstOnboardingFragment)
+    fun inject(fragment: SecondOnboardingFragment)
+    fun inject(fragment: ThirdOnboardingFragment)
+    fun inject(fragment: FourthOnboardingFragment)
+
 
 }

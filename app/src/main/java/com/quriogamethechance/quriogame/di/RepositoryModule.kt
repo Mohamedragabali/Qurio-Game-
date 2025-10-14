@@ -11,6 +11,7 @@ import com.quriogamethechance.quriogame.presenter.gameResult.GameResultPresenter
 import com.quriogamethechance.quriogame.presenter.home.HomePresenter
 import com.quriogamethechance.quriogame.presenter.lastGamePresenter.LastGamePresenter
 import com.quriogamethechance.quriogame.presenter.main.MainPresenter
+import com.quriogamethechance.quriogame.presenter.onboarding.OnboardingPresenter
 import dagger.Module
 import dagger.Provides
 
@@ -45,4 +46,8 @@ object RepositoryModule {
     @Provides
     fun provideMainPresenter(repository: Repository): MainPresenter =
         MainPresenter(repository)
+
+    @Provides
+    fun provideOnboardingPresenter(repository: Repository): OnboardingPresenter =
+        OnboardingPresenter(repository)
 }

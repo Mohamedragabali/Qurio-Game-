@@ -5,6 +5,7 @@ import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.graphics.LinearGradient
 import android.graphics.Shader
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -13,17 +14,29 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.databinding.FragmentFourthOnboardingBinding
+import com.quriogamethechance.quriogame.presenter.onboarding.OnboardingPresenter
+import com.quriogamethechance.quriogame.ui.QurioApp
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
+import jakarta.inject.Inject
 
-class FourthOnboardingFragment : BaseFragment<FragmentFourthOnboardingBinding>() {
+class FourthOnboardingFragment : BaseFragment<FragmentFourthOnboardingBinding>() , OnboardingViewInterface{
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFourthOnboardingBinding
         get() = FragmentFourthOnboardingBinding::inflate
     private val animatedArrowDuration = 1000L
     private val startBottomArrowDelay = 400L
     private val startMiddleArrowDelay = 750L
     private val startTopArrowDelay = 950L
+    @Inject
+    lateinit var onboardingPresenter: OnboardingPresenter
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as QurioApp).appComponent.inject(this)
+    }
 
     override fun setup() {
+        onboardingPresenter.view = this
         initialButton()
         initialSwipeButton()
         initialTextColor()
@@ -35,6 +48,7 @@ class FourthOnboardingFragment : BaseFragment<FragmentFourthOnboardingBinding>()
             it.findNavController().popBackStack()
         }
         binding.nextButton.setOnClickListener {
+            onboardingPresenter.setAppOpen()
             val action = FourthOnboardingFragmentDirections.actionFourthOnboardingFragmentToHomeFragment()
             it.findNavController().navigate(action)
         }
@@ -82,6 +96,7 @@ class FourthOnboardingFragment : BaseFragment<FragmentFourthOnboardingBinding>()
 
                     MotionEvent.ACTION_UP -> {
                         if (v.y <= 50f) {
+                            onboardingPresenter.setAppOpen()
                             val action =
                                 FourthOnboardingFragmentDirections.actionFourthOnboardingFragmentToHomeFragment()
                             v.findNavController().navigate(action)
@@ -115,6 +130,13 @@ class FourthOnboardingFragment : BaseFragment<FragmentFourthOnboardingBinding>()
         }
         fadeInOut.start()
     }
+    override fun onLoading() {
+    }
 
+    override fun onGetDataSuccess() {
+    }
+
+    override fun onGetDataError() {
+    }
 
 }

@@ -3,6 +3,7 @@ package com.quriogamethechance.quriogame.data.repository
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.data.local.LastGameDao
 import com.quriogamethechance.quriogame.data.local.LastGameEntity
@@ -66,6 +67,12 @@ class RepositoryImp @Inject constructor(
 
     override suspend fun getIsAppOpenBefore(): Boolean =
         preferencesDataStore.data.first()[keyIsAppOpenBefore] ?: false
+
+    override suspend fun setAppOpen() {
+        preferencesDataStore.edit { prefs ->
+            prefs[keyIsAppOpenBefore] = true
+        }
+    }
 
     private fun findTypeIdText(typeId: Int): String {
         val gamesData = listOf(

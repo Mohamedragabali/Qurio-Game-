@@ -17,4 +17,6 @@ interface Repository {
     suspend fun getLastGames(): List<LastGame>
 
     suspend fun getIsAppOpenBefore():Boolean
+
+    suspend fun setAppOpen()
 }
