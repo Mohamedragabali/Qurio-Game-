@@ -47,6 +47,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                     characterName = "Hallo ",
                     characterImage = R.drawable.rika
                 ),
+                HomeData.Dashboard(
+                    livesCount = 0,
+                    pointsCount = 0,
+                    awardsCount = 0
+                ),
                 HomeData.TrackingLogin(
                     listOf(
                         Day(

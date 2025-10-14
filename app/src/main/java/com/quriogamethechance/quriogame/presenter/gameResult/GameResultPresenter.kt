@@ -42,4 +42,34 @@ class GameResultPresenter @Inject constructor(
             }
         }
     }
+
+    fun setAward(coinsCount: Int){
+        launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    val oldCoins  = withContext(Dispatchers.IO) {
+                       repository.getCoins()
+                    }
+                    repository.setCoins(oldCoins + coinsCount)
+                }
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
+
+    fun setAlive(aliveCount: Int){
+        launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    val oldCoins  = withContext(Dispatchers.IO) {
+                        repository.getLives()
+                    }
+                    repository.setLives(oldCoins + aliveCount)
+                }
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
 }

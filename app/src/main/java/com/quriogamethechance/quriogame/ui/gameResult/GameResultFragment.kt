@@ -87,12 +87,12 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
             }
         }
         val starCount = initialStars(correctAnswerCount,skippedQuestion, questionsCount)
-        var coinsCount : Int
-        if(starCount == 0){
-             coinsCount = initialLoseViews(correctAnswerCount,bouns)
+
+        val coinsCount = if(starCount == 0){
+            initialLoseViews(correctAnswerCount,bouns)
 
         }else{
-            coinsCount =  initialWinViews(correctAnswerCount,bouns)
+            initialWinViews(correctAnswerCount,bouns)
         }
         val simpleFormat = SimpleDateFormat("dd-MM-yyyy", Locale.US)
         val currentDate = simpleFormat.format(Date())
@@ -103,6 +103,7 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
             time = 0,
             date = currentDate
         )
+        gameResultPresenter.setAward(coinsCount)
     }
 
     private fun initialStars(
@@ -131,6 +132,7 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
     }
 
     private fun initialLoseViews(correctAnswerCount: Int,bouns : Int ):Int {
+        gameResultPresenter.setAlive(-1)
         val coinsCount = correctAnswerCount * bouns
         binding.resultText.setImageResource(R.drawable.lose_text)
         binding.resultImage.setImageResource(R.drawable.lose_image)
@@ -141,6 +143,7 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
     }
 
     private fun initialWinViews(correctAnswerCount: Int,bouns : Int) : Int {
+        gameResultPresenter.setAlive(1)
         val coinsCount = correctAnswerCount * 100  * bouns
         binding.resultText.setImageResource(R.drawable.win_text)
         binding.resultImage.setImageResource(R.drawable.win_image)
