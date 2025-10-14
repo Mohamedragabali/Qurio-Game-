@@ -19,4 +19,10 @@ interface Repository {
     suspend fun getIsAppOpenBefore():Boolean
 
     suspend fun setAppOpen()
+
+    suspend fun setLives(lives:Int)
+    suspend fun getLives():Int
+
+    suspend fun setCoins(coins:Int)
+    suspend fun getCoins():Int
 }

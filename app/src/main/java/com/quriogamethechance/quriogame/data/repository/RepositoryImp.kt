@@ -4,6 +4,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.data.local.LastGameDao
 import com.quriogamethechance.quriogame.data.local.LastGameEntity
@@ -23,6 +24,8 @@ class RepositoryImp @Inject constructor(
     private val gameType = "multiple"
 
     private val keyIsAppOpenBefore = booleanPreferencesKey("IS_APP_OPEN_BEFORE")
+    private val keyLives = intPreferencesKey("LIVES")
+    private val keyCoins = intPreferencesKey("COINS")
 
 
     override suspend fun getGameQuestion(
@@ -73,6 +76,24 @@ class RepositoryImp @Inject constructor(
             prefs[keyIsAppOpenBefore] = true
         }
     }
+
+    override suspend fun setLives(lives: Int) {
+        preferencesDataStore.edit { prefs ->
+            prefs[keyLives] = lives
+        }
+    }
+
+    override suspend fun getLives(): Int  =
+        preferencesDataStore.data.first()[keyLives] ?: 0
+
+    override suspend fun setCoins(coins: Int) {
+        preferencesDataStore.edit { prefs ->
+            prefs[keyCoins] = coins
+        }
+    }
+
+    override suspend fun getCoins(): Int =
+        preferencesDataStore.data.first()[keyCoins] ?: 0
 
     private fun findTypeIdText(typeId: Int): String {
         val gamesData = listOf(
