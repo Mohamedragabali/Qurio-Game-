@@ -6,6 +6,7 @@ import com.quriogamethechance.quriogame.di.LocalModule
 import com.quriogamethechance.quriogame.di.NetworkModule
 import com.quriogamethechance.quriogame.di.RepositoryModule
 import com.quriogamethechance.quriogame.ui.buyLife.BuyLifeFragment
+import com.quriogamethechance.quriogame.ui.character.CharacterFragment
 import com.quriogamethechance.quriogame.ui.gameResult.GameResultFragment
 import com.quriogamethechance.quriogame.ui.game_fragment.GameFragment
 import com.quriogamethechance.quriogame.ui.home.HomeFragment
@@ -36,6 +37,8 @@ interface AppComponent {
     fun inject(fragment: FourthOnboardingFragment)
 
     fun inject(fragment: BuyLifeFragment)
+    fun inject(fragment: CharacterFragment)
+
 
 
 

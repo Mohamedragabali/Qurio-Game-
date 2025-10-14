@@ -98,122 +98,126 @@ class RepositoryImp @Inject constructor(
         preferencesDataStore.data.first()[keyCoins] ?: 0
 
     override suspend fun cacheCharacter() {
-        val characters = listOf(
-            Character(
-                name = "Rika",
-                description = "Nature’s little explorer! Rika talks to mushrooms and swears squirrels give her battle advice. Always ready for an adventure.",
-                age = "Age: 12 Sunblooms",
-                price = 0,
-                isOpen = false,
-                openImage = R.drawable.rika,
-                closeImage = R.drawable.rika_image,
-                characterImage = R.drawable.rika_image,
-                isSelected = true
-            ),
-            Character(
-                name = "Kaiyo",
-                description = "A calm storm in human form. Kaiyo trains with ancient scrolls by day and drinks spicy tea by night. Sword sharp, heart sharper.",
-                age = "Age: 14 Storms",
-                price = 300,
-                isOpen = false,
-                openImage = R.drawable.kaiyo_open,
-                closeImage = R.drawable.kaiyo_close,
-                characterImage = R.drawable.kaiyo_image,
-                isSelected = false
-            ),
-            Character(
-                name = "Mimi",
-                description = "Tiny but terrifying! Mimi is always grumpy, but don’t let that scare you—unless you like pranks involving firecrackers.",
-                age = "Age: 10 Volcano Puffs",
-                price = 700,
-                isOpen = false,
-                openImage = R.drawable.mimi_open,
-                closeImage = R.drawable.mimi_close,
-                characterImage = R.drawable.mimi_image,
-                isSelected = false
-            ),
-            Character(
-                name = "Yoru",
-                description = "Quiet, mysterious, and probably watching you right now. Yoru shows up when you least expect it.",
-                age = "Age: 13 Shadows",
-                price = 1000,
-                isOpen = false,
-                openImage = R.drawable.yoru_open,
-                closeImage = R.drawable.yoru_close,
-                characterImage = R.drawable.yoru_image,
-                isSelected = false
-            ),
-            Character(
-                name = "Kuro",
-                description = "Cool jacket, cooler moves. Kuro never backs down from a challenge .",
-                age = "Age: 15 Thunder Beats",
-                price = 3000,
-                isOpen = false,
-                openImage = R.drawable.kuro_open,
-                closeImage = R.drawable.kuro_close,
-                characterImage = R.drawable.kuro_image,
-                isSelected = false
-            ),
-            Character(
-                name = "Miko",
-                description = "Energetic, cheerful, and faster than a leaf in the wind. Miko can turn any trivia into a giggle-fest.",
-                age = "Age: 11 Leaf Turns",
-                price = 7000,
-                isOpen = false,
-                openImage = R.drawable.miko_open,
-                closeImage = R.drawable.miko_close,
-                characterImage = R.drawable.miko_image,
-                isSelected = false
-            ),
-            Character(
-                name = "Aori",
-                description = "The sword chooses the wielder—and it chose Aori. Calm, focused.",
-                age = "Age: 13 Blade Echoes",
-                price = 12000,
-                isOpen = false,
-                openImage = R.drawable.aori_open,
-                closeImage = R.drawable.aori_close,
-                characterImage = R.drawable.aori_image,
-                isSelected = false
-            ),
-            Character(
-                name = "Nara",
-                description = "Part magic, part sass. Nara sparkles even when she’s mad.",
-                age = "Age: 12 Crystal Songs",
-                price = 30000,
-                isOpen = false,
-                openImage = R.drawable.nara_open,
-                closeImage = R.drawable.nara_close,
-                characterImage = R.drawable.nara_image,
-                isSelected = false
-            ),
-            Character(
-                name = "Renji",
-                description = "Small but mighty! Renji dreams of glory, carries a shield too big for him.",
-                age = "Age: 11 Hero Coins",
-                price = 50000,
-                isOpen = false,
-                openImage = R.drawable.renji_open,
-                closeImage = R.drawable.renji_close,
-                characterImage = R.drawable.renji_image,
-                isSelected = false
-            ),
-        )
-        characters.forEach {character ->
-            qurioiGameDatabase.CharacterDao().insertCharacter(
-                CharacterEntity(
-                    name = character.name,
-                    description = character.description,
-                    age = character.age,
-                    price = character.price,
-                    isOpen = character.isOpen,
-                    openImage = character.openImage,
-                    closeImage = character.closeImage,
-                    characterImage = character.characterImage,
-                    isSelected = character.isSelected
-                )
+        val isEmpty = qurioiGameDatabase.CharacterDao().getAllCharacter().isEmpty()
+        if(isEmpty) {
+            val characters = listOf(
+                Character(
+                    name = "Rika",
+                    description = "Nature’s little explorer! Rika talks to mushrooms and swears squirrels give her battle advice. Always ready for an adventure.",
+                    age = "Age: 12 Sunblooms",
+                    price = 0,
+                    isOpen = true,
+                    openImage = R.drawable.rika,
+                    closeImage = R.drawable.rika,
+                    characterImage = R.drawable.rika_image,
+                    isSelected = true
+                ),
+                Character(
+                    name = "Kaiyo",
+                    description = "A calm storm in human form. Kaiyo trains with ancient scrolls by day and drinks spicy tea by night. Sword sharp, heart sharper.",
+                    age = "Age: 14 Storms",
+                    price = 300,
+                    isOpen = false,
+                    openImage = R.drawable.kaiyo_open,
+                    closeImage = R.drawable.kaiyo_close,
+                    characterImage = R.drawable.kaiyo_image,
+                    isSelected = false
+                ),
+                Character(
+                    name = "Mimi",
+                    description = "Tiny but terrifying! Mimi is always grumpy, but don’t let that scare you—unless you like pranks involving firecrackers.",
+                    age = "Age: 10 Volcano Puffs",
+                    price = 700,
+                    isOpen = false,
+                    openImage = R.drawable.mimi_open,
+                    closeImage = R.drawable.mimi_close,
+                    characterImage = R.drawable.mimi_image,
+                    isSelected = false
+                ),
+                Character(
+                    name = "Yoru",
+                    description = "Quiet, mysterious, and probably watching you right now. Yoru shows up when you least expect it.",
+                    age = "Age: 13 Shadows",
+                    price = 1000,
+                    isOpen = false,
+                    openImage = R.drawable.yoru_open,
+                    closeImage = R.drawable.yoru_close,
+                    characterImage = R.drawable.yoru_image,
+                    isSelected = false
+                ),
+                Character(
+                    name = "Kuro",
+                    description = "Cool jacket, cooler moves. Kuro never backs down from a challenge .",
+                    age = "Age: 15 Thunder Beats",
+                    price = 3000,
+                    isOpen = false,
+                    openImage = R.drawable.kuro_open,
+                    closeImage = R.drawable.kuro_close,
+                    characterImage = R.drawable.kuro_image,
+                    isSelected = false
+                ),
+                Character(
+                    name = "Miko",
+                    description = "Energetic, cheerful, and faster than a leaf in the wind. Miko can turn any trivia into a giggle-fest.",
+                    age = "Age: 11 Leaf Turns",
+                    price = 7000,
+                    isOpen = false,
+                    openImage = R.drawable.miko_open,
+                    closeImage = R.drawable.miko_close,
+                    characterImage = R.drawable.miko_image,
+                    isSelected = false
+                ),
+                Character(
+                    name = "Aori",
+                    description = "The sword chooses the wielder—and it chose Aori. Calm, focused.",
+                    age = "Age: 13 Blade Echoes",
+                    price = 12000,
+                    isOpen = false,
+                    openImage = R.drawable.aori_open,
+                    closeImage = R.drawable.aori_close,
+                    characterImage = R.drawable.aori_image,
+                    isSelected = false
+                ),
+                Character(
+                    name = "Nara",
+                    description = "Part magic, part sass. Nara sparkles even when she’s mad.",
+                    age = "Age: 12 Crystal Songs",
+                    price = 30000,
+                    isOpen = false,
+                    openImage = R.drawable.nara_open,
+                    closeImage = R.drawable.nara_close,
+                    characterImage = R.drawable.nara_image,
+                    isSelected = false
+                ),
+                Character(
+                    name = "Renji",
+                    description = "Small but mighty! Renji dreams of glory, carries a shield too big for him.",
+                    age = "Age: 11 Hero Coins",
+                    price = 50000,
+                    isOpen = false,
+                    openImage = R.drawable.renji_open,
+                    closeImage = R.drawable.renji_close,
+                    characterImage = R.drawable.renji_image,
+                    isSelected = false
+                ),
             )
+            characters.forEach {character ->
+                qurioiGameDatabase.CharacterDao().insertCharacter(
+                    CharacterEntity(
+                        name = character.name,
+                        description = character.description,
+                        age = character.age,
+                        price = character.price,
+                        isOpen = character.isOpen,
+                        openImage = character.openImage,
+                        closeImage = character.closeImage,
+                        characterImage = character.characterImage,
+                        isSelected = character.isSelected
+                    )
+                )
+            }
         }
+
 
     }
 
