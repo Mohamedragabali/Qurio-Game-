@@ -6,6 +6,7 @@ data class Character(
     val age : String,
     val price : Int,
     val isOpen: Boolean,
+    val isSelected : Boolean,
     val openImage:Int,
     val closeImage:Int,
     val characterImage:Int

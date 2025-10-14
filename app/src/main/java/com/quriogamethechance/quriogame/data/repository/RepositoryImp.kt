@@ -107,7 +107,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.rika,
                 closeImage = R.drawable.rika_image,
-                characterImage = R.drawable.rika_image
+                characterImage = R.drawable.rika_image,
+                isSelected = true
             ),
             Character(
                 name = "Kaiyo",
@@ -117,7 +118,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.kaiyo_open,
                 closeImage = R.drawable.kaiyo_close,
-                characterImage = R.drawable.kaiyo_image
+                characterImage = R.drawable.kaiyo_image,
+                isSelected = false
             ),
             Character(
                 name = "Mimi",
@@ -127,7 +129,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.mimi_open,
                 closeImage = R.drawable.mimi_close,
-                characterImage = R.drawable.mimi_image
+                characterImage = R.drawable.mimi_image,
+                isSelected = false
             ),
             Character(
                 name = "Yoru",
@@ -137,7 +140,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.yoru_open,
                 closeImage = R.drawable.yoru_close,
-                characterImage = R.drawable.yoru_image
+                characterImage = R.drawable.yoru_image,
+                isSelected = false
             ),
             Character(
                 name = "Kuro",
@@ -147,7 +151,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.kuro_open,
                 closeImage = R.drawable.kuro_close,
-                characterImage = R.drawable.kuro_image
+                characterImage = R.drawable.kuro_image,
+                isSelected = false
             ),
             Character(
                 name = "Miko",
@@ -157,7 +162,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.miko_open,
                 closeImage = R.drawable.miko_close,
-                characterImage = R.drawable.miko_image
+                characterImage = R.drawable.miko_image,
+                isSelected = false
             ),
             Character(
                 name = "Aori",
@@ -167,7 +173,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.aori_open,
                 closeImage = R.drawable.aori_close,
-                characterImage = R.drawable.aori_image
+                characterImage = R.drawable.aori_image,
+                isSelected = false
             ),
             Character(
                 name = "Nara",
@@ -177,7 +184,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.nara_open,
                 closeImage = R.drawable.nara_close,
-                characterImage = R.drawable.nara_image
+                characterImage = R.drawable.nara_image,
+                isSelected = false
             ),
             Character(
                 name = "Renji",
@@ -187,7 +195,8 @@ class RepositoryImp @Inject constructor(
                 isOpen = false,
                 openImage = R.drawable.renji_open,
                 closeImage = R.drawable.renji_close,
-                characterImage = R.drawable.renji_image
+                characterImage = R.drawable.renji_image,
+                isSelected = false
             ),
         )
         characters.forEach {character ->
@@ -200,7 +209,8 @@ class RepositoryImp @Inject constructor(
                     isOpen = character.isOpen,
                     openImage = character.openImage,
                     closeImage = character.closeImage,
-                    characterImage = character.characterImage
+                    characterImage = character.characterImage,
+                    isSelected = character.isSelected
                 )
             )
         }

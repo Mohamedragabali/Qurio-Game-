@@ -11,6 +11,7 @@ data class CharacterEntity(
     val age : String,
     val price : Int,
     val isOpen: Boolean,
+    val isSelected: Boolean,
     val openImage:Int,
     val closeImage:Int,
     val characterImage:Int
