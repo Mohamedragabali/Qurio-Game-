@@ -45,7 +45,7 @@ class RepositoryImp @Inject constructor(
     }
 
     override suspend fun getLastGames(): List<LastGame> {
-        return lastGameDao.getAllLastGames().map {
+        return lastGameDao.getAllLastGames().reversed().map {
             LastGame(
                 type = findTypeIdText(it.typeId),
                 coinsCount = it.coinsCount.toLong(),

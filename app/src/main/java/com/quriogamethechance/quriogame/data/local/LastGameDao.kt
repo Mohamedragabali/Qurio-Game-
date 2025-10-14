@@ -11,7 +11,7 @@ interface LastGameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
      fun insertLastGame(lastGame: LastGameEntity)
 
-    @Query("SELECT * FROM LAST_GAME_TABLE ORDER BY date DESC")
+    @Query("SELECT * FROM LAST_GAME_TABLE")
     fun getAllLastGames(): List<LastGameEntity>
 
 }
