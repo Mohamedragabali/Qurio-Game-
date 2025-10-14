@@ -49,9 +49,16 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         getGameQuestions()
         handleSecondaryButton()
         disableMainButton()
-        binding.mainButton.root.isClickable = false
-    }
 
+        initUpdateDataFromActionDialog()
+
+    }
+    fun initUpdateDataFromActionDialog(){
+        parentFragmentManager.setFragmentResultListener( Constant.UPDATE_ALIVE_COUNT_KEY, this) { _, bundle ->
+            gamePresenter.getLive()
+        }
+
+    }
     override fun onGetLiveSuccess(liveCount: Int) {
         binding.header.livesCount.text = liveCount.toString()
         if (liveCount == 0){
@@ -65,6 +72,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
 
 
     private fun enableMainButton() {
+        mainButtonType = MainButtonType.CHECK
         binding.mainButton.apply {
             root.isClickable = true
             buttonText.setTextColor(ContextCompat.getColor(requireContext(), R.color.on_primary))
@@ -127,7 +135,8 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
                 skipQuestionCount += 1
                 checkAnswer(true)
             }else{
-                Toast.makeText(requireContext(), "Buy life", Toast.LENGTH_SHORT).show()
+                val action = GameFragmentDirections.actionGameFragmentToBuyLifeFragment()
+                binding.root.findNavController().navigate(action)
             }
         }
     }
@@ -421,5 +430,8 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         binding.loading.root.visibility = View.VISIBLE
     }
 
+    object Constant{
+        const val UPDATE_ALIVE_COUNT_KEY = "UPDATE_ALIVE_COUNT_KEY"
+    }
 
 }

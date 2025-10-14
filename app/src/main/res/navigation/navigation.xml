@@ -205,6 +205,9 @@
             android:id="@+id/action_gameFragment_to_gameResultFragment"
             app:destination="@id/gameResultFragment"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_buyLifeFragment"
+            app:destination="@id/buyLifeFragment" />
     </fragment>
     <fragment
         android:id="@+id/lastGamesFragment"

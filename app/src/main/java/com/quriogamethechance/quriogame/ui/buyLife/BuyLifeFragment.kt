@@ -11,6 +11,7 @@ import com.quriogamethechance.quriogame.databinding.FragmentBuyLifeBinding
 import com.quriogamethechance.quriogame.presenter.buyAlive.BuyAlivePresenter
 import com.quriogamethechance.quriogame.ui.QurioApp
 import com.quriogamethechance.quriogame.ui.base.BaseDialogFragment
+import com.quriogamethechance.quriogame.ui.game_fragment.GameFragment
 import com.quriogamethechance.quriogame.ui.home.HomeFragment
 import jakarta.inject.Inject
 
@@ -84,6 +85,7 @@ class BuyLifeFragment : BaseDialogFragment<FragmentBuyLifeBinding>(), BuyLifeVie
     override fun onBuyAliveSuccess() {
         val result = Bundle().apply {}
         parentFragmentManager.setFragmentResult(HomeFragment.Constant.UPDATE_DASHBOARD_DATA_KEY, result)
+        parentFragmentManager.setFragmentResult(GameFragment.Constant.UPDATE_ALIVE_COUNT_KEY, result)
         dismiss()
     }
 
