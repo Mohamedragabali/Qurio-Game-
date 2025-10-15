@@ -41,6 +41,7 @@ class FirstOnboardingFragment : BaseFragment<FragmentFirstOnboardingBinding>(), 
         onboardingPresenter.setCoins()
         onboardingPresenter.setLives()
         onboardingPresenter.setCharacter()
+        onboardingPresenter.setAchievements()
         initialButton()
         initialSwipeButton()
         initialTextColor()

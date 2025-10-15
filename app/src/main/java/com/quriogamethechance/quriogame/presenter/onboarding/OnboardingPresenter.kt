@@ -71,4 +71,17 @@ class OnboardingPresenter @Inject constructor(
 
     }
 
+    fun setAchievements(){
+        launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    repository.cacheAchievement()
+                }
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+
+    }
+
 }
