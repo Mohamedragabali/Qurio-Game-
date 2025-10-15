@@ -10,4 +10,7 @@ interface HomeViewInterface : BaseViewInterface {
 
     fun onGetCharacterInformationSuccess(characterName: String, characterImage: Int)
 
+    fun onGetTrackingLoginSuccess( trackingResultList : List<Boolean> )
+
+
 }

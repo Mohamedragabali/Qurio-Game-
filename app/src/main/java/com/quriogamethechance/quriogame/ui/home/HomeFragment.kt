@@ -12,6 +12,10 @@ import com.quriogamethechance.quriogame.ui.base.BaseFragment
 import com.quriogamethechance.quriogame.ui.home.gamesItem.GameItem
 import com.quriogamethechance.quriogame.ui.lastGames.LastGame
 import jakarta.inject.Inject
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , HomeViewInterface {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
@@ -54,7 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                         ),
                         Day(
                             "M",
-                            true
+                            false
                         ),
                         Day(
                             "T",
@@ -133,6 +137,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                 ),
             )
         )
+        homePresenter.getTrackingLogin(getWeekDaysDate())
         initUpdateDataFromActionDialog()
 
     }
@@ -229,6 +234,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
         )
     }
 
+    override fun onGetTrackingLoginSuccess(trackingResultList: List<Boolean>) {
+        val daysChar = listOf("S", "M", "T", "W", "Th", "F", "S")
+        val newTrackingResultList = trackingResultList.mapIndexed { index, isDone ->
+            Day(
+                daysChar[index],
+                isDone
+            )
+        }
+        adapter.addItemInIndex(
+            HomeData.TrackingLogin(
+                newTrackingResultList
+            ),
+            itemsIndex[HomeItemType.TRACKING_LOGIN]!!
+        )
+    }
+
     override fun onLoading() {
 
     }
@@ -241,6 +262,47 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
 
     }
 
+    private fun getWeekDaysDate():List<String>{
+        val calendar = Calendar.getInstance()
+        calendar.firstDayOfWeek = Calendar.SUNDAY
+        calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
+
+        val weekDays = mutableListOf<String>()
+        val simpleFormat = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+        val firstDay = simpleFormat.format(calendar.time)
+        val currentDay  = simpleFormat.format(Date())
+
+        var dayBeforeCurrentDay = 0
+        if(currentDay == firstDay){
+            weekDays.add(currentDay)
+        }else{
+            weekDays.add(currentDay)
+            val calendar2 = Calendar.getInstance()
+            var todayString : String
+            do {
+                calendar2.add(Calendar.DAY_OF_YEAR, -1)
+                calendar2.firstDayOfWeek = Calendar.SUNDAY
+                todayString = simpleFormat.format(calendar2.time)
+                weekDays.add(todayString)
+                dayBeforeCurrentDay++
+            }while (todayString != firstDay)
+        }
+
+
+        val calendar3 = Calendar.getInstance()
+        var todayString2: String
+        val remindDays =  7 - 1 - dayBeforeCurrentDay
+
+        for (i in 0 until remindDays){
+            calendar3.add(Calendar.DAY_OF_YEAR, 1)
+            calendar3.firstDayOfWeek = Calendar.SUNDAY
+            todayString2 = simpleFormat.format(calendar3.time)
+            weekDays.add(todayString2)
+        }
+
+         weekDays.sort()
+        return weekDays
+    }
 
     object Constant{
         const val UPDATE_DASHBOARD_DATA_KEY = "UPDATE_DASHBOARD_DATA_KEY"

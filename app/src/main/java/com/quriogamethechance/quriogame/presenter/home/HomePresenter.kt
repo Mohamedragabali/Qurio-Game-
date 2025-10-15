@@ -77,4 +77,19 @@ class HomePresenter @Inject constructor(
             }
         }
     }
+
+    fun getTrackingLogin(
+        weekDays:List<String>
+    ) {
+        launch {
+            try {
+                val trackingResult = withContext(Dispatchers.IO) {
+                    repository.getTrackingResult(weekDays)
+                }
+                (view as HomeViewInterface).onGetTrackingLoginSuccess(trackingResult)
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
 }

@@ -385,6 +385,17 @@ class RepositoryImp @Inject constructor(
        return qurioiGameDatabase.AchievementDao().getAchievementsByName(achievementNickName).first()
     }
 
+    override suspend fun getTrackingResult(weekDays :List<String>): List<Boolean> {
+        val lastGames = getLastGames()
+        val trackingLogin  = mutableListOf<Boolean>(false,false,false,false,false,false,false)
+        lastGames.forEach {
+            if(weekDays.contains(it.data)) {
+                trackingLogin[weekDays.indexOf(it.data)] = true
+            }
+        }
+        return trackingLogin
+    }
+
     private fun findTypeIdText(typeId: Int): String {
         val gamesData = listOf(
             Game(
