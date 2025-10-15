@@ -7,6 +7,7 @@ import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.repository.Repository
 import com.quriogamethechance.quriogame.data.repository.RepositoryImp
 import com.quriogamethechance.quriogame.presenter.achievement.AchievementPresenter
+import com.quriogamethechance.quriogame.presenter.achievementDetiale.AchievementDetailsPresenter
 import com.quriogamethechance.quriogame.presenter.buyAlive.BuyAlivePresenter
 import com.quriogamethechance.quriogame.presenter.buyCharacter.BuyCharacterPresenter
 import com.quriogamethechance.quriogame.presenter.characterDetails.CharacterDetailsPresenter
@@ -75,4 +76,8 @@ object RepositoryModule {
     @Provides
     fun provideAchievementPresenter(repository: Repository): AchievementPresenter =
         AchievementPresenter(repository)
+
+    @Provides
+    fun provideAchievementDetailsPresenter(repository: Repository): AchievementDetailsPresenter =
+        AchievementDetailsPresenter(repository)
 }
