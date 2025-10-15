@@ -1,5 +1,6 @@
 package com.quriogamethechance.quriogame.presenter.characterDetails
 
+import com.quriogamethechance.quriogame.data.local.charcter.CharacterEntity
 import com.quriogamethechance.quriogame.data.repository.Repository
 import com.quriogamethechance.quriogame.presenter.base.BasePresenter
 import com.quriogamethechance.quriogame.presenter.charcter.Character
@@ -31,6 +32,7 @@ class CharacterDetailsPresenter @Inject constructor(
                 val character = data.first()
                 (view as CharacterDetailsViewInterface).onGetCharacterSuccess(
                     Character(
+                        id = character.id,
                         name = character.name,
                         description = character.description,
                         age = character.age,
@@ -42,6 +44,48 @@ class CharacterDetailsPresenter @Inject constructor(
                         characterImage = character.characterImage
                     )
                 )
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
+
+    fun setCharacter(character: Character) {
+        launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    val oldSelectedCharacter =repository.getSelectedCharacter().first()
+                    repository.updateCharacter(
+                        CharacterEntity(
+                            id = character.id,
+                            name = character.name,
+                            description = character.description,
+                            age = character.age,
+                            price = character.price,
+                            isOpen = true,
+                            isSelected = true,
+                            openImage = character.openImage,
+                            closeImage = character.closeImage,
+                            characterImage = character.characterImage
+                        )
+                    )
+                    repository.updateCharacter(
+                        CharacterEntity(
+                            id = oldSelectedCharacter.id,
+                            name = oldSelectedCharacter.name,
+                            description = oldSelectedCharacter.description,
+                            age = oldSelectedCharacter.age,
+                            price = oldSelectedCharacter.price,
+                            isOpen = oldSelectedCharacter.isOpen,
+                            isSelected = false,
+                            openImage = oldSelectedCharacter.openImage,
+                            closeImage = oldSelectedCharacter.closeImage,
+                            characterImage = oldSelectedCharacter.characterImage
+                        )
+                    )
+                }
+                (view as CharacterDetailsViewInterface).onSetCharacterSuccess()
+
             } catch (_: Exception) {
                 view.onGetDataError()
             }

@@ -11,6 +11,7 @@ import com.quriogamethechance.quriogame.presenter.characterDetails.CharacterDeta
 import com.quriogamethechance.quriogame.presenter.charcter.Character
 import com.quriogamethechance.quriogame.ui.QurioApp
 import com.quriogamethechance.quriogame.ui.base.BaseDialogFragment
+import com.quriogamethechance.quriogame.ui.home.HomeFragment
 import jakarta.inject.Inject
 
 class CharacterDetailsFragment : BaseDialogFragment<FragmentCharacterDetialsBinding>(),
@@ -44,9 +45,10 @@ class CharacterDetailsFragment : BaseDialogFragment<FragmentCharacterDetialsBind
             dismiss()
         }
         binding.buy.root.setOnClickListener {
-            val action = CharacterDetailsFragmentDirections.actionCharacterDetailsFragmentToBuyCharacterFragment2(
-                binding.characterName.text.toString()
-            )
+            val action =
+                CharacterDetailsFragmentDirections.actionCharacterDetailsFragmentToBuyCharacterFragment2(
+                    binding.characterName.text.toString()
+                )
             findNavController().navigate(action)
         }
     }
@@ -71,8 +73,30 @@ class CharacterDetailsFragment : BaseDialogFragment<FragmentCharacterDetialsBind
             binding.characterImage.setImageResource(characterImage)
             binding.lockImage.visibility = if (isOpen) View.GONE else View.VISIBLE
             binding.buy.root.visibility = if (isOpen) View.GONE else View.VISIBLE
-
         }
+        initOkButton(characters)
+    }
+
+    override fun onSetCharacterSuccess() {
+        val result = Bundle().apply {}
+        parentFragmentManager.setFragmentResult(HomeFragment.Constant.UPDATE_CHARACTER_INFORMATION_KEY, result)
+
+        findNavController().popBackStack(R.id.homeFragment,false)
+
+    }
+
+    private fun initOkButton(character: Character) {
+        if(character.isOpen){
+            binding.okButton.setOnClickListener {
+                characterDetailsPresenter.setCharacter( character)
+            }
+        }else{
+            binding.okButton.setOnClickListener {
+                findNavController().popBackStack(R.id.homeFragment,false)
+            }
+        }
+
+
     }
 
     override fun onLoading() {

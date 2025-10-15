@@ -5,4 +5,5 @@ import com.quriogamethechance.quriogame.ui.base.BaseViewInterface
 
 interface CharacterDetailsViewInterface : BaseViewInterface {
      fun onGetCharacterSuccess(characters: Character)
+     fun onSetCharacterSuccess()
 }
