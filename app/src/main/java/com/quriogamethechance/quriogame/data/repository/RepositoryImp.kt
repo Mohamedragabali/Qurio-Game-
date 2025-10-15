@@ -233,6 +233,10 @@ class RepositoryImp @Inject constructor(
         return qurioiGameDatabase.CharacterDao().getCharacterByName(characterName)
     }
 
+    override fun updateCharacter(characterEntity: CharacterEntity) {
+        qurioiGameDatabase.CharacterDao().insertCharacter(characterEntity)
+    }
+
     private fun findTypeIdText(typeId: Int): String {
         val gamesData = listOf(
             Game(

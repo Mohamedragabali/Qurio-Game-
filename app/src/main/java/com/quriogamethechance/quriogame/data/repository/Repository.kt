@@ -35,4 +35,6 @@ interface Repository {
 
     fun getCharacterByName(characterName: String): List<CharacterEntity>
 
+    fun updateCharacter(characterEntity: CharacterEntity)
+
 }
