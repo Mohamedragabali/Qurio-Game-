@@ -46,10 +46,13 @@ class HomePresenter @Inject constructor(
                 val coins = withContext(Dispatchers.IO) {
                     repository.getCoins()
                 }
+                val awardCount = withContext(Dispatchers.IO) {
+                    repository.getOpenAchievements()
+                }
                 (view as HomeViewInterface).onGetDashboardSuccess(
                     livesCount = lives,
                     coinsCount = coins,
-                    awardsCount = 0
+                    awardsCount = awardCount.size
                 )
             } catch (_: Exception) {
                 view.onGetDataError()
