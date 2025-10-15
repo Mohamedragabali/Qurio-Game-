@@ -24,7 +24,7 @@ class LastGamePresenter @Inject constructor(
         launch {
             try {
                 val data =
-                    withContext(Dispatchers.IO) { // Switch to IO dispatcher for network/database calls
+                    withContext(Dispatchers.IO) {
                         repository.getLastGames()
                     }
                 (view as LastGameViewInterface).onGetLastGameSuccess(

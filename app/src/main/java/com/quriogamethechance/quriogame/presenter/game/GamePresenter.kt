@@ -22,7 +22,7 @@ class GamePresenter @Inject constructor(
     fun onGetQuestionGame(gameId : Int , difficulty : String ){
         launch {
             try {
-                val data = withContext(Dispatchers.IO) { // Switch to IO dispatcher for network/database calls
+                val data = withContext(Dispatchers.IO) {
                     repository.getGameQuestion(gameId = gameId , difficulty = difficulty)
                 }
                 (view as GameViewInterface).onGetGameQuestion(

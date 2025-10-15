@@ -25,7 +25,7 @@ class BuyCharacterPresenter @Inject constructor(
         launch {
             try {
                 val coins =
-                    withContext(Dispatchers.IO) { // Switch to IO dispatcher for network/database calls
+                    withContext(Dispatchers.IO) {
                         repository.getCoins()
                     }
 

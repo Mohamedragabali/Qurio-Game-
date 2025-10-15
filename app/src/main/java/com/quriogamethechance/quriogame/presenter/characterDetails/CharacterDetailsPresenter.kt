@@ -26,7 +26,7 @@ class CharacterDetailsPresenter @Inject constructor(
         launch {
             try {
                 val data =
-                    withContext(Dispatchers.IO) { // Switch to IO dispatcher for network/database calls
+                    withContext(Dispatchers.IO) {
                         repository.getCharacterByName(characterName)
                     }
                 val character = data.first()
