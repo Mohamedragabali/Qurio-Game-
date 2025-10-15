@@ -79,12 +79,13 @@ class HomePresenter @Inject constructor(
     }
 
     fun getTrackingLogin(
-        weekDays:List<String>
+        weekDays:List<String>,
+        currentDate: String
     ) {
         launch {
             try {
                 val trackingResult = withContext(Dispatchers.IO) {
-                    repository.getTrackingResult(weekDays)
+                    repository.getTrackingResult(weekDays,currentDate)
                 }
                 (view as HomeViewInterface).onGetTrackingLoginSuccess(trackingResult)
             } catch (_: Exception) {

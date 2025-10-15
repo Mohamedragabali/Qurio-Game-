@@ -137,7 +137,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                 ),
             )
         )
-        homePresenter.getTrackingLogin(getWeekDaysDate())
+        homePresenter.getTrackingLogin(getWeekDaysDate() , currentDate())
         initUpdateDataFromActionDialog()
 
     }
@@ -262,6 +262,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
 
     }
 
+    private fun currentDate():String{
+        val simpleFormat = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+        return simpleFormat.format(Date())
+    }
     private fun getWeekDaysDate():List<String>{
         val calendar = Calendar.getInstance()
         calendar.firstDayOfWeek = Calendar.SUNDAY

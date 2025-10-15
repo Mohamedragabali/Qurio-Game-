@@ -87,7 +87,7 @@ class RepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getLives(): Int  =
+    override suspend fun getLives(): Int =
         preferencesDataStore.data.first()[keyLives] ?: 0
 
     override suspend fun setCoins(coins: Int) {
@@ -101,7 +101,7 @@ class RepositoryImp @Inject constructor(
 
     override suspend fun cacheCharacter() {
         val isEmpty = qurioiGameDatabase.CharacterDao().getAllCharacter().isEmpty()
-        if(isEmpty) {
+        if (isEmpty) {
             val characters = listOf(
                 Character(
                     name = "Rika",
@@ -203,7 +203,7 @@ class RepositoryImp @Inject constructor(
                     isSelected = false
                 ),
             )
-            characters.forEach {character ->
+            characters.forEach { character ->
                 qurioiGameDatabase.CharacterDao().insertCharacter(
                     CharacterEntity(
                         name = character.name,
@@ -239,7 +239,7 @@ class RepositoryImp @Inject constructor(
 
     override fun cacheAchievement() {
         val isEmpty = qurioiGameDatabase.CharacterDao().getAllCharacter().isEmpty()
-        if(isEmpty) {
+        if (isEmpty) {
             val achievement = listOf(
                 Achievement(
                     name = "Quiz Rookie",
@@ -247,7 +247,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Quiz Rookie",
                     isOpen = false,
-                    openImage =  R.drawable.quiz_rookie,
+                    openImage = R.drawable.quiz_rookie,
                     closeImage = R.drawable.quiz_rookie_closed,
                     howToGetIt = "Complete your first quiz.",
                 ),
@@ -257,7 +257,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Streak Starter",
                     isOpen = false,
-                    openImage =  R.drawable.streak_starter,
+                    openImage = R.drawable.streak_starter,
                     closeImage = R.drawable.streak_starter_closed,
                     howToGetIt = "Answer 3 questions correctly in a row.",
                 ),
@@ -267,7 +267,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Lucky Gueses",
                     isOpen = false,
-                    openImage =  R.drawable.lucky_guess,
+                    openImage = R.drawable.lucky_guess,
                     closeImage = R.drawable.lucky_guess_closed,
                     howToGetIt = "Answer a question correctly after selecting randomly within 2 seconds.",
                 ),
@@ -277,7 +277,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Explorer",
                     isOpen = false,
-                    openImage =  R.drawable.explorer,
+                    openImage = R.drawable.explorer,
                     closeImage = R.drawable.explorer_closed,
                     howToGetIt = "CPlay in at least 4 different categories.",
                 ),
@@ -287,7 +287,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Trivia Champ",
                     isOpen = false,
-                    openImage =  R.drawable.trivia_champ,
+                    openImage = R.drawable.trivia_champ,
                     closeImage = R.drawable.trivia_champ_closed,
                     howToGetIt = "Reach the top score in any category.",
                 ),
@@ -297,7 +297,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Collector",
                     isOpen = false,
-                    openImage =  R.drawable.collector,
+                    openImage = R.drawable.collector,
                     closeImage = R.drawable.collector_closed,
                     howToGetIt = "Unlock 5 different achievements.",
                 ),
@@ -307,7 +307,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Legend",
                     isOpen = false,
-                    openImage =  R.drawable.legend,
+                    openImage = R.drawable.legend,
                     closeImage = R.drawable.legend_closed,
                     howToGetIt = "Reach level 50 or higher."
                 ),
@@ -317,7 +317,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Untouchable",
                     isOpen = false,
-                    openImage =  R.drawable.untouchable,
+                    openImage = R.drawable.untouchable,
                     closeImage = R.drawable.untouchable_closed,
                     howToGetIt = "Correctly answer 10 consecutive questions in a single game without making a single mistake."
                 ),
@@ -327,7 +327,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Quick Thinker",
                     isOpen = false,
-                    openImage =  R.drawable.quick_thinker,
+                    openImage = R.drawable.quick_thinker,
                     closeImage = R.drawable.quick_thinker_closed,
                     howToGetIt = "Answer 5 questions correctly in less than 10 seconds each."
                 ),
@@ -337,7 +337,7 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Collector2",
                     isOpen = false,
-                    openImage =  R.drawable.collector2,
+                    openImage = R.drawable.collector2,
                     closeImage = R.drawable.collector2_closed,
                     howToGetIt = "Unlock 10 different achievements."
                 ),
@@ -347,12 +347,12 @@ class RepositoryImp @Inject constructor(
                     id = 0,
                     nickname = "Lucky Guess2",
                     isOpen = false,
-                    openImage =  R.drawable.lucky_guess2,
+                    openImage = R.drawable.lucky_guess2,
                     closeImage = R.drawable.lucky_guess2_closed,
                     howToGetIt = "Make two correct random guesses in one session."
                 )
             )
-            achievement.forEach {character ->
+            achievement.forEach { character ->
                 qurioiGameDatabase.AchievementDao().insertAchievement(
                     AchievementEntity(
                         name = character.name,
@@ -374,7 +374,7 @@ class RepositoryImp @Inject constructor(
     }
 
     override fun getAllAchievements(): List<AchievementEntity> {
-        return  qurioiGameDatabase.AchievementDao().getAllAchievements()
+        return qurioiGameDatabase.AchievementDao().getAllAchievements()
     }
 
     override fun getOpenAchievements(): List<AchievementEntity> {
@@ -382,17 +382,36 @@ class RepositoryImp @Inject constructor(
     }
 
     override fun getAchievementsByName(achievementNickName: String): AchievementEntity {
-       return qurioiGameDatabase.AchievementDao().getAchievementsByName(achievementNickName).first()
+        return qurioiGameDatabase.AchievementDao().getAchievementsByName(achievementNickName)
+            .first()
     }
 
-    override suspend fun getTrackingResult(weekDays :List<String>): List<Boolean> {
+    override suspend fun getTrackingResult(
+        weekDays: List<String>,
+        currentDate: String
+    ): List<Boolean> {
+
         val lastGames = getLastGames()
-        val trackingLogin  = mutableListOf<Boolean>(false,false,false,false,false,false,false)
-        lastGames.forEach {
-            if(weekDays.contains(it.data)) {
-                trackingLogin[weekDays.indexOf(it.data)] = true
+        val trackingLogin = mutableListOf(false, false, false, false, false, false, false)
+        val isMissDay = false
+        val currentDateIndex = weekDays.indexOf(currentDate)
+        lastGames.forEach {lastGame ->
+            for(i in currentDateIndex downTo 0){
+                if(lastGame.data == weekDays[i] ){
+                    trackingLogin[i] = true
+                }else if(currentDate > weekDays[i]){
+                    isMissDay
+                }
             }
         }
+
+        var missDay = true
+        for(i in currentDateIndex-1 downTo 0){
+            missDay = trackingLogin[i] && missDay
+            trackingLogin[i] = false || missDay
+
+        }
+
         return trackingLogin
     }
 

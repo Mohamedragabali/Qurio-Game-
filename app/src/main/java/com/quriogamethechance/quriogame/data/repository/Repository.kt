@@ -48,5 +48,5 @@ interface Repository {
 
     fun getAchievementsByName(achievementNickName: String): AchievementEntity
 
-    suspend fun getTrackingResult(weekDays :List<String>):List<Boolean>
+    suspend fun getTrackingResult(weekDays :List<String>,currentDate: String):List<Boolean>
 }
