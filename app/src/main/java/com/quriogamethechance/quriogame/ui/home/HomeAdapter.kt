@@ -211,15 +211,18 @@ class HomeAdapter(private var list: List<HomeData>, private val interaction: Hom
     private fun coinsToString(coinsCount: Long):String{
         var text = ""
         val length = coinsCount.toString().length
-        for(i in length downTo  0 step 3){
-            text = if(i-3 > 0 ){
-
-                coinsCount.toString().substring(i-3,i) + if(i == length) {""}else {", ${text}"}
-            }else{
-                coinsCount.toString().substring(0,i)+ if(i == 0) {""}else {","} + text
+        if(length > 3 ){
+            for(i in length downTo  0 step 3){
+                text = if(i-3 > 0 ){
+                    coinsCount.toString().substring(i-3,i) + if(i == length) {""}else {","} + text
+                }else{
+                    coinsCount.toString().substring(0,i)+ if(i == 0) {""}else {","} + text
+                }
             }
+            return text
+        }else{
+            return coinsCount.toString()
         }
-        return text
     }
 
     private fun manageCircleDay(dayItem: TrackingDayItemBinding, day: Day) {
