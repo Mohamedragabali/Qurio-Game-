@@ -1,5 +1,6 @@
 package com.quriogamethechance.quriogame.data.repository
 
+import com.quriogamethechance.quriogame.data.local.achievement.AchievementEntity
 import com.quriogamethechance.quriogame.data.local.charcter.CharacterEntity
 import com.quriogamethechance.quriogame.data.remote.dto.GamesDto
 import com.quriogamethechance.quriogame.ui.lastGames.LastGame
@@ -36,5 +37,15 @@ interface Repository {
     fun getCharacterByName(characterName: String): List<CharacterEntity>
 
     fun updateCharacter(characterEntity: CharacterEntity)
+
+    fun cacheAchievement()
+
+    fun updateAchievement(achievement: AchievementEntity)
+
+    fun getAllAchievements(): List<AchievementEntity>
+
+    fun getOpenAchievements(): List<AchievementEntity>
+
+    fun getAchievementsByName(achievementNickName: String): AchievementEntity
 
 }
