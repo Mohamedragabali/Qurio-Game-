@@ -7,10 +7,12 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.data.local.QurioGameDatabase
+import com.quriogamethechance.quriogame.data.local.achievement.AchievementEntity
 import com.quriogamethechance.quriogame.data.local.charcter.CharacterEntity
 import com.quriogamethechance.quriogame.data.local.lastGame.LastGameEntity
 import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.remote.dto.GamesDto
+import com.quriogamethechance.quriogame.presenter.achievement.Achievement
 import com.quriogamethechance.quriogame.presenter.charcter.Character
 import com.quriogamethechance.quriogame.ui.games.Game
 import com.quriogamethechance.quriogame.ui.lastGames.LastGame
@@ -217,8 +219,6 @@ class RepositoryImp @Inject constructor(
                 )
             }
         }
-
-
     }
 
     override suspend fun getAllCharacters(): List<CharacterEntity> {
@@ -235,6 +235,154 @@ class RepositoryImp @Inject constructor(
 
     override fun updateCharacter(characterEntity: CharacterEntity) {
         qurioiGameDatabase.CharacterDao().insertCharacter(characterEntity)
+    }
+
+    override fun cacheAchievement() {
+        val isEmpty = qurioiGameDatabase.CharacterDao().getAllCharacter().isEmpty()
+        if(isEmpty) {
+            val achievement = listOf(
+                Achievement(
+                    name = "Quiz Rookie",
+                    description = "Welcome to the quiz world! You’ve just started your journey.",
+                    id = 0,
+                    nickname = "Quiz Rookie",
+                    isOpen = false,
+                    openImage =  R.drawable.quiz_rookie,
+                    closeImage = R.drawable.quiz_rookie_closed,
+                    howToGetIt = "Complete your first quiz.",
+                ),
+                Achievement(
+                    name = "Streak Starter",
+                    description = "You’re getting into rhythm!",
+                    id = 0,
+                    nickname = "Streak Starter",
+                    isOpen = false,
+                    openImage =  R.drawable.streak_starter,
+                    closeImage = R.drawable.streak_starter_closed,
+                    howToGetIt = "Answer 3 questions correctly in a row.",
+                ),
+                Achievement(
+                    name = "Lucky Gueses",
+                    description = "You’ve proven your luck!",
+                    id = 0,
+                    nickname = "Lucky Gueses",
+                    isOpen = false,
+                    openImage =  R.drawable.lucky_guess,
+                    closeImage = R.drawable.lucky_guess_closed,
+                    howToGetIt = "Answer a question correctly after selecting randomly within 2 seconds.",
+                ),
+                Achievement(
+                    name = "Explorer",
+                    description = "You love experimenting and discovering! You've tried several categories and aren't limited to just one.",
+                    id = 0,
+                    nickname = "Explorer",
+                    isOpen = false,
+                    openImage =  R.drawable.explorer,
+                    closeImage = R.drawable.explorer_closed,
+                    howToGetIt = "CPlay in at least 4 different categories.",
+                ),
+                Achievement(
+                    name = "rivia Champ",
+                    description = "You’re the best of the best!",
+                    id = 0,
+                    nickname = "Trivia Champ",
+                    isOpen = false,
+                    openImage =  R.drawable.trivia_champ,
+                    closeImage = R.drawable.trivia_champ_closed,
+                    howToGetIt = "Reach the top score in any category.",
+                ),
+                Achievement(
+                    name = "Collector",
+                    description = "You’ve collected quite a few wins!",
+                    id = 0,
+                    nickname = "Collector",
+                    isOpen = false,
+                    openImage =  R.drawable.collector,
+                    closeImage = R.drawable.collector_closed,
+                    howToGetIt = "Unlock 5 different achievements.",
+                ),
+                Achievement(
+                    name = "Legend",
+                    description = "Your name echoes across the quiz halls!",
+                    id = 0,
+                    nickname = "Legend",
+                    isOpen = false,
+                    openImage =  R.drawable.legend,
+                    closeImage = R.drawable.legend_closed,
+                    howToGetIt = "Reach level 50 or higher."
+                ),
+                Achievement(
+                    name = "Untouchable",
+                    description = "You rarely make mistakes! You're at a very high level and dominate the game.",
+                    id = 0,
+                    nickname = "Untouchable",
+                    isOpen = false,
+                    openImage =  R.drawable.untouchable,
+                    closeImage = R.drawable.untouchable_closed,
+                    howToGetIt = "Correctly answer 10 consecutive questions in a single game without making a single mistake."
+                ),
+                Achievement(
+                    name = "Quick Thinker",
+                    description = "You’re fast and accurate!",
+                    id = 0,
+                    nickname = "Quick Thinker",
+                    isOpen = false,
+                    openImage =  R.drawable.quick_thinker,
+                    closeImage = R.drawable.quick_thinker_closed,
+                    howToGetIt = "Answer 5 questions correctly in less than 10 seconds each."
+                ),
+                Achievement(
+                    name = "Collector",
+                    description = "You’re a master collector!",
+                    id = 0,
+                    nickname = "Collector2",
+                    isOpen = false,
+                    openImage =  R.drawable.collector2,
+                    closeImage = R.drawable.collector2_closed,
+                    howToGetIt = "Unlock 10 different achievements."
+                ),
+                Achievement(
+                    name = "Lucky Guess",
+                    description = "You’ve proven your luck!",
+                    id = 0,
+                    nickname = "Lucky Guess2",
+                    isOpen = false,
+                    openImage =  R.drawable.lucky_guess2,
+                    closeImage = R.drawable.lucky_guess2_closed,
+                    howToGetIt = "Make two correct random guesses in one session."
+                )
+            )
+            achievement.forEach {character ->
+                qurioiGameDatabase.AchievementDao().insertAchievement(
+                    AchievementEntity(
+                        name = character.name,
+                        description = character.description,
+                        id = character.id,
+                        nickname = character.nickname,
+                        isOpen = character.isOpen,
+                        openImage = character.openImage,
+                        closeImage = character.closeImage,
+                        howToGetIt = character.howToGetIt,
+                    )
+                )
+            }
+        }
+    }
+
+    override fun updateAchievement(achievement: AchievementEntity) {
+        qurioiGameDatabase.AchievementDao().insertAchievement(achievement)
+    }
+
+    override fun getAllAchievements(): List<AchievementEntity> {
+        return  qurioiGameDatabase.AchievementDao().getAllAchievements()
+    }
+
+    override fun getOpenAchievements(): List<AchievementEntity> {
+        return qurioiGameDatabase.AchievementDao().getOpenAchievements()
+    }
+
+    override fun getAchievementsByName(achievementNickName: String): AchievementEntity {
+       return qurioiGameDatabase.AchievementDao().getAchievementsByName(achievementNickName).first()
     }
 
     private fun findTypeIdText(typeId: Int): String {
