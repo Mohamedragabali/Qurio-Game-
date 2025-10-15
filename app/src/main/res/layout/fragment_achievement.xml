@@ -154,7 +154,7 @@
                     android:layout_width="145dp"
                     android:layout_height="60dp"
                     android:layout_marginVertical="8dp"
-                    android:text="Character"
+                    android:text="@string/achievements"
                     android:gravity="center"
                     android:paddingBottom="12dp"
                     android:background="@drawable/dialog_header_background"
