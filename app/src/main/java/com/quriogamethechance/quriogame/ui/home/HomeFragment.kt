@@ -44,15 +44,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
 
         adapter.setData(
             listOf(
-                HomeData.UserInformation(
-                    characterName = "",
-                    characterImage = R.drawable.rika
-                ),
-                HomeData.Dashboard(
-                    livesCount = 0,
-                    pointsCount = 0,
-                    awardsCount = 0
-                ),
+                HomeData.UserInformation(characterName = "", characterImage = R.drawable.rika),
+                HomeData.Dashboard(livesCount = 0, pointsCount = 0, awardsCount = 0),
                 HomeData.TrackingLogin(
                     listOf(
                         Day(
@@ -146,6 +139,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
     fun initUpdateDataFromActionDialog(){
         parentFragmentManager.setFragmentResultListener(Constant.UPDATE_DASHBOARD_DATA_KEY, this) { _, bundle ->
             homePresenter.getDashboardData()
+        }
+
+        parentFragmentManager.setFragmentResultListener(Constant.UPDATE_CHARACTER_INFORMATION_KEY, this) { _, bundle ->
+            homePresenter.getCharacterInformation()
         }
 
     }
@@ -247,5 +244,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
 
     object Constant{
         const val UPDATE_DASHBOARD_DATA_KEY = "UPDATE_DASHBOARD_DATA_KEY"
+        const val UPDATE_CHARACTER_INFORMATION_KEY = "UPDATE_CHARACTER_INFORMATION_KEY"
     }
 }

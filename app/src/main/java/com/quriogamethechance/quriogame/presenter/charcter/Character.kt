@@ -1,6 +1,7 @@
 package com.quriogamethechance.quriogame.presenter.charcter
 
 data class Character(
+    val id : Int = 0 ,
     val name : String,
     val description : String,
     val age : String,
