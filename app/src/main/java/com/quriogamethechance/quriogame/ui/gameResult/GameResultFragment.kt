@@ -117,7 +117,7 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
             binding.endStar.visibility = View.VISIBLE
             3
         }
-        else if(correctAnswerCount >= questionsCount * 0.80 && skippedQuestion < 1 ){
+        else if(correctAnswerCount >= questionsCount * 0.80 && skippedQuestion <= 1 ){
             binding.firstStar.visibility = View.VISIBLE
             binding.endStar.visibility = View.VISIBLE
             2
@@ -163,16 +163,6 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
                 gameId = gameId , gameDifficultyLevel = gameDifficulty)
             binding.root.findNavController().navigate(action)
         }
-    }
-
-    override fun insertLastGame(
-        typeId: Int,
-        coinsCount: Int,
-        starCount: Int,
-        time: Int,
-        date: String
-    ) {
-
     }
 
     override fun onLoading() {
