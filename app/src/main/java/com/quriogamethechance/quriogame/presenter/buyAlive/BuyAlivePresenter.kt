@@ -18,23 +18,13 @@ class BuyAlivePresenter @Inject constructor(
     private var job: Job = Job()
     override val coroutineContext: CoroutineContext get() = uiContext + job
 
-    fun getCoins(){
-        launch {
-            try {
-                val coins =
-                    withContext(Dispatchers.IO) {
-                        repository.getCoins()
-                    }
-                (view as BuyLifeViewInterface).onGetCoinsSuccess(coins)
-            } catch (_: Exception) {
-                view.onGetDataError()
-            }
-        }
-    }
-
     fun buyAlive(){
         launch {
             try {
+                val livePrice =
+                    withContext(Dispatchers.IO) {
+                        repository.getLivePrice()
+                    }
                 val alive = withContext(Dispatchers.IO) {
                     repository.getLives()
                 }
@@ -45,11 +35,32 @@ class BuyAlivePresenter @Inject constructor(
                     withContext(Dispatchers.IO) {
                         repository.getCoins()
                     }
+
                 withContext(Dispatchers.IO) {
-                    repository.setCoins(coins-200)
+                    repository.setCoins(coins-livePrice)
                 }
                 (view as BuyLifeViewInterface).onBuyAliveSuccess()
 
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
+
+    fun getLivePrice(){
+        launch {
+            try {
+                val livePrice =
+                    withContext(Dispatchers.IO) {
+                        repository.getLivePrice()
+                    }
+                val coins =
+                    withContext(Dispatchers.IO) {
+                        repository.getCoins()
+                    }
+                (view as BuyLifeViewInterface).onGetLivePriceSuccess(
+                    price = livePrice , coinsCount = coins
+                )
             } catch (_: Exception) {
                 view.onGetDataError()
             }

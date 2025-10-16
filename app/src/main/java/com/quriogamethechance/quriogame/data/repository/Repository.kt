@@ -54,4 +54,6 @@ interface Repository {
     suspend fun setSetting(soundDegree:Float,musicDegree:Float)
 
     suspend fun getSetting(): Setting
+
+    suspend fun getLivePrice():Int
 }

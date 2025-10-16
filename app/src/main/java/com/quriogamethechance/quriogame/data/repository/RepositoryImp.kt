@@ -27,6 +27,8 @@ class RepositoryImp @Inject constructor(
     private val preferencesDataStore: DataStore<Preferences>
 ) : Repository {
     private val gameQuestionAmount = 12
+    private val gameLivePrice = 200
+    private val freeLivePrice = 0
     private val gameType = "multiple"
 
     private val keyIsAppOpenBefore = booleanPreferencesKey("IS_APP_OPEN_BEFORE")
@@ -433,6 +435,16 @@ class RepositoryImp @Inject constructor(
         val soundDegree = preferencesDataStore.data.first()[keySoundDegree] ?: 0.0f
         val musicDegree = preferencesDataStore.data.first()[keyMusicDegree] ?: 0.0f
         return Setting(soundDegree = soundDegree , musicDegree = musicDegree)
+    }
+
+    override suspend fun getLivePrice(): Int {
+        val livesCount = getLives()
+        val getCoins = getCoins()
+        return if (livesCount == 0 && getCoins < gameLivePrice) {
+            freeLivePrice
+        } else {
+            gameLivePrice
+        }
     }
 
     private fun findTypeIdText(typeId: Int): String {

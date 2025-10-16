@@ -32,8 +32,7 @@ class BuyLifeFragment : BaseDialogFragment<FragmentBuyLifeBinding>(), BuyLifeVie
         initButton()
         disableBuyButton()
         buyLifePresenter.view  = this
-        buyLifePresenter.getCoins()
-
+        buyLifePresenter.getLivePrice()
     }
 
     private fun initButton() {
@@ -76,17 +75,18 @@ class BuyLifeFragment : BaseDialogFragment<FragmentBuyLifeBinding>(), BuyLifeVie
         }
     }
 
-    override fun onGetCoinsSuccess(coinsCount: Int) {
-        if(coinsCount >= 200 ){
-            enableMainButton()
-        }
-    }
-
     override fun onBuyAliveSuccess() {
         val result = Bundle().apply {}
         parentFragmentManager.setFragmentResult(HomeFragment.Constant.UPDATE_DASHBOARD_DATA_KEY, result)
         parentFragmentManager.setFragmentResult(GameFragment.Constant.UPDATE_ALIVE_COUNT_KEY, result)
         dismiss()
+    }
+
+    override fun onGetLivePriceSuccess(price: Int , coinsCount: Int) {
+        binding.price.text = "$price X"
+        if(coinsCount>= price ){
+            enableMainButton()
+        }
     }
 
     override fun onLoading() {
