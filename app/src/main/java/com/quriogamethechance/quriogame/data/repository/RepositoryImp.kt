@@ -4,6 +4,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
 import com.quriogamethechance.quriogame.R
 import com.quriogamethechance.quriogame.data.local.QurioGameDatabase
@@ -14,6 +15,7 @@ import com.quriogamethechance.quriogame.data.remote.GameApiService
 import com.quriogamethechance.quriogame.data.remote.dto.GamesDto
 import com.quriogamethechance.quriogame.presenter.achievement.Achievement
 import com.quriogamethechance.quriogame.presenter.charcter.Character
+import com.quriogamethechance.quriogame.presenter.setting.Setting
 import com.quriogamethechance.quriogame.ui.games.Game
 import com.quriogamethechance.quriogame.ui.lastGames.LastGame
 import jakarta.inject.Inject
@@ -28,6 +30,8 @@ class RepositoryImp @Inject constructor(
     private val gameType = "multiple"
 
     private val keyIsAppOpenBefore = booleanPreferencesKey("IS_APP_OPEN_BEFORE")
+    private val keySoundDegree = floatPreferencesKey("SOUND_DEGREE")
+    private val keyMusicDegree = floatPreferencesKey("MUSIC_DEGREE")
     private val keyLives = intPreferencesKey("LIVES")
     private val keyCoins = intPreferencesKey("COINS")
 
@@ -413,6 +417,22 @@ class RepositoryImp @Inject constructor(
         }
 
         return trackingLogin
+    }
+
+    override suspend fun setSetting(
+        soundDegree: Float,
+        musicDegree: Float
+    ) {
+        preferencesDataStore.edit { prefs ->
+            prefs[keySoundDegree] = soundDegree
+            prefs[keyMusicDegree] = musicDegree
+        }
+    }
+
+    override suspend fun getSetting(): Setting {
+        val soundDegree = preferencesDataStore.data.first()[keySoundDegree] ?: 0.0f
+        val musicDegree = preferencesDataStore.data.first()[keyMusicDegree] ?: 0.0f
+        return Setting(soundDegree = soundDegree , musicDegree = musicDegree)
     }
 
     private fun findTypeIdText(typeId: Int): String {

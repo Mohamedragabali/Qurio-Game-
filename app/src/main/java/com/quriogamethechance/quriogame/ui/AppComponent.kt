@@ -20,6 +20,7 @@ import com.quriogamethechance.quriogame.ui.onboarding.FirstOnboardingFragment
 import com.quriogamethechance.quriogame.ui.onboarding.FourthOnboardingFragment
 import com.quriogamethechance.quriogame.ui.onboarding.SecondOnboardingFragment
 import com.quriogamethechance.quriogame.ui.onboarding.ThirdOnboardingFragment
+import com.quriogamethechance.quriogame.ui.settings.SettingsFragment
 import dagger.Component
 import jakarta.inject.Singleton
 
@@ -47,6 +48,8 @@ interface AppComponent {
 
     fun inject(fragment: AchievementFragment)
     fun inject(fragment: AchievementDetailFragment)
+
+    fun inject(fragment: SettingsFragment)
 
 
 

@@ -3,6 +3,7 @@ package com.quriogamethechance.quriogame.data.repository
 import com.quriogamethechance.quriogame.data.local.achievement.AchievementEntity
 import com.quriogamethechance.quriogame.data.local.charcter.CharacterEntity
 import com.quriogamethechance.quriogame.data.remote.dto.GamesDto
+import com.quriogamethechance.quriogame.presenter.setting.Setting
 import com.quriogamethechance.quriogame.ui.lastGames.LastGame
 
 interface Repository {
@@ -49,4 +50,8 @@ interface Repository {
     fun getAchievementsByName(achievementNickName: String): AchievementEntity
 
     suspend fun getTrackingResult(weekDays :List<String>,currentDate: String):List<Boolean>
+
+    suspend fun setSetting(soundDegree:Float,musicDegree:Float)
+
+    suspend fun getSetting(): Setting
 }

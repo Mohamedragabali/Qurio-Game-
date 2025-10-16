@@ -18,6 +18,7 @@ import com.quriogamethechance.quriogame.presenter.home.HomePresenter
 import com.quriogamethechance.quriogame.presenter.lastGamePresenter.LastGamePresenter
 import com.quriogamethechance.quriogame.presenter.main.MainPresenter
 import com.quriogamethechance.quriogame.presenter.onboarding.OnboardingPresenter
+import com.quriogamethechance.quriogame.presenter.setting.SettingPresenter
 import dagger.Module
 import dagger.Provides
 
@@ -80,4 +81,8 @@ object RepositoryModule {
     @Provides
     fun provideAchievementDetailsPresenter(repository: Repository): AchievementDetailsPresenter =
         AchievementDetailsPresenter(repository)
+
+    @Provides
+    fun provideSettingPresenter(repository: Repository): SettingPresenter =
+        SettingPresenter(repository)
 }
