@@ -40,6 +40,7 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
         val questionsCount = args.questionsCount
         val correctAnswerInRow = args.correctAnswerInRow
         val luckyAnswerAnswer  = args.luckyCorrectAnswer
+        val totalGameTime = args.totalTime
 
 
         gameDifficulty = args.gameDifficulty
@@ -58,7 +59,8 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
             questionsCount = questionsCount,
             gameDifficulty = gameDifficulty,
             correctAnswerInRow = correctAnswerInRow,
-            luckyAnswerAnswer = luckyAnswerAnswer
+            luckyAnswerAnswer = luckyAnswerAnswer,
+            gameTime = totalGameTime
         )
     }
 
@@ -79,7 +81,8 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
         questionsCount: Int,
         gameDifficulty: String,
         correctAnswerInRow: Int,
-        luckyAnswerAnswer: Int
+        luckyAnswerAnswer: Int,
+        gameTime : Int
     ) {
         val bouns = when (gameDifficulty) {
             "hard" -> {
@@ -115,7 +118,7 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
             typeId = gameId,
             coinsCount = coinsCount,
             starCount = starCount,
-            time = 0,
+            time = gameTime,
             date = currentDate
         )
         gameResultPresenter.setAward(coinsCount)

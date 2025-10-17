@@ -261,6 +261,9 @@
         <argument
             android:name="lucky_correct_answer"
             app:argType="integer" />
+        <argument
+            android:name="total_time"
+            app:argType="integer" />
     </fragment>
 
 

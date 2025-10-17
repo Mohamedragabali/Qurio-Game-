@@ -1,7 +1,6 @@
 package com.quriogamethechance.quriogame.ui.game_fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +45,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     lateinit var difficulty : String
      var gamId : Int = 0
 
+    private var totalTime = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity().application as QurioApp).appComponent.inject(this)
@@ -184,7 +184,8 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
                         gameId = gamId,
                         questionsCount = questions.size,
                         correctAnswerInRow = correctAnswerInRow,
-                        luckyCorrectAnswer = luckyCorrectAnswer
+                        luckyCorrectAnswer = luckyCorrectAnswer,
+                        totalTime = totalTime
                     )
                     binding.root.findNavController().navigate(action)
                 }
@@ -214,6 +215,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     private fun checkAnswer(isSkip: Boolean = false , isTimerEnded : Boolean = false) {
         var isSelectButton = isSkip  || isTimerEnded
         questionTimer.cancel()
+        totalTime += questionTimer.questionAnswerTime
         getOptionsButton().forEach {
             isSelectButton = it.isSelected || isSelectButton
         }
