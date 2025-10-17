@@ -40,8 +40,9 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     private var questionNumber = 0
     private val questionNumberCount
         get() = questionNumber + 1
-    lateinit var questions: List<Question>
-    var isNextQuestion = false
+    var questions: List<Question> = emptyList()
+    var isNextQuestion = true
+    private var currentLiveCount = 0
     lateinit var difficulty : String
      var gamId : Int = 0
 
@@ -72,12 +73,20 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     override fun onGetLiveSuccess(liveCount: Int) {
         binding.header.livesCount.text = liveCount.toString()
         if (liveCount == 0){
+            isNextQuestion = true
+            questionTimer.cancel()
+            binding.loadingText.text = "60 Sec"
+            questionTimer.onFinish()
             disableMainButton()
             handleSecondaryButton()
         }else{
-            questionTimer.start()
-            enableMainButton()
-            handleSkipButton()
+            if(questions.isNotEmpty()){
+                questionTimer.start()
+                enableMainButton()
+                handleSkipButton()
+            }
+            currentLiveCount = liveCount
+
         }
     }
 
@@ -112,7 +121,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     }
 
     private fun handleSecondaryButton() {
-        binding.skipButton.text = getString(R.string.buy_life)
+        binding.skipButton.text = requireContext().getString(R.string.buy_life)
         secondaryButtonType = SecondaryButtonType.BUY_LIFE
 
     }
@@ -190,6 +199,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     private fun nextQuestion() {
         isNextQuestion = true
         questionTimer.onFinish()
+        binding.loadingText.text = requireContext().getString(R.string._60_sec)
         getOptionsButton().forEach {
             it.isClickable = true
         }
@@ -300,19 +310,19 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     private fun initialMainButtonText() {
         when (mainButtonType) {
             MainButtonType.CHECK -> {
-                binding.mainButton.buttonText.text = getString(R.string.check)
+                binding.mainButton.buttonText.text = requireContext().getString(R.string.check)
             }
 
             MainButtonType.NEXT -> {
-                binding.mainButton.buttonText.text = getString(R.string.next)
+                binding.mainButton.buttonText.text = "Next"
             }
 
             MainButtonType.FINISH -> {
-                binding.mainButton.buttonText.text = getString(R.string.finish)
+                binding.mainButton.buttonText.text = "Finish"
             }
 
             MainButtonType.NONE -> {
-                binding.mainButton.buttonText.text = getString(R.string.check)
+                binding.mainButton.buttonText.text = "Check"
             }
         }
     }
@@ -372,16 +382,30 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         listOf(binding.option1, binding.option2, binding.option3, binding.option4)
 
     override fun onGetGameQuestion(questionsList: List<Question>) {
-        Log.e("MY_TAG", "onGetGameQuestion: ${questionsList.map { it.correctAnswer }}")
-        questions = questionsList
-        initialMainButtonText()
-        initialQuestion()
-        initialClickOnOption()
-        initialSkipButton()
-        initialMainButton()
-        initialNumberQuestion()
-        initialBackButton()
-        onGetDataSuccess()
+        if(questionsList.isEmpty()){
+            onGetDataError()
+            isNextQuestion = true
+        }else{
+            if(currentLiveCount >  0 ){
+                isNextQuestion = false
+                enableMainButton()
+                handleSkipButton()
+                binding.loadingText.text = requireContext().getString(R.string._60_sec)
+                questionTimer.onFinish()
+                questionTimer.start()
+            }
+
+            questions = questionsList
+            initialMainButtonText()
+            initialQuestion()
+            initialClickOnOption()
+            initialSkipButton()
+            initialMainButton()
+            initialNumberQuestion()
+            initialBackButton()
+            onGetDataSuccess()
+        }
+
     }
 
 
@@ -399,13 +423,15 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     }
 
     override fun onGetDataError() {
+        isNextQuestion = true
+        questionTimer.onFinish()
         initialErrorButton()
         disAppearLoadingItems()
         appearErrorItems()
     }
 
     private fun initialErrorButton() {
-        binding.tryAgianButton.buttonText.text = getString(R.string.try_again)
+        binding.tryAgianButton.buttonText.text = "Retry"
         binding.tryAgianButton.root.setOnClickListener {
             getGameQuestions()
         }
@@ -463,25 +489,24 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
 
 
 
-     fun onFinishTimeQuestion() {
-         if(isNextQuestion){
-             isNextQuestion = false
-             binding.loadingText.text = getString(R.string._60_sec)
-         }else{
-             checkAnswer(isTimerEnded = true)
-             var isSelectButton = false
-             getOptionsButton().forEach {
-                 isSelectButton = it.isSelected || isSelectButton
-             }
-             if(!isSelectButton) {
-                 skipQuestionCount++
-             }
-         }
-     }
+
+    fun onFinishTimeQuestion() {
+        if(isNextQuestion || questions.isEmpty()){
+            isNextQuestion = false
+        }else{
+            checkAnswer(isTimerEnded = true)
+            var isSelectButton = false
+            getOptionsButton().forEach {
+                isSelectButton = it.isSelected || isSelectButton
+            }
+            if(!isSelectButton) {
+                skipQuestionCount++
+            }
+        }
+    }
 
     fun onRunQuestionTime(currentTime: Long) {
-        binding.loadingText.text = "$currentTime Sec"
-    }
+        binding.loadingText.text = "$currentTime Sec"    }
     object Constant{
         const val UPDATE_ALIVE_COUNT_KEY = "UPDATE_ALIVE_COUNT_KEY"
     }
