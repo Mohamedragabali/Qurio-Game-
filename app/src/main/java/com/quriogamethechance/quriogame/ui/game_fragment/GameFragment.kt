@@ -1,6 +1,7 @@
 package com.quriogamethechance.quriogame.ui.game_fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.quriogamethechance.quriogame.databinding.FragmentGameBinding
 import com.quriogamethechance.quriogame.presenter.game.GamePresenter
 import com.quriogamethechance.quriogame.ui.QurioApp
 import com.quriogamethechance.quriogame.ui.base.BaseFragment
+import com.quriogamethechance.quriogame.ui.utils.Constants
 import jakarta.inject.Inject
 
 
@@ -27,6 +29,9 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         onFinishTimeQuestion = ::onFinishTimeQuestion,
         onRunQuestionTime = ::onRunQuestionTime
     )
+    private var correctAnswerInRow = 0
+    private var luckyCorrectAnswer = 0
+    private var luckyCorrectAnswerTimeInSecond = 5
     private var mainButtonType = MainButtonType.NONE
     private var secondaryButtonType = SecondaryButtonType.SKIP
     private var correctAnswerCount = 0
@@ -168,7 +173,9 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
                         skippedAnswerCount = skipQuestionCount,
                         gameDifficulty = difficulty,
                         gameId = gamId,
-                        questionsCount = questions.size
+                        questionsCount = questions.size,
+                        correctAnswerInRow = correctAnswerInRow,
+                        luckyCorrectAnswer = luckyCorrectAnswer
                     )
                     binding.root.findNavController().navigate(action)
                 }
@@ -311,6 +318,16 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     }
 
     private fun initialViewOfResult(view: View, isCorrect: Boolean) {
+        if(isCorrect) {
+            correctAnswerInRow += 1
+            val luckyTime = Constants.QUESTION_TIME - luckyCorrectAnswerTimeInSecond
+            if (questionTimer.questionAnswerTime <= luckyTime ){
+                luckyCorrectAnswer += 1
+            }
+        }else{
+            correctAnswerInRow = 0
+        }
+
         getResultIconViews().forEach {
             if (isCorrect) {
                 it.setImageResource(R.drawable.bonus_icon)
@@ -355,6 +372,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         listOf(binding.option1, binding.option2, binding.option3, binding.option4)
 
     override fun onGetGameQuestion(questionsList: List<Question>) {
+        Log.e("MY_TAG", "onGetGameQuestion: ${questionsList.map { it.correctAnswer }}")
         questions = questionsList
         initialMainButtonText()
         initialQuestion()
@@ -448,7 +466,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
      fun onFinishTimeQuestion() {
          if(isNextQuestion){
              isNextQuestion = false
-             binding.loadingText.text = "60 Sec"
+             binding.loadingText.text = getString(R.string._60_sec)
          }else{
              checkAnswer(isTimerEnded = true)
              var isSelectButton = false

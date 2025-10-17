@@ -72,4 +72,26 @@ class GameResultPresenter @Inject constructor(
             }
         }
     }
+
+     fun handleAchievement(
+        correctAnswerInRow: Int,
+        luckyCorrectAnswer: Int,
+        levelType: String,
+        starCount: Int
+    ){
+        launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    repository.handleAchievement(
+                        correctAnswerInRow =   correctAnswerInRow,
+                        luckyCorrectAnswer = luckyCorrectAnswer,
+                        levelType = levelType,
+                        starCount = starCount
+                    )
+                }
+            } catch (_: Exception) {
+                view.onGetDataError()
+            }
+        }
+    }
 }

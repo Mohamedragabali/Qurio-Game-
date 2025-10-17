@@ -255,6 +255,12 @@
             android:id="@+id/action_gameResultFragment_to_gameFragment"
             app:destination="@id/gameFragment"
             app:popUpTo="@id/homeFragment" />
+        <argument
+            android:name="correct_answer_in_row"
+            app:argType="integer" />
+        <argument
+            android:name="lucky_correct_answer"
+            app:argType="integer" />
     </fragment>
 
 

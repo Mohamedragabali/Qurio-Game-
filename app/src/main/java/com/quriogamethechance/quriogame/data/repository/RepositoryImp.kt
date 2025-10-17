@@ -447,6 +447,88 @@ class RepositoryImp @Inject constructor(
         }
     }
 
+    override suspend fun handleAchievement(
+        correctAnswerInRow: Int,
+        luckyCorrectAnswer: Int,
+        levelType: String,
+        starCount: Int
+    ) {
+        val achievements = getAllAchievements()
+        var  achievementCountTargetIsOpen = true
+        achievements.forEachIndexed { index, entity ->
+            if(!achievements[index].isOpen){
+                when(index){
+                    0-> {
+                        updateAchievement(entity.copy(isOpen = true))
+                    }
+                    1 -> {
+                        if (correctAnswerInRow >= 3){
+                            updateAchievement(entity.copy(isOpen = true))
+                        }
+                    }
+                    2 -> {
+                        if (luckyCorrectAnswer >= 1){
+                            updateAchievement(entity.copy(isOpen = true))
+                        }
+                    }
+                    3 -> {
+                        val lastGame = getLastGames()
+                        val categoryCount = lastGame.groupBy { it.type }.size
+                        if(categoryCount >= 4){
+                            updateAchievement(entity.copy(isOpen = true))
+                        }
+                    }
+                    4 -> {
+                        if(starCount == 3 ){
+                            updateAchievement(entity.copy(isOpen = true))
+                        }
+                    }
+                    5 -> {
+                        achievementCountTargetIsOpen = false
+
+                    }
+                    6 -> {
+                        if(levelType == "hard" && starCount == 3 ){
+                            updateAchievement(entity.copy(isOpen = true))
+                        }
+                    }
+                    7 -> {
+                        if(correctAnswerInRow >= 10){
+                            updateAchievement(entity.copy(isOpen = true))
+                        }
+                    }
+                    8 -> {
+                        if(luckyCorrectAnswer >= 5 ){
+                            updateAchievement(entity.copy(isOpen = true))
+                        }
+                    }
+                    9 -> {
+                        achievementCountTargetIsOpen = false
+
+                    }
+                    10 -> {
+                        if(luckyCorrectAnswer >=2 ){
+                            updateAchievement(entity.copy(isOpen = true))
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+        }
+
+        if(!achievementCountTargetIsOpen){
+            val countOfOpenAchievements = getOpenAchievements().filter { it.isOpen }.size
+            if(countOfOpenAchievements >= 5){
+                updateAchievement(achievements[5].copy(isOpen = true))
+            }
+            if(countOfOpenAchievements >= 10){
+                updateAchievement(achievements[9].copy(isOpen = true))
+            }
+        }
+    }
+
     private fun findTypeIdText(typeId: Int): String {
         val gamesData = listOf(
             Game(

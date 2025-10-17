@@ -19,15 +19,15 @@ interface Repository {
 
     suspend fun getLastGames(): List<LastGame>
 
-    suspend fun getIsAppOpenBefore():Boolean
+    suspend fun getIsAppOpenBefore(): Boolean
 
     suspend fun setAppOpen()
 
-    suspend fun setLives(lives:Int)
-    suspend fun getLives():Int
+    suspend fun setLives(lives: Int)
+    suspend fun getLives(): Int
 
-    suspend fun setCoins(coins:Int)
-    suspend fun getCoins():Int
+    suspend fun setCoins(coins: Int)
+    suspend fun getCoins(): Int
 
     suspend fun cacheCharacter()
 
@@ -49,11 +49,18 @@ interface Repository {
 
     fun getAchievementsByName(achievementNickName: String): AchievementEntity
 
-    suspend fun getTrackingResult(weekDays :List<String>,currentDate: String):List<Boolean>
+    suspend fun getTrackingResult(weekDays: List<String>, currentDate: String): List<Boolean>
 
-    suspend fun setSetting(soundDegree:Float,musicDegree:Float)
+    suspend fun setSetting(soundDegree: Float, musicDegree: Float)
 
     suspend fun getSetting(): Setting
 
-    suspend fun getLivePrice():Int
+    suspend fun getLivePrice(): Int
+
+    suspend fun handleAchievement(
+        correctAnswerInRow: Int,
+        luckyCorrectAnswer: Int,
+        levelType: String,
+        starCount: Int
+    )
 }

@@ -38,6 +38,10 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
         val incorrectAnswerCount = args.incorrectAnswerCount
         val skippedQuestion = args.skippedAnswerCount
         val questionsCount = args.questionsCount
+        val correctAnswerInRow = args.correctAnswerInRow
+        val luckyAnswerAnswer  = args.luckyCorrectAnswer
+
+
         gameDifficulty = args.gameDifficulty
         gameId = args.gameId
 
@@ -52,7 +56,9 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
             incorrectAnswerCount = incorrectAnswerCount,
             skippedQuestion = skippedQuestion,
             questionsCount = questionsCount,
-            gameDifficulty = gameDifficulty
+            gameDifficulty = gameDifficulty,
+            correctAnswerInRow = correctAnswerInRow,
+            luckyAnswerAnswer = luckyAnswerAnswer
         )
     }
 
@@ -71,7 +77,9 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
         incorrectAnswerCount: Int,
         skippedQuestion: Int,
         questionsCount: Int,
-        gameDifficulty: String
+        gameDifficulty: String,
+        correctAnswerInRow: Int,
+        luckyAnswerAnswer: Int
     ) {
         val bouns = when (gameDifficulty) {
             "hard" -> {
@@ -86,7 +94,14 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
                 1
             }
         }
+
         val starCount = initialStars(correctAnswerCount,skippedQuestion, questionsCount)
+        gameResultPresenter.handleAchievement(
+            correctAnswerInRow = correctAnswerInRow,
+            luckyCorrectAnswer = luckyAnswerAnswer,
+            starCount = starCount,
+            levelType = gameDifficulty
+        )
 
         val coinsCount = if(starCount == 0){
             initialLoseViews(correctAnswerCount,bouns)
