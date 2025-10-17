@@ -23,9 +23,12 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
 
     @Inject
     lateinit var gamePresenter: GamePresenter
+    private val questionTimer = QuestionTimer(
+        onFinishTimeQuestion = ::onFinishTimeQuestion,
+        onRunQuestionTime = ::onRunQuestionTime
+    )
     private var mainButtonType = MainButtonType.NONE
     private var secondaryButtonType = SecondaryButtonType.SKIP
-
     private var correctAnswerCount = 0
     private var wrongAnswerCount = 0
     private var skipQuestionCount = 0
@@ -33,6 +36,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     private val questionNumberCount
         get() = questionNumber + 1
     lateinit var questions: List<Question>
+    var isNextQuestion = false
     lateinit var difficulty : String
      var gamId : Int = 0
 
@@ -49,6 +53,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         getGameQuestions()
         handleSecondaryButton()
         disableMainButton()
+        disAppearAllMainItem()
 
         initUpdateDataFromActionDialog()
 
@@ -65,6 +70,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
             disableMainButton()
             handleSecondaryButton()
         }else{
+            questionTimer.start()
             enableMainButton()
             handleSkipButton()
         }
@@ -128,6 +134,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
 
     private fun initialSkipButton() {
         binding.skipButton.setOnClickListener {
+            questionTimer.cancel()
             if(secondaryButtonType == SecondaryButtonType.SKIP){
                 getOptionsButton().forEach {
                     it.isSelected = false
@@ -174,6 +181,8 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     }
 
     private fun nextQuestion() {
+        isNextQuestion = true
+        questionTimer.onFinish()
         getOptionsButton().forEach {
             it.isClickable = true
         }
@@ -182,10 +191,12 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         initialMainButtonText()
         initialQuestion()
         makeSkipButtonVisible()
+        questionTimer.start()
     }
 
-    private fun checkAnswer(isSkip: Boolean = false) {
-        var isSelectButton = isSkip
+    private fun checkAnswer(isSkip: Boolean = false , isTimerEnded : Boolean = false) {
+        var isSelectButton = isSkip  || isTimerEnded
+        questionTimer.cancel()
         getOptionsButton().forEach {
             isSelectButton = it.isSelected || isSelectButton
         }
@@ -410,6 +421,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         binding.questionText.visibility = View.INVISIBLE
         binding.questionNumber.visibility = View.INVISIBLE
         binding.skipButton.visibility = View.INVISIBLE
+        binding.loadingText.visibility = View.INVISIBLE
         getOptionsButton().forEach {
             it.visibility = View.INVISIBLE
         }
@@ -423,6 +435,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         binding.questionText.visibility = View.VISIBLE
         binding.questionNumber.visibility = View.VISIBLE
         binding.skipButton.visibility = View.VISIBLE
+        binding.loadingText.visibility = View.VISIBLE
         getOptionsButton().forEach {
             it.visibility = View.VISIBLE
         }
@@ -430,6 +443,27 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
         binding.loading.root.visibility = View.VISIBLE
     }
 
+
+
+     fun onFinishTimeQuestion() {
+         if(isNextQuestion){
+             isNextQuestion = false
+             binding.loadingText.text = "60 Sec"
+         }else{
+             checkAnswer(isTimerEnded = true)
+             var isSelectButton = false
+             getOptionsButton().forEach {
+                 isSelectButton = it.isSelected || isSelectButton
+             }
+             if(!isSelectButton) {
+                 skipQuestionCount++
+             }
+         }
+     }
+
+    fun onRunQuestionTime(currentTime: Long) {
+        binding.loadingText.text = "$currentTime Sec"
+    }
     object Constant{
         const val UPDATE_ALIVE_COUNT_KEY = "UPDATE_ALIVE_COUNT_KEY"
     }
