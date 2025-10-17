@@ -215,7 +215,8 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     private fun checkAnswer(isSkip: Boolean = false , isTimerEnded : Boolean = false) {
         var isSelectButton = isSkip  || isTimerEnded
         questionTimer.cancel()
-        totalTime += questionTimer.questionAnswerTime
+        totalTime += Constants.QUESTION_TIME.toInt() / 1000 - questionTimer.questionAnswerTime
+
         getOptionsButton().forEach {
             isSelectButton = it.isSelected || isSelectButton
         }
@@ -332,7 +333,7 @@ class GameFragment : BaseFragment<FragmentGameBinding>() , GameViewInterface{
     private fun initialViewOfResult(view: View, isCorrect: Boolean) {
         if(isCorrect) {
             correctAnswerInRow += 1
-            val luckyTime = Constants.QUESTION_TIME - luckyCorrectAnswerTimeInSecond
+            val luckyTime = Constants.QUESTION_TIME / 10000  - luckyCorrectAnswerTimeInSecond
             if (questionTimer.questionAnswerTime <= luckyTime ){
                 luckyCorrectAnswer += 1
             }
