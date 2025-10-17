@@ -26,7 +26,7 @@ class RepositoryImp @Inject constructor(
     private val qurioiGameDatabase: QurioGameDatabase,
     private val preferencesDataStore: DataStore<Preferences>
 ) : Repository {
-    private val gameQuestionAmount = 12
+    private val gameQuestionAmount = 10
     private val gameLivePrice = 200
     private val freeLivePrice = 0
     private val gameType = "multiple"
