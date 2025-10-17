@@ -275,7 +275,7 @@ class RepositoryImp @Inject constructor(
                     isOpen = false,
                     openImage = R.drawable.lucky_guess,
                     closeImage = R.drawable.lucky_guess_closed,
-                    howToGetIt = "Answer a question correctly after selecting randomly within 2 seconds.",
+                    howToGetIt = "Answer a question correctly after selecting randomly within 5 seconds.",
                 ),
                 Achievement(
                     name = "Explorer",
@@ -295,7 +295,7 @@ class RepositoryImp @Inject constructor(
                     isOpen = false,
                     openImage = R.drawable.trivia_champ,
                     closeImage = R.drawable.trivia_champ_closed,
-                    howToGetIt = "Reach the top score in any category.",
+                    howToGetIt = "Reach the top score in any level in any category.",
                 ),
                 Achievement(
                     name = "Collector",
@@ -315,7 +315,7 @@ class RepositoryImp @Inject constructor(
                     isOpen = false,
                     openImage = R.drawable.legend,
                     closeImage = R.drawable.legend_closed,
-                    howToGetIt = "Reach level 50 or higher."
+                    howToGetIt = "Reach the top score in hard level in any category."
                 ),
                 Achievement(
                     name = "Untouchable",
@@ -335,7 +335,7 @@ class RepositoryImp @Inject constructor(
                     isOpen = false,
                     openImage = R.drawable.quick_thinker,
                     closeImage = R.drawable.quick_thinker_closed,
-                    howToGetIt = "Answer 5 questions correctly in less than 10 seconds each."
+                    howToGetIt = "Answer 5 questions correctly in less than 20 seconds each."
                 ),
                 Achievement(
                     name = "Collector",
