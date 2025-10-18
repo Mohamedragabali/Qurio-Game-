@@ -1,5 +1,6 @@
 package com.quriogamethechance.quriogame.ui.achievementDetials
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +21,7 @@ class AchievementDetailFragment : BaseDialogFragment<FragmentAchievementDetialBi
 
     @Inject
     lateinit var achievementDetailsPresenter: AchievementDetailsPresenter
-
+    private lateinit var currentAchievement : Achievement
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity().application as QurioApp).appComponent.inject(this)
@@ -46,6 +47,21 @@ class AchievementDetailFragment : BaseDialogFragment<FragmentAchievementDetialBi
         binding.exitButton.setOnClickListener {
             dismiss()
         }
+
+        binding.shareWithFriendButton.root.setOnClickListener {
+            val achievementShareText = " I just unlocked a new achievement in Qurio Game! :) \n\n" +
+                    "Achievement: ${currentAchievement.name}\n" +
+                    "How I got it: ${currentAchievement.howToGetIt} \n\n" +
+                    " Can you unlock it too?"
+            val sendIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, achievementShareText)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, "Share using")
+            requireContext().startActivity(shareIntent)
+        }
     }
 
     private fun initButtonText() {
@@ -55,6 +71,7 @@ class AchievementDetailFragment : BaseDialogFragment<FragmentAchievementDetialBi
     }
 
     override fun onGetAchievementSuccess(achievement: Achievement) {
+        currentAchievement = achievement
         achievement.apply {
             binding.achievementName.text = name
             val achievementDescription = "${achievement.description}\nHow to get:\n${achievement.howToGetIt}"

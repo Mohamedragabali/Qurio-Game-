@@ -1,5 +1,6 @@
 package com.quriogamethechance.quriogame.ui.gameResult
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,13 +16,14 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResultViewInterface {
+class GameResultFragment : BaseFragment<FragmentGameResultBinding>(), GameResultViewInterface {
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGameResultBinding
         get() = FragmentGameResultBinding::inflate
 
     lateinit var gameDifficulty: String
     var gameId: Int = 0
+    private var shareText = ""
 
     @Inject
     lateinit var gameResultPresenter: GameResultPresenter
@@ -106,11 +108,24 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
             levelType = gameDifficulty
         )
 
-        val coinsCount = if(starCount == 0){
-            initialLoseViews(correctAnswerCount,bouns)
+        val coinsCount = if (starCount == 0) {
+            shareText = " I lost in Qurio Game :( \n\n" +
+                    "Difficulty: $gameDifficulty\n" +
+                    "Correct Answers: $correctAnswerCount\n" +
+                    "Incorrect Answers: $incorrectAnswerCount \n" +
+                    "Skipped Question: $skippedQuestion\n\n"+
+                    "can do better?"
+            initialLoseViews(correctAnswerCount, bouns)
 
-        }else{
-            initialWinViews(correctAnswerCount,bouns)
+        } else {
+            shareText = "I won in Qurio Game! :)  \n\n" +
+                    "Difficulty: $gameDifficulty\n" +
+                    "Stars:  $starCount\n" +
+                    "Correct Answers: $correctAnswerCount\n" +
+                    "Incorrect Answers: $incorrectAnswerCount \n" +
+                    "Skipped Question: $skippedQuestion\n\n"+
+                    "Can you beat my score? "
+            initialWinViews(correctAnswerCount, bouns)
         }
         val simpleFormat = SimpleDateFormat("dd-MM-yyyy", Locale.US)
         val currentDate = simpleFormat.format(Date())
@@ -180,6 +195,16 @@ class GameResultFragment : BaseFragment<FragmentGameResultBinding>() , GameResul
             val action = GameResultFragmentDirections.actionGameResultFragmentToGameFragment(
                 gameId = gameId , gameDifficultyLevel = gameDifficulty)
             binding.root.findNavController().navigate(action)
+        }
+        binding.shareWithFriendButton.root.setOnClickListener {
+            val sendIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, shareText)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, "Share using")
+            requireContext().startActivity(shareIntent)
         }
     }
 
