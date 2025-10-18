@@ -89,7 +89,7 @@ class RepositoryImp @Inject constructor(
 
     override suspend fun setLives(lives: Int) {
         preferencesDataStore.edit { prefs ->
-            prefs[keyLives] = lives
+            prefs[keyLives] = if(lives < 0 )  0 else lives
         }
     }
 
