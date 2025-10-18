@@ -124,6 +124,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeInteraction , Home
                             id = 24
                         ),
                         GameItem(
+                            type = "Sport & Leisure",
+                            image = R.drawable.sport_leisure,
+                            id = 21
+                        ),
+                        GameItem(
                             type = "History",
                             image = R.drawable.history,
                             id = 23
