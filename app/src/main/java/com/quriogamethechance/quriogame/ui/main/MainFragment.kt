@@ -24,6 +24,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), MainViewInterface {
         (requireActivity().application as QurioApp).appComponent.inject(this)
     }
 
+    override fun onResume() {
+        super.onResume()
+        mainPresenter.getIsAppOpenBefore()
+    }
+
     override fun setup() {
         mainPresenter.view = this
         mainPresenter.getIsAppOpenBefore()
