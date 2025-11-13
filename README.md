@@ -71,5 +71,47 @@ cd movio-android
       <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Onboarding4" src="https://github.com/user-attachments/assets/63562bd2-02e8-46ba-ad40-b039683acc4e"></td>
       <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Home" src="https://github.com/user-attachments/assets/b7b91206-2de4-4408-8c19-071513bbf8d5"></td>
     </tr>
+    <tr>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">all charcter</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Character Details</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">buy Character</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Settings</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Buy Lives</th>
+    </tr>
+    <tr>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="all charcter" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Character Details" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="buy Character" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Settings" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Buy Lives" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+    </tr>
+    <tr>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">all rewards</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Reward Details</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Game Categories</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Select Level</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Game Questions</th>
+    </tr>
+    <tr>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="all rewards" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Reward Details" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game Categories" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Select Level" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game Questions" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+    </tr>
+    <tr>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Correct Answer</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Incorrect Answer</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Quiz Results</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Game History</th>
+      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Home Data</th>
+    </tr>
+    <tr>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Correct Answer" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Incorrect Answer" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Quiz Results" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game History" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Home Data" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+    </tr>
    </tbody>
 </table>
