@@ -37,23 +37,7 @@ The app follows **MVP Architecture** with **Base View** and **Base Presenter** a
 - JDK 11 or higher
 - Android SDK 21 or higher
 - Git
-## 🔧 Setup Instructions
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/MadridSquad/Movio.git
-cd movio-android
-```
-### 4. Build and Run
-1. Open the project in Android Studio  
-2. Sync the project with Gradle files  
-3. Build the project (**Build > Make Project**)  
-4. Run on device or emulator (**Run > Run 'app'**)
-### 5.📱 Running the App
-1. Enable USB debugging and connect your physical device  
-2. Create an Android Virtual Device (AVD) with API level 24 or higher  
-3. Choose between `debug` and `release` builds from the Build Variants panel
 ## 📸 Screenshots
 <table style="width: 100%; border-collapse: collapse;">
   <tbody>
