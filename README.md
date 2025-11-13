@@ -1,107 +1,41 @@
-# Movio - Your Ultimate Entertainment Companion
+# Qurio Game - Fun question game
 
 <div align="center">
   <img src="https://img.shields.io/badge/Platform-Android-green.svg" alt="Platform">
   <img src="https://img.shields.io/badge/Language-Kotlin-blue.svg" alt="Language">
-  <img src="https://img.shields.io/badge/UI-Jetpack%20Compose-orange.svg" alt="UI">
-  <img src="https://img.shields.io/badge/Architecture-MVVM-red.svg" alt="Architecture">
-  <img src="https://img.shields.io/badge/DI-Hilt-yellow.svg" alt="DI">
+  <img src="https://img.shields.io/badge/UI-%20Xml-orange.svg" alt="UI">
+  <img src="https://img.shields.io/badge/Architecture-MVP-red.svg" alt="Architecture">
+  <img src="https://img.shields.io/badge/DI-Dagger-yellow.svg" alt="DI">
 </div>
 
-A modern Android app built with Jetpack Compose for browsing and watching series. It includes detailed series information, seasons, and episodes.
-
-## 🚀 Features
-
-### 🎯 **Smart Movie Discovery**
-- **Personalized Recommendations**: Intelligent suggestion engine based on viewing history and preferences
-- **Episode Trailers**: Seamless trailer integration for TV shows and movie series
-
-### 🔍 **Enhanced Search & Browse**
-- **Real-time Search**: Lightning-fast movie and TV show search with auto-suggestions
-- **Trending Content**: Stay updated with what's popular worldwide
-
-### 📱 **Modern User Experience**
-- **Jetpack Compose UI**: Fluid, responsive interface
-- **Dark/Light Theme**: Automatic theme switching based on system preferences
-- **Offline Support**: Browse previously viewed content without internet connection
-- **Localization Support**: Multi-language experience with language selection based on user preferences
-
-### 🔐 **Robust Backend Integration**
-- **Firebase Analytics**: Comprehensive user behavior tracking
-- **Crash Reporting**: Real-time crash monitoring with Firebase Crashlytics
-
-### 🏗️ **Enterprise-Grade Architecture**
-- **Clean Architecture**: Separation of concerns with Domain-Data-Presentation layers
-- **Dependency Injection**: Hilt-powered DI for testable, maintainable code
-- **Modular Design**: Feature-based modules for scalability
+A modern Android application created using XML to test your knowledge in various subjects by asking questions.
 
 ## 🛠️ Tech Stack
 
 - **Language**: Kotlin
 - **Android SDK**
-- **Work Manager**
-- **Paging 3**
-- **UI Framework**: Jetpack Compose
-- **Architecture**: MVVM + Clean Architecture
-- **Dependency Injection**: Hilt (Dagger)
+- **UI Framework**: XML
+- **Architecture**: MVP
+- **Dependency Injection**: Dagger
 - **Build System**: Gradle
-- **Navigation**: Compose Navigation
-- **Networking**: Retrofit + OkHttp
-- **Image Loading**: Coil
-- **Async Programming**: Coroutines + Flow
-- **Database**: Room
-- **Testing**: JUnit, MockK, Truth
+- **Navigation**:  Jetpack Navigation
+- **Networking**: Retrofit
+- **Async Programming**: Coroutines 
+- **Database**: Room, DataStore
+
 ## 🏗️ App Architecture
-The app follows **Clean Architecture** principles with **MVVM** pattern and **Modularization** for robust, scalable, and testable code:
+The app follows **MVP Architecture** with **Base View** and **Base Presenter** and **Repository Pattern** :
 
-### Modular Architecture (By Presentation/Data/Domain)
-<img width="1028" height="495" alt="simple" src="https://github.com/user-attachments/assets/7ef5ce50-0298-4800-a56f-905272f5c789" />
+### Modular Architecture 
+<img width="1028" height="495" alt="simple" src="<img width="1270" height="1010" alt="MVP drawio" src="https://github.com/user-attachments/assets/46e87961-0604-4643-bfbd-27c08140234f" />" />
 
 
-### 📦 Module Overview
 
-The app is structured using a **multi-module architecture** to promote separation of concerns, improve build performance, and enable better team collaboration. Each module has specific responsibilities:
-
-### 🎯 Core Modules
-
-#### `:app` - Main Application Module
-**Responsibilities:**
-- Application entry point and initialization
-- Hilt dependency injection setup
-- Activity hosting for navigation
-- App-level configuration and permissions
-#### `:presentation` - UI Layer Module
-**Responsibilities:**
-- Jetpack Compose UI screens and components
-- MVVM ViewModels for state management
-- Navigation between screens
-- UI state handling and user interactions
-- Screen-specific business logic
-#### `:domain` - Business Logic Module
-**Responsibilities:**
-- Pure business logic implementation
-- Use cases for complex operations
-- Domain models and entities
-- Repository interfaces (contracts)
-- Business rules and validations
-#### `:data`
-**Responsibilities:**
-- Repository pattern implementation
-- API integration with Retrofit
-- Local database with Room
-- Data transformation and mapping
-- Caching strategies and offline support
-#### `:designSystem` - UI Design System Module
-**Responsibilities:**
-- Consistent UI component library
-- Reusable Compose components
-- Design tokens and guidelines
-- Cross-module UI consistency
 ## 📋 Prerequisites
 
 - Android Studio Narwhal (2025.1.2) or later
 - JDK 11 or higher
-- Android SDK 24 or higher
+- Android SDK 21 or higher
 - Git
 ## 🔧 Setup Instructions
 
@@ -110,18 +44,6 @@ The app is structured using a **multi-module architecture** to promote separatio
 ```bash
 git clone https://github.com/MadridSquad/Movio.git
 cd movio-android
-```
-### 2. Create Configuration Files
-Create a secrets.properties file in the root directory:
-```bash
-# API Configuration
-BASE_URL="your_api_base_url"
-API_KEY="your_api_key"
-```
-### 3. Add Local Properties (if needed)
-Update local.properties with your Android SDK path:
-```bash
-sdk.dir=/path/to/your/Android/Sdk
 ```
 ### 4. Build and Run
 1. Open the project in Android Studio  
