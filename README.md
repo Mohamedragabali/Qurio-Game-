@@ -93,11 +93,11 @@ cd movio-android
       <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Game Questions</th>
     </tr>
     <tr>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="all rewards" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Reward Details" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game Categories" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Select Level" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game Questions" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="all rewards" src="https://github.com/user-attachments/assets/511b7033-910e-4a19-b126-750e6605fca5"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Reward Details" src="https://github.com/user-attachments/assets/46894c1f-7494-4276-b57f-a326c3478c78"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game Categories" src="https://github.com/user-attachments/assets/19572514-87a4-42d2-b6df-f7e3ea7701d2"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Select Level" src="https://github.com/user-attachments/assets/75f03932-637c-4481-ad56-1d138536c114"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game Questions" src="https://github.com/user-attachments/assets/900a139a-0f63-4521-a8aa-4696e4490de3"></td>
     </tr>
     <tr>
       <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Correct Answer</th>
@@ -107,11 +107,11 @@ cd movio-android
       <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Home Data</th>
     </tr>
     <tr>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Correct Answer" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Incorrect Answer" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Quiz Results" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game History" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Home Data" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Correct Answer" src="https://github.com/user-attachments/assets/83bc7727-3bb2-415b-8979-d2ad62714243"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Incorrect Answer" src="https://github.com/user-attachments/assets/a88231a2-7cf5-4935-a7df-908527a94d98"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Quiz Results" src="https://github.com/user-attachments/assets/f86f4776-7a29-4503-af31-65e8b3d47da5"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Game History" src="https://github.com/user-attachments/assets/f768ebd4-376d-4b0a-87f0-ea3cb259633f"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Home Data" src="https://github.com/user-attachments/assets/8996b4d8-249f-4c32-ab5d-797ebc108906"></td>
     </tr>
    </tbody>
 </table>
