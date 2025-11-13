@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/DI-Dagger-yellow.svg" alt="DI">
 </div>
 
-A modern Android application created using XML to test your knowledge in various subjects by asking questions.
+A modern Android application created using XML to test your knowledge in various subjects by questions.
 
 ## 🛠️ Tech Stack
 
