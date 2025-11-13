@@ -79,11 +79,11 @@ cd movio-android
       <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Buy Lives</th>
     </tr>
     <tr>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="all charcter" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Character Details" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="buy Character" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Settings" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Buy Lives" src="https://github.com/user-attachments/assets/5a3b372c-aba4-4dfc-b944-9f0d2956b309"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="all charcter" src="https://github.com/user-attachments/assets/3849db0e-5bb0-4cb2-886f-a74884554ad5"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Character Details" src="https://github.com/user-attachments/assets/2691bc7a-2b36-4acc-a65d-8ecd15248923"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="buy Character" src="https://github.com/user-attachments/assets/21ca95e3-adc6-4e76-9340-379874f9a84d"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Settings" src="https://github.com/user-attachments/assets/c573005b-a3d9-41f2-a329-caa3d23dfbb5"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Buy Lives" src="https://github.com/user-attachments/assets/b9096199-6d86-4a95-bce1-80cc7b059a53"></td>
     </tr>
     <tr>
       <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">all rewards</th>
