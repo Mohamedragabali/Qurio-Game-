@@ -26,7 +26,7 @@ A modern Android application created using XML to test your knowledge in various
 ## 🏗️ App Architecture
 The app follows **MVP Architecture** with **Base View** and **Base Presenter** and **Repository Pattern** :
 
-### Modular Architecture 
+### MVP Architecture 
 <img width="1028" height="495" alt="MVP drawio" src="https://github.com/user-attachments/assets/46e87961-0604-4643-bfbd-27c08140234f" />
 
 
