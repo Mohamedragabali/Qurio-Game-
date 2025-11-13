@@ -65,35 +65,11 @@ cd movio-android
       <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Search</th>
     </tr>
     <tr>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Onboarding"
-          src="https://github.com/user-attachments/assets/b8ff1da0-4bb0-456e-a9a4-6c160c509d1e"></td
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Splash" 
-          src="https://github.com/user-attachments/assets/e04b11e4-decc-4db0-a4d6-1b29c9a4b463"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Login" 
-          src="https://github.com/user-attachments/assets/de75db68-6dda-4f7d-b7dc-26312a7e26bb"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Home" 
-          src="https://github.com/user-attachments/assets/abe069f2-7205-4489-ba30-ee5ac8be66ed"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Search"
-          src="https://github.com/user-attachments/assets/1e784e30-7718-49d1-9455-be9cb870769d"></td>
-    </tr>
-    <tr>
-      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Onboarding</th>
-      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Splash</th>
-      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Login</th>
-      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Home</th>
-      <th style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;">Search</th>
-    </tr>
-    <tr>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Onboarding"
-          src="https://github.com/user-attachments/assets/b8ff1da0-4bb0-456e-a9a4-6c160c509d1e"></td
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Splash" 
-          src="https://github.com/user-attachments/assets/e04b11e4-decc-4db0-a4d6-1b29c9a4b463"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Login" 
-          src="https://github.com/user-attachments/assets/de75db68-6dda-4f7d-b7dc-26312a7e26bb"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Home" 
-          src="https://github.com/user-attachments/assets/abe069f2-7205-4489-ba30-ee5ac8be66ed"></td>
-      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Search"
-          src="https://github.com/user-attachments/assets/1e784e30-7718-49d1-9455-be9cb870769d"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Onboarding" src="https://github.com/user-attachments/assets/b8ff1da0-4bb0-456e-a9a4-6c160c509d1e"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Splash" src="https://github.com/user-attachments/assets/e04b11e4-decc-4db0-a4d6-1b29c9a4b463"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Login" src="https://github.com/user-attachments/assets/de75db68-6dda-4f7d-b7dc-26312a7e26bb"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Home" src="https://github.com/user-attachments/assets/abe069f2-7205-4489-ba30-ee5ac8be66ed"></td>
+      <td style="width: 20%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Search" src="https://github.com/user-attachments/assets/1e784e30-7718-49d1-9455-be9cb870769d"></td>
     </tr>
    </tbody>
 </table>
